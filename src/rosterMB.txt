@@ -1,0 +1,21 @@
+				MEN"S BASKETBALL ROSTER
+
+
+#	Name		Pos.	Ht.	Wt.	Yr.	Hometown
+______________________________________________________________________________________________________________
+
+2	Brandon Serle		F	6-6	185	Sr.	New Smyrna Beach, Fla.
+4	Dalton Barnes		G	6-1	190	So.	Port Orange, Fla.	 
+10	Reed Ridder		G	6-3	180	Jr.	Ormond Beach, Fla.
+12	Eddie Gray		G	6-0	200	Jr.	Joliet, Ill.
+14	Andy Schleitwiler	G	6-0	175	Sr.	Lindon, Utah	 
+22	Jason Powell		G	6-2	190	Sr.	Melbourne, Fla.	 
+24	DeForest Carter	G	6-1	200	Sr.	Big Cypress, Fla.	 
+25	Drew Sciano		G	5-8	165	So.	Milford, Pa.	 
+30	Brian Johnson		F	6-7	210	Fr.	Jacksonville, Fla.	 
+31	Bradley Mapes		G	6-6	180	Fr.	Norcross, Ga.	 
+32	Daniel Kiesling		F	6-5	205	Jr.	Lexington, Ky.	 
+34	Joseph Gonzalez	F	6-7	230	Jr.	Lucas, Texas
+40	Hudson Cadet		F	6-8	230	Sr.	Chicago, Ill.
+44	Greg Zuppas		F	6-6	215	Fr.	Orlando, Fla.	 
+55	Cesar Pastrana		C	6-8	275	Sr.	Cartagena, Colombia

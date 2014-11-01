@@ -1,0 +1,17 @@
+				SOFTBALL ROSTER
+
+
+#	Name		Pos.	B/T	Ht.	Year	Hometown
+_______________________________________________________________________________________________________________________
+
+2	Jennifer Estrada	2B/SS	R/R	5-3	So.	Reedley, Calif. 
+3	Chanley Burge		OF	R/R	5-4	Jr.	Loveland, Colo. 
+4	Taylor Cowan		P/INF	R/R	5-4	So.	Melbourne, Fla. 
+5	Dee Espinosa		C/1B	R/L	5-2	Jr.	Miami, Fla.
+6	Jessica Osteen		OF	R/R	5-8	Jr.	Coral Springs, Fla. 
+7	Robi Zimmerman	P/DP	R/R	5-10	Jr.	Glen Burnie, Md. 
+9	Rae Heuer		OF	L/R	5-9	Jr.	Bellaire, Texas
+11	Talia Barraco		1B/3B	R/R	5-5	Sr.	Fort Myers, Fla.
+14	Sarah Huey		SS/2B	L/R	5-6	Jr.	Tomball, Texas
+17	Haleigh Lewis		OF/3B	R/R	5-10	Jr.	Orlando, Fla.
+22	Anna Battison		3B/C	R/R	5-5	So.	Tsawwassen, B.C.
