@@ -15,7 +15,7 @@ public class RunApp extends HomePage
 		// create a frame and set its properties 
 		RunApp frame = new RunApp();
 
-		frame.setSize (getXframe(), getYframe());
+		frame.setSize (950, 630);
 		frame.setLocationRelativeTo (null);
 		frame.setResizable (false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
