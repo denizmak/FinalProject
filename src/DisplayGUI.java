@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -50,8 +51,8 @@ public class DisplayGUI extends JFrame implements ActionListener
 
 		try 
 		{
-			//Scanner fileScanner = new Scanner (new File ("src/" + s +".txt"));
-			Scanner fileScanner = new Scanner (ResourceLoader.load ("" + s +".txt"));
+			Scanner fileScanner = new Scanner (new File ("src/" + s +".txt"));
+			//Scanner fileScanner = new Scanner (ResourceLoader.load ("" + s +".txt"));
 			path = ResourceLoader.getPath();
 			
 			while (fileScanner.hasNextLine())
@@ -128,7 +129,8 @@ public class DisplayGUI extends JFrame implements ActionListener
 			// write to a file
 			try 
 			{
-				Writer writer = new FileWriter ("bin/" + path, false);
+				//Writer writer = new FileWriter ("bin/" + path, false);
+				Writer writer = new FileWriter ("src/" + s +".txt", false);
 
 				writer.write (text);
 				writer.flush();

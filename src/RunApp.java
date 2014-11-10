@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 
 public class RunApp extends HomePage
 {
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) 
 	{
 		// create a frame and set its properties 
