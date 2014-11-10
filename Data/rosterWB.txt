@@ -1,0 +1,17 @@
+				WOMEN'S BASKETBALL ROSTER
+
+#	Name		Pos.	Ht.	Year	Hometown
+_________________________________________________________________________________________________
+
+3	Kalah Martin		G	5-8	Jr.	St. Louis, Mo.
+10	Hannah Carine		G	5-10	Fr.	Windermere, Fla.
+12	Ashlé Muse		G	5-9	Fr.	Jacksonville, Fla.
+13	Tara Fields		F	6-0	Fr.	Winter Park, Fla.
+20	Allison Abbott		C/F	6-0	Fr.	St. Augustine, Fla.
+22	Sabrina Whiting		G	5-7	Fr.	Temple Terrace, Fla.
+23	Ashley McWilliams	G	5-8	Fr.	Tampa, Fla.
+25	Mercedes Jorge	G	5-9	So.	Lake Mary, Fla.
+32	Taylor Cyphers		C	6-3	Jr.	Wichita, Kan.
+33	Helga Hrund Fridriksdottir	G	5-11	Fr.	Seltjarnarnes, Iceland
+34	Alicia Jackson		F	5-9	Sr.	Sarasota, Fla.
+50	Coleen Thomas	C	6-2	Fr.	Kingwood, Texas

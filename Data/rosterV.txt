@@ -1,0 +1,17 @@
+				VOLLEYBALL ROSTER
+
+#	Name		Pos.	Ht.	Year	Hometown
+__________________________________________________________________________________________
+
+1	Tamires Ferreira	S	5-10	Jr.	Barbacena, Brazil
+2	Jennifer Beatty		OH	5-8	Sr.	Daytona Beach, Fla.
+5	Ella Duggan		MB	6-4	Fr.	Tauranga, New Zealand
+7	Hannah Gray		L	5-8	Sr.	Orange City, Fla.
+9	Andrea Martinez		L/DS	5-6	Fr.	Miami, Fla. 
+10	Ana Pajic		OH	5-10	Fr.	Sabac, Serbia
+11	Sumerr Paxton		DS	5-5	Jr.	Erie, Mich.	 
+12	Evelina Abdurakhmanova	OH	6-3	Jr.	Tashkent, Uzbekistan
+15	Erika Hinel		MB	6-0	Jr.	St. Johns, Fla.	 
+18	Cheye-Anne Savage	MB	6-2	Jr.	Port Richey, Fla.
+19	Caitlyn Ballard		OH	5-10	So.	St. Charles, Ill.	 
+20	Madison Lord		S	5-10	Fr.	Dekalb, Ill.

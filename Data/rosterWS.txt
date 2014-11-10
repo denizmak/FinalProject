@@ -1,0 +1,27 @@
+				WOMEN'S SOCCER ROSTER
+
+
+#	Name		Pos.	Ht.	Year	Hometown
+__________________________________________________________________________________________________
+
+0	Jennifer Grimes	GK	5-2	Jr.	Ft. Lauderdale, Fla.
+1	Olivia Lynch		GK	5-7	Jr.	Naples, Fla.
+2	Kayla Merkel		F	5-2	Fr.	Ormond Beach, Fla.
+3	Maggie Maier		D	5-4	Sr.	Longwood, Fla.
+5	Johanna Karlsson	M	5-6	So.	Vellinge, Sweden
+6	Annie Gelnaw		F	5-2	Fr.	Ormond Beach, Fla.
+7	Hanna Rolfsen		D	5-9	So.	Oslo, Norway
+8	Helena Hansson	D	5-9	So.	Eskilstuna, Sweden
+9	Gabriela Casariego	M	5-2	Sr.	Miami, Fla.
+10	Katherine Ebbs		M	5-4	Sr.	Adelaide, Australia
+11	Aimee Kasmally	F	5-5	So.	Bayside, N.Y.
+12	Julia Karlernas		M	5-8	Fr.	Torsby, Sweden
+13	Emmie Johansson	M	5-5	Fr.	Karlstad, Sweden
+14	Kristin Sverrisdottir	M/F	5-5	Jr.	Reykjavik, Iceland
+15	Isabelle Haaranen	F	5-8	So.	Arsunda, Sweden
+16	Andrea Froshaug	F	5-4	Jr.	Oslo, Norway
+17	Nina Joergensen	F	5-6	So.	Copenhagen South, Denmark
+18	Dana Robins		M	5-7	Sr.	Ormond Beach, Fla.
+19	Janina Helwig		D	5-7	Jr.	Freiburg, Germany
+20	Gudrun Johnson	D	5-7	So.	Reykjavik, Iceland
+23	Kyhla Brangman	M	5-5	Jr.	Southampton, Bermuda
