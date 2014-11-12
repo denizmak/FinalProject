@@ -1,6 +1,6 @@
 
 /**
- * @author kay
+ * @author Kay
  * @version 1.0
  * @created 16-Oct-2014 6:31:26 PM
  * @last_edited 12-Nov-2014 10:38:34 AM
@@ -107,8 +107,7 @@ public class MyReservationGUI extends JFrame{
 		
 		exit.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					System.exit(0);
-					//setVisible(false);		TODO uncomment
+					setVisible(false);		
 				}
 			});	
 		
@@ -215,17 +214,4 @@ public class MyReservationGUI extends JFrame{
 	        frame.setVisible(true);
 	    }
 	
-	/**
-	 *  Main function that calls GUI display which includes the frames and functions
-	 * @param args
-	 */
-	 
-	 public static void main(String[] args) {
-			javax.swing.SwingUtilities.invokeLater(new Runnable() {
-	            public void run() {
-	            	createAndShowGUI();
-		           }
-		    });
-			
-	 }
 }//end myReservationGUI
