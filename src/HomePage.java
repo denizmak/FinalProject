@@ -8,27 +8,32 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
+/**
+ * @author Deni
+ *
+ */
 public class HomePage extends JFrame
 {
-	// class variables (data fields)
+	// data fields
 	private MenuPanel northPanel = new MenuPanel();
 	private JPanel centerPanel = new JPanel();
 	private TitleDesign titlePanel = new TitleDesign();
 	private JPanel content = new ContentPanel();
 
-	// no-argument constructor
+	/**
+	 * No-argument constructor
+	 */
 	public HomePage()
 	{
 		setLayout(new BorderLayout());
 
-		northPanel.setPreferredSize (new Dimension (getXframe(), 33));
-		centerPanel.setPreferredSize (new Dimension (getXframe(), getYframe()-33));
+		northPanel.setPreferredSize (new Dimension (950, 33));
+		centerPanel.setPreferredSize (new Dimension (950, 630-33));
 		
 		centerPanel.setLayout (new BorderLayout());
 		centerPanel.setBackground (Color.WHITE);
@@ -39,20 +44,4 @@ public class HomePage extends JFrame
 		getContentPane().add (northPanel, BorderLayout.NORTH);
 		getContentPane().add (centerPanel, BorderLayout.CENTER);
 	}
-	
-
-	//determine frame size
-	//---------------------------------------------------------------------------------------------------------------------------
-	protected static int getXframe()
-	{
-		int xFrame = 950; //(int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.75);
-		return xFrame;
-	}
-
-	protected static int getYframe()
-	{
-		int yFrame = 630; //(int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.75);
-		return yFrame;
-	}
-	//----------------------------------------------------------------------------------------------------------------------------
 }

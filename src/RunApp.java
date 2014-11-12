@@ -1,5 +1,3 @@
-import javax.swing.JFrame;
-
 /*
  * Deni Zmak
  * See 300 Fall 2014
@@ -7,10 +5,13 @@ import javax.swing.JFrame;
  * 10/17/14
  */
 
+import javax.swing.JFrame;
+
 
 public class RunApp extends HomePage
 {
-	/**
+	/**Main method is used to run the application. It crates an instance of RunApp class and sets the 
+	 * main frame properties
 	 * @param args
 	 */
 	public static void main(String[] args) 

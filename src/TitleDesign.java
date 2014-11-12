@@ -1,6 +1,6 @@
-/*
+/**
  * Deni Zmak
- * See 300 Fall 2014
+ * SE 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
  * 10/17/14
  */
@@ -11,21 +11,26 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
+/**
+ * @author Deni
+ * This class creates a JPanel which contents  application title and ERAU logos on each side of the title. 
+ */
 public class TitleDesign extends JPanel
 {
 	//data fields
 	private JLabel title = new JLabel ("ERAU Eagles Fan App", JLabel.CENTER);
 	private Image logo;
 
+	/**
+	 * No-argument constructor. It creates a JPanel with specific size, and components in it (such as
+	 * JLabel and Image item(s)).
+	 */
 	public TitleDesign()
 	{
 		setLayout (new BorderLayout());

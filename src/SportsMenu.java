@@ -14,9 +14,16 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 
+/**
+ * @author Deni
+ *SportsMenu class creates a JMenuBar instance and populates it with JBars and JMenuItems
+	 * required by the application in the specific order. Also, it registers the listeners with JMenuItems
+	 * and it is handling the events by overriding actionPerformed method and setting specific task(s)
+	 * for each JMenuItem.
+ */
 public class SportsMenu extends JMenuBar implements ActionListener
 {
-	// class variables (data fields)
+	// data fields
 	private JMenu sportsMenu = new JMenu ("Sports");
 	private JMenu baseball = new JMenu ("Baseball");
 	private JMenu softball = new JMenu ("Softball");
@@ -66,7 +73,11 @@ public class SportsMenu extends JMenuBar implements ActionListener
 	private JMenuItem rosterWTF = new JMenuItem ("Roaster");
 	private JMenuItem rosterV = new JMenuItem ("Roaster");
 
-	// no-argument constructor
+	
+	/**
+	 * No-argument constructor. Creates a JMenuBar instance and populates it with JBars and JMenuItems
+	 * required by the application.
+	 */
 	public SportsMenu()
 	{
 		// add components to the panel and personalize
@@ -149,7 +160,7 @@ public class SportsMenu extends JMenuBar implements ActionListener
 
 		add (sportsMenu);
 
-		// Register listener with the buttons
+		// Register listener with the buttons (JMenuItems)
 		scheduleB.addActionListener (this);
 		scheduleS.addActionListener (this);
 		scheduleMB.addActionListener (this);
@@ -183,7 +194,7 @@ public class SportsMenu extends JMenuBar implements ActionListener
 		rosterV.addActionListener (this);
 	}
 	
-	// handle events by overriding actionPerformed method
+	// handle events by overriding actionPerformed method and setting specific task for each JMenuItem
 		public void actionPerformed (ActionEvent e)
 		{
 			if (e.getSource() == scheduleB)

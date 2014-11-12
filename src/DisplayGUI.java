@@ -2,7 +2,7 @@
  * Deni Zmak
  * See 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
- * 10/17/14
+ * 10/25/14
  */
 
 import java.awt.BorderLayout;

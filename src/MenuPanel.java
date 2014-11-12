@@ -19,6 +19,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 
+/**
+ * @author Deni
+ *MenuPanel class creates a JPanel that consists SportsMenu instance (accessible to all users) along with
+ *different JMenuItems accessible to the specific user type(s) in order to provide required application
+ *functionalities. Also, JMenuItems added to the JPanel in this class are registers with listener, and events 
+ *are handled by overriding actionPerformed method for each JMenuItem.
+ */
 public class MenuPanel extends JPanel implements ActionListener
 {
 	// class variables (data fields)
@@ -33,7 +40,11 @@ public class MenuPanel extends JPanel implements ActionListener
 	private ListenA user = new ListenA();
 	
 
-	// no-argument constructor
+	/**
+	 * No-argument constructor. It creates a JPanel consisting of SportsMenu instance, ListenA instance,
+	 * JMenuItem instances and JButton instances. Constructor also displays the item in specific order
+	 * (design) decided by the team.
+	 */
 	public MenuPanel()
 	{
 		setLayout (new FlowLayout (FlowLayout.LEFT, 7,1));
@@ -43,6 +54,9 @@ public class MenuPanel extends JPanel implements ActionListener
 
 		add (menu);
 
+		/* If - else statement is choosing which JMenuItems to display along with SportsMenu instance based 
+		 * on what kind of user is signed in (admin, student, regular user)
+		 */
 		if (user.getUserLevel().compareTo("user") == 0)
 		{
 			add (reserveField);
@@ -77,6 +91,7 @@ public class MenuPanel extends JPanel implements ActionListener
 		logInButton.addActionListener (this);
 	}
 
+	
 	// handle events by overriding actionPerformed method
 	public void actionPerformed (ActionEvent e)
 	{
