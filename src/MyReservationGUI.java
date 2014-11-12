@@ -3,177 +3,229 @@
  * @author kay
  * @version 1.0
  * @created 16-Oct-2014 6:31:26 PM
+ * @last_edited 12-Nov-2014 10:38:34 AM
  */
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-import javax.swing.event.CellEditorListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumnModel;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
+
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Insets;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.EventObject;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+/** 
+ * GUI for myReservation using BoxLayout
+ * Considered a lot of other layouts but BoxLayout turned out to be suitable because we are 
+ * stacking one component to another vertically
+ */
 
 public class MyReservationGUI extends JFrame{
-
-	final static boolean shouldFill = true;
-	final static boolean shouldWeightX = true;
-	final static boolean LEFT_TO_RIGHT = false;
-	JButton exit = new JButton("Exit");
-
-
+	
+	//Initialize the two buttons
+	JButton exit = new JButton("Exit");						
+	JButton cancel = new JButton("Cancel My Reservation(s)");
+	
+	//myReservationGUI constructor
 	public MyReservationGUI(){
 		super();
-		setResizable(false);
-		
+		setResizable(false);			// The frame is not resizeable
 		}
+	
+	/**
+	 * function to add components to the BoxLayout
+	 * @param pane = a container that contains BoxLayout
+	 */
 	
 	 public void addComponentsToPane(final Container pane){
 
-		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));		//Stack up components vertically
 		pane.setPreferredSize(new Dimension(500,500));
 		
-		JLabel Reservation = new JLabel("The following is(are) the information of your reservation:");
+		JLabel Reservation = new JLabel("My Reservation(s)");		//Title for myReservation file
+		Reservation.setFont(new Font("Calibri", Font.BOLD, 16));
 		pane.add(Reservation);
-		Dimension minSize = new Dimension(0, 30);
-		Dimension prefSize = new Dimension(0, 30);
-		Dimension maxSize = new Dimension(Short.MAX_VALUE, 20);
-		pane.add(new Box.Filler(minSize, prefSize, maxSize));
 		
-		String[] columnNames = {"Year", "Month", "Day", "Hour", "Minute", "Field", "Type", ""};
-		Object[][] data = {{"2014", "November", "20", "20", "00", "Soccer Field", "Full Field","Cancel Reservation"},
-				{"2014", "November", "30", "22", "00", "BasketBall Field", "Full Field", "Cancel Reservation"}};
+		/**
+		 * Reading data from ReservationData.txt file 
+		 * @Sting line = line which stores the data from reading (go to new line when one line is ended)
+		 * @StringBuilder readText = the StringBuilder that combines all lines together
+		 */
+		String line = "";						 
+		StringBuilder readText = new StringBuilder();
 		
+		try{
+			Scanner fileScanner = new Scanner (new File("/Users/kay/Documents/ReservationData.txt"));
+			
+			while (fileScanner.hasNextLine()){
+				line = fileScanner.nextLine();
+				readText.append(line+"\n");
+			}
+			fileScanner.close();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		/**
+		 * Display the string built using JTextArea
+		 */
+		
+		String stringToDisplay = readText.toString();
+		JTextArea text = new JTextArea (stringToDisplay);
 
-		DefaultTableModel model = new DefaultTableModel(data, columnNames);
-		JTable table = new JTable(model);
-		table.getColumn("").setCellRenderer(new ButtonRenderer());
-		table.getColumn("").setCellEditor(new ButtonEditor(new JCheckBox()));
-		
-		pane.add(table.getTableHeader());
-		pane.add(table);
-		Dimension minSize1 = new Dimension(0, 300);
-		Dimension prefSize1 = new Dimension(0, 300);
-		Dimension maxSize1 = new Dimension(Short.MAX_VALUE, 300);
-		pane.add(new Box.Filler(minSize1, prefSize1, maxSize1));
-		
+		text.setBackground(Color.WHITE);
+		pane.add(text);							//Add the strings to the pane
+				
+		/**
+		 * Adds exit and Cancel buttons and align them in BoxLayout
+		 */
 		JPanel button = new JPanel();
-		JButton exit = new JButton("Exit");
-		button.setAlignmentY(Component.CENTER_ALIGNMENT);
+		cancel.setAlignmentX(LEFT_ALIGNMENT);
+		exit.setAlignmentX(RIGHT_ALIGNMENT);
+		button.add(cancel);
 		button.add(exit);
+		button.setAlignmentY(BOTTOM_ALIGNMENT);
 		pane.add(button);
 		
-		 
+		
+		/**
+		 *  Add listener for exit button 
+		 *  Once clicked, the frame will be hidden, the program will still be running
+		 */
+		
 		exit.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					//System.exit(0);
-					setVisible(false);		//TODO uncomment
+					System.exit(0);
+					//setVisible(false);		TODO uncomment
 				}
 			});	
 		
-	}
-	
-
-	public class ButtonRenderer extends JButton implements TableCellRenderer {
+		/**
+		 *  Add listener for cancel button 
+		 *  Once the button is clicked, the data from JComboBox is deleted except the title
+		 *  Before the data are to be deleted, the program display a JOptionPane box that asks 
+		 *  for confirmation from user. 
+		 *  Once the user say yes, all the data from ReservationData.txt file are wiped out
+		 *  When the user checks MyReservation page again next time, the data will not be there
+		 *  TODO: Fix the above function. Data should be gone once the user clicks yes. Not when 
+		 *  the user reruns the program
+		 *  @param choice = to store the answer from the user for cancellation, which will then be
+		 *  compared with YES_OPTION to delete the data 
+		 */
 		
-		public ButtonRenderer(){
-			setOpaque(true);
-		}
-	
-		@Override
-		public Component getTableCellRendererComponent(JTable table, Object value,
-				boolean isSelected, boolean hasFocus, int row, int column) {
-			if (isSelected){
-				setForeground(table.getSelectionForeground());
-				setBackground(table.getSelectionBackground());
-			} else {
-				setForeground(table.getForeground());
-				setBackground(UIManager.getColor("Button.background"));
-			}setText((value == null) ? "" : value.toString());
-			return this;
-		}
-	}
-	
-	public class ButtonEditor extends DefaultCellEditor {
-
-		protected JButton button;
-		private String label;
-		private boolean isPushed;
-		private ActionListener action;
+		cancel.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				String title =  "Year" +"\t" + "Month" + "\t " + "Day" + "\t" +
+				          "Time" + "\t" + "Field" + "\t\t" + "Field Type";
 		
-		public ButtonEditor(JCheckBox checkBox) {
-			super(checkBox);
-			button = new JButton();
-			button.setOpaque(true);
-			fireEditingStopped();
-		}
-			
-		public void actionPerformed(ActionEvent e)
-		{
-			JTable table = new JTable();
-			int row = table.convertRowIndexToModel(table.getEditingRow() );
-			fireEditingStopped();
+				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete all of your"
+						+ " reservation(s)?", "Cancellation Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
 
-			//  Invoke the Action
-
-			ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "" + row);
-			action.actionPerformed(event);
-		}
-			
-
-		@Override
-		public Component getTableCellEditorComponent(JTable table, Object value,
-				boolean isSelected, int row, int column) {
-			if(isSelected){
-				button.setForeground(table.getSelectionForeground());
-				button.setBackground(table.getSelectionBackground());				
-			} else {
-				button.setForeground(table.getForeground());
-				button.setBackground(table.getBackground());
+				if(choice == JOptionPane.YES_OPTION){
+					deleteData("/Users/kay/Documents/ReservationData.txt", title);	
+					JOptionPane.showMessageDialog(null, "You have deleted all your reservation(s)."
+							+ " You won't be able to see the data when you open MyReservation(s) again ");
+				}
+				
 			}
-			label = (value == null) ? "" : value.toString();
-			button.setText(label);
-			isPushed = true;
-			return button;
-		}
-	    @Override
-	    public boolean stopCellEditing() {
-	        isPushed = false;
-	        return super.stopCellEditing();
-	    }
-
-	    @Override
-	    protected void fireEditingStopped() {
-	        super.fireEditingStopped();
-	    }
-
+		});
+		
 	}
+	
+	 /**
+	  * deleteData function which reads the data from file, disregards the title and deletes all
+	  * other data
+	  * The function converts the original file as a temp file to store data temporarily which
+	  * will then be renamed to the original file's name(.txt) once the writing data process is
+	  * complete
+	  */
+	 public void deleteData(String file, String lineToMaintain){
+		try{
+		 File inFile = new File(file);
+		//Construct the new file that will later be renamed to the original filename. 
+	     File tempFile = new File(inFile .getAbsolutePath() + ".tmp");
+	      
+	     BufferedReader br = new BufferedReader(new FileReader(file));
+	     PrintWriter pw = new PrintWriter(new FileWriter(tempFile));	     
+		
+	     String line = null;
+	 
+	      //Read from the original file and write to the new 
+	      //unless content matches data to be removed.
+	      while ((line = br.readLine()) != null) {
+	    	  if (line.trim().equals(lineToMaintain)){
+	    		  pw.println(line);
+		          pw.flush(); 
+//		          br.readLine();
+//		          System.out.println(br);
+	    	  }	     
+	      }
+	   
+	      pw.close();
+	      br.close();
+	      
+		  //Delete the original file
+		  if (!inFile.delete()) {
+		    System.out.println("Could not delete file");
+		    return;
+		  } 
+		  
+		  //Rename the new file to the filename the original file had
+		  if (!tempFile.renameTo(inFile))
+		    System.out.println("Could not rename file");
+		  
+		}
+		catch (FileNotFoundException ex) {
+		  ex.printStackTrace();
+		}
+		catch (IOException ex) {
+		  ex.printStackTrace();
+		}
+  }
+		
+	/**
+	 *  The function that calls the layout and add it to the frome.
+	 *  The Frame dimension is set by trial and error to be in the center of display.
+	 *  Dimension vary from computer to computer
+	 */
 
 	public static void createAndShowGUI() {
          
 	        //Create and set up the window.
 	        MyReservationGUI frame = new MyReservationGUI();
 	        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-			frame.setSize(new Dimension(999, 555));  //TODO 888,555
-			frame.setLocationRelativeTo(null);;
+			frame.setPreferredSize(new Dimension(888, 555));  //TODO 888,555 to run on Deni's com
+			frame.setLocationRelativeTo(null);
 	        //Set up the content pane.
 	        frame.addComponentsToPane(frame.getContentPane());
-	        //Use the content pane's default BorderLayout. No need for
-	        //setLayout(new BorderLayout());
 	        //Display the window.
-	       // frame.pack();					// TODO comment
+	        frame.pack();					// TODO comment
 	        frame.setVisible(true);
 	    }
+	
+	/**
+	 *  Main function that calls GUI display which includes the frames and functions
+	 * @param args
+	 */
+	 
+	 public static void main(String[] args) {
+			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+	            public void run() {
+	            	createAndShowGUI();
+		           }
+		    });
+			
+	 }
 }//end myReservationGUI
