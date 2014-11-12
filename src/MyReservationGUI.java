@@ -120,7 +120,7 @@ public class MyReservationGUI extends JFrame{
 		 *  When the user checks MyReservation page again next time, the data will not be there
 		 *  TODO: Fix the above function. Data should be gone once the user clicks yes. Not when 
 		 *  the user reruns the program
-		 *  @param choice = to store the answer from the user for cancellation, which will then be
+		 *  choice = to store the answer from the user for cancellation, which will then be
 		 *  compared with YES_OPTION to delete the data 
 		 */
 		
