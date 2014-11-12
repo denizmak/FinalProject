@@ -1,5 +1,3 @@
-// Fares
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,8 +9,15 @@ import java.util.*;
 import java.lang.*;
 
 
+/**
+ * @author Fares Almuhanna
+ *
+ *	General Idea:		Subscription is a service that helps the user of this program to receive the latest news of ERAU sport
+ *	Programming Idea:	This program is designed to let the user choose what type of sport he's interested to receive email/SMS of
+ */
 public class SubscriptionPanel extends JFrame implements ActionListener
 {	
+	
 	private JPanel mainPanel = new JPanel(); // Act as JFrame [ this panel contains everything ] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	private JPanel centerPanel = new JPanel();
 	private JPanel receiveViaColoumn = new JPanel();
@@ -33,20 +38,20 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	private JLabel badges = new JLabel("Badges");
 	private JLabel receiveNewsOf = new JLabel("Reseive News of", JLabel.CENTER);
 
-	private JLabel menSoccer = new JLabel("Men's Soccer");	
-	private JLabel womenSoccer = new JLabel("Women's Soccer");	
-	private JLabel menTennis = new JLabel("Men's Tennis");
-	private JLabel womenTennis = new JLabel("Women's Tennis");
+	private JLabel menSoccer = new JLabel("Soccer  |  Men");	
+	private JLabel womenSoccer = new JLabel("Soccer  |  Women");
+	private JLabel menTennis = new JLabel("Tennis  |  Men");
+	private JLabel womenTennis = new JLabel("Tennis  |  Women");
 	private JLabel baseball = new JLabel("Baseball");
 	private JLabel softball = new JLabel("Softball");
-	private JLabel menBasketball = new JLabel("Men's Basketball");
-	private JLabel womenBasketball = new JLabel("Women's Basketball");
-	private JLabel menCrossCountry = new JLabel("Men's Cross Country");
-	private JLabel womenCrossCountry = new JLabel("Women's Cross Country");
-	private JLabel menGolf = new JLabel("Men's Golf");
-	private JLabel womenGolf = new JLabel("Women's Golf");
-	private JLabel menTrackField = new JLabel("Men's Track&Field");
-	private JLabel womenTrackField = new JLabel("Women's Track&Field");
+	private JLabel menBasketball = new JLabel("Basketball  |  Men");
+	private JLabel womenBasketball = new JLabel("Basketball  |  Women");
+	private JLabel menCrossCountry = new JLabel("Cross Country  |  Men");
+	private JLabel womenCrossCountry = new JLabel("Cross Country  |  Women");
+	private JLabel menGolf = new JLabel("Golf  |  Men");
+	private JLabel womenGolf = new JLabel("Golf  |  Women");
+	private JLabel menTrackField = new JLabel("Track & Field  | Men");
+	private JLabel womenTrackField = new JLabel("Track & Field  |  Women");
 	private JLabel Volleyball = new JLabel("Volleyball");
 
 	private JButton submit = new JButton ("Submit");
@@ -74,7 +79,13 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	private JTextField smsTextField = new JTextField(15);
 	private JTextField emailTextField = new JTextField(15);
+	
+	final ImageIcon icon = new ImageIcon("/happyIcon.png"); 
 	// ***********************************************************************************************************************
+	
+	/**
+	 * Main method that contains all panels needed to organize the interface with labels and buttons
+	 */
 	public SubscriptionPanel ()
 	{
 		add(mainPanel); // add the main panel into the JFrame <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -89,22 +100,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Receive Notification By
 		centerPanel.add(receiveViaColoumn);
 		receiveViaColoumn.setLayout(new BorderLayout(0,5));
-		// receiveViaColoumn.setSize(300, 100);
-		// receiveViaColoumn.setSize(new Dimension(300,100));
-		//receiveViaColoumn.setMaximumSize(new Dimension (300,100));
 
 		receiveViaColoumn.add(reseiveNotificationBy, BorderLayout.NORTH);
 		receiveViaColoumn.add(receiveViaColoumnBody, BorderLayout.CENTER);
-		
-		/*receiveViaColoumnBody.setLayout(new GridLayout(3,2));
-		receiveViaColoumnBody.add(smsCheckBox);
-		receiveViaColoumnBody.add(sms);
-		receiveViaColoumnBody.add(smsTextField);
-		receiveViaColoumnBody.add(emailCheckBox);
-		receiveViaColoumnBody.add(email);
-		receiveViaColoumnBody.add(emailTextField);
-		receiveViaColoumnBody.add(badgesCheckBox);
-		receiveViaColoumnBody.add(badges);*/
 		
 		receiveViaColoumnBody.setLayout(new GridLayout(10,1));
 		receiveViaColoumnBody.add(smsPanel);
@@ -141,11 +139,35 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 		receiveAboutColoumnBody.setLayout(new GridLayout(15,2, 5, 5));
 
+		receiveAboutColoumnBody.add(baseballCheckBox);//5
+		receiveAboutColoumnBody.add(baseball);
+		
+		receiveAboutColoumnBody.add(menBasketballCheckBox);//7
+		receiveAboutColoumnBody.add(menBasketball);
+		
+		receiveAboutColoumnBody.add(womenBasketballCheckBox);//8
+		receiveAboutColoumnBody.add(womenBasketball);
+		
+		receiveAboutColoumnBody.add(menCrossCountryCheckBox);//9
+		receiveAboutColoumnBody.add(menCrossCountry);
+
+		receiveAboutColoumnBody.add(womenCrossCountryCheckBox);//10
+		receiveAboutColoumnBody.add(womenCrossCountry);
+		
+		receiveAboutColoumnBody.add(menGolfCheckBox); //11
+		receiveAboutColoumnBody.add(menGolf);
+
+		receiveAboutColoumnBody.add(womenGolfCheckBox); //12
+		receiveAboutColoumnBody.add(womenGolf);
+		
 		receiveAboutColoumnBody.add(menSoccerCheckBox); //1
 		receiveAboutColoumnBody.add(menSoccer);	
 
 		receiveAboutColoumnBody.add(womenSoccerCheckBox); //2 
 		receiveAboutColoumnBody.add(womenSoccer);
+		
+		receiveAboutColoumnBody.add(softballCheckBox);//6
+		receiveAboutColoumnBody.add(softball);
 
 		receiveAboutColoumnBody.add(menTennisCheckBox); //3
 		receiveAboutColoumnBody.add(menTennis);
@@ -153,29 +175,6 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		receiveAboutColoumnBody.add(womenTennisCheckBox);//4
 		receiveAboutColoumnBody.add(womenTennis);
 
-		receiveAboutColoumnBody.add(baseballCheckBox);//5
-		receiveAboutColoumnBody.add(baseball);
-
-		receiveAboutColoumnBody.add(softballCheckBox);//6
-		receiveAboutColoumnBody.add(softball);
-
-		receiveAboutColoumnBody.add(menBasketballCheckBox);//7
-		receiveAboutColoumnBody.add(menBasketball);
-
-		receiveAboutColoumnBody.add(womenBasketballCheckBox);//8
-		receiveAboutColoumnBody.add(womenBasketball);
-
-		receiveAboutColoumnBody.add(menCrossCountryCheckBox);//9
-		receiveAboutColoumnBody.add(menCrossCountry);
-
-		receiveAboutColoumnBody.add(womenCrossCountryCheckBox);//10
-		receiveAboutColoumnBody.add(womenCrossCountry);
-
-		receiveAboutColoumnBody.add(menGolfCheckBox); //11
-		receiveAboutColoumnBody.add(menGolf);
-
-		receiveAboutColoumnBody.add(womenGolfCheckBox); //12
-		receiveAboutColoumnBody.add(womenGolf);
 
 		receiveAboutColoumnBody.add(menTrackFieldCheckBox);//13
 		receiveAboutColoumnBody.add(menTrackField);
@@ -234,6 +233,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed (ActionEvent e)
 	{
 		if (e.getSource() == exit)
@@ -409,6 +411,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 					addToVolleyballSMS (smsTextField.getText());
 				}
 			}
+			JOptionPane.showMessageDialog(null, "Thank you for subscribing to our newsletter, Your subscription is now completed. ", "Subscription Successful",JOptionPane.INFORMATION_MESSAGE, icon);
+
 		}
 
 	}
@@ -416,6 +420,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                MENS SOCCER     		1
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToMenSoccerEmail (String email)
 	{
 		try 
@@ -430,6 +437,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToMenSoccerSMS (String SMS)
 	{
 		try 
@@ -445,6 +455,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                 WOMENS SOCCER			2
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToWomenSoccerEmail (String email)
 	{
 		try 
@@ -459,6 +472,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToWomenSoccerSMS (String SMS)
 	{
 		try 
@@ -474,6 +490,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                        MEN TENNIS 	3
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToMenTennisEmail (String email)
 	{
 		try 
@@ -488,6 +507,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToMenTennisSMS (String SMS)
 	{
 		try 
@@ -503,6 +525,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                    WOMEN TENNIS		4
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToWomenTennisEmail (String email)
 	{
 		try 
@@ -517,6 +542,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToWomenTennisSMS (String SMS)
 	{
 		try 
@@ -532,6 +560,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                              WOMEN BASKET				5
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToWomenBasketballEmail (String email)
 	{
 		try 
@@ -546,6 +577,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToWomenBasketballSMS (String SMS)
 	{
 		try 
@@ -561,6 +595,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                 MEN BASKET		6
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToMenBasketballEmail (String email)
 	{
 		try 
@@ -575,6 +612,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToMenBasketballSMS (String SMS)
 	{
 		try 
@@ -590,6 +630,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                BASEBALL			7
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToBaseballEmail (String email)
 	{
 		try 
@@ -604,6 +647,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToBaseballSMS (String SMS)
 	{
 		try 
@@ -619,6 +665,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									VOLLEYBALL		8
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToVolleyballEmail (String email)
 	{
 		try 
@@ -633,6 +682,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToVolleyballSMS (String SMS)
 	{
 		try 
@@ -648,6 +700,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									SOFTBALL	9
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToSoftballEmail (String email)
 	{
 		try 
@@ -662,6 +717,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToSoftballSMS (String SMS)
 	{
 		try 
@@ -678,6 +736,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	//
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 										Women Golf		10
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToWomenGolfEmail (String email)
 	{
 		try 
@@ -692,6 +753,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToWomenGolfSMS (String SMS)
 	{
 		try 
@@ -707,6 +771,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 										Men Golf		11
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToMenGolfEmail (String email)
 	{
 		try 
@@ -721,6 +788,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToMenGolfSMS (String SMS)
 	{
 		try 
@@ -736,6 +806,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Men Cross Country		12
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToMenCrossCountryEmail (String email)
 	{
 		try 
@@ -750,6 +823,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToMenCrossCountrySMS (String SMS)
 	{
 		try 
@@ -765,6 +841,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Women Cross Country		13
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToWomenCrossCountryEmail (String email)
 	{
 		try 
@@ -779,6 +858,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToWomenCrossCountrySMS (String SMS)
 	{
 		try 
@@ -794,6 +876,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									Women Track Field 14
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToWomenTrackFieldEmail (String email)
 	{
 		try 
@@ -808,6 +893,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToWomenTrackFieldSMS (String SMS)
 	{
 		try 
@@ -823,6 +911,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Men Track Field			15
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
+	/** This method will add the user's email into the email Database
+	 * @param email is a input string to save it in the database
+	 */
 	public void addToMenTrackFieldEmail (String email)
 	{
 		try 
@@ -837,6 +928,9 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		}
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
+	/** This method will add the user's phone number into the phone number DataBase
+	 * @param SMS is an input string to store it in the database
+	 */
 	public void addToMenTrackFieldSMS (String SMS)
 	{
 		try 
