@@ -32,7 +32,7 @@ final public class ResourceLoader
 	
 	public static String getPath()
 	{
-		System.out.println("Resource loader: " + ResourceLoader.path);
+		//System.out.println("Resource loader: " + ResourceLoader.path);
 		return ResourceLoader.path;
 	}
 }
