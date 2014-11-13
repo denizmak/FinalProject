@@ -57,21 +57,21 @@ public class SportsMenu extends JMenuBar implements ActionListener
 	private JMenuItem scheduleWTF = new JMenuItem ("Schedule");
 	private JMenuItem scheduleV = new JMenuItem ("Schedule");
 
-	protected JMenuItem rosterB = new JMenuItem ("Roaster");
-	private JMenuItem rosterS = new JMenuItem ("Roaster");
-	private JMenuItem rosterMB = new JMenuItem ("Roaster");
-	private JMenuItem rosterWB = new JMenuItem ("Roaster");
-	private JMenuItem rosterMCC = new JMenuItem ("Roaster");
-	private JMenuItem rosterWCC = new JMenuItem ("Roaster");
-	private JMenuItem rosterMG = new JMenuItem ("Roaster");
-	private JMenuItem rosterWG = new JMenuItem ("Roaster");
-	private JMenuItem rosterMS = new JMenuItem ("Roaster");
-	private JMenuItem rosterWS = new JMenuItem ("Roaster");
-	private JMenuItem rosterMT = new JMenuItem ("Roaster");
-	private JMenuItem rosterWT = new JMenuItem ("Roaster");
-	private JMenuItem rosterMTF = new JMenuItem ("Roaster");
-	private JMenuItem rosterWTF = new JMenuItem ("Roaster");
-	private JMenuItem rosterV = new JMenuItem ("Roaster");
+	protected JMenuItem rosterB = new JMenuItem ("Roster");
+	private JMenuItem rosterS = new JMenuItem ("Roster");
+	private JMenuItem rosterMB = new JMenuItem ("Roster");
+	private JMenuItem rosterWB = new JMenuItem ("Roster");
+	private JMenuItem rosterMCC = new JMenuItem ("Roster");
+	private JMenuItem rosterWCC = new JMenuItem ("Roster");
+	private JMenuItem rosterMG = new JMenuItem ("Roster");
+	private JMenuItem rosterWG = new JMenuItem ("Roster");
+	private JMenuItem rosterMS = new JMenuItem ("Roster");
+	private JMenuItem rosterWS = new JMenuItem ("Roster");
+	private JMenuItem rosterMT = new JMenuItem ("Roster");
+	private JMenuItem rosterWT = new JMenuItem ("Roster");
+	private JMenuItem rosterMTF = new JMenuItem ("Roster");
+	private JMenuItem rosterWTF = new JMenuItem ("Roster");
+	private JMenuItem rosterV = new JMenuItem ("Roster");
 
 	
 	/**

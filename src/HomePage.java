@@ -15,7 +15,8 @@ import javax.swing.JPanel;
 
 /**
  * @author Deni
- *
+ *HomePage class creates instances of MenuPanel, ContentPanel, TitleDesign classes, and JPanel instances.
+ *All instances are added to the frame in specific layout that is goint to be visible to the user (final design).  
  */
 public class HomePage extends JFrame
 {
@@ -26,7 +27,8 @@ public class HomePage extends JFrame
 	private JPanel content = new ContentPanel();
 
 	/**
-	 * No-argument constructor
+	 * No-argument constructor. It adds all instances created in the class to the frame using border layout
+	 * in a pattern that is goint to be visible to the user later on. 
 	 */
 	public HomePage()
 	{

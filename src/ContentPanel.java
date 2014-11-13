@@ -21,6 +21,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 
+/**
+ * @author Deni
+ *ContentPanel class creates JPanle with displayed campus map that occupies majority of the panel area.
+ *Besides the map, panel also provides JMenuItems on the bottom of the panel, which are, when pressed,
+ *repainting the map and highlighting the field(s) associated with the menu item. JMenuItem are also 
+ *registered with listeners in this class and event for each JMenuItem is handled separately by repainting 
+ *the image. The map is drawn in the JPanel by overriding  paintComponent method.
+ */
 public class ContentPanel extends JPanel implements ActionListener
 {
 	//data fields
@@ -42,7 +50,11 @@ public class ContentPanel extends JPanel implements ActionListener
 	private MenuPanel menu = new MenuPanel();
 
 
-	//no-argument constructor
+	/**
+	 * No-argument constructor. It creates JPanel that consist a campus map along with JMenuItems, which
+	 * when pressed, repaint the map area drawing the map associated with the JMenuItem selected. 
+	 * Within the constructor each JMenuItem is registered with listener. 
+	 */
 	public ContentPanel()
 	{
 		setLayout (new BorderLayout());

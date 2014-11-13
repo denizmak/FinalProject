@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -23,6 +22,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
+/**DisplayGUI class creates a frame and displays a JTextField within the frame that consists schedule or
+ * roaster data. It reads the data from a file and write it into the JTextField which is later on displayed in
+ * the frame additional to the main frame. If the log in feature recognize the user as admin, the text is
+ * editable. Once the admin makes the changes and clicks the save button, the edited version of the text
+ * is directly saved to the original database file. This way, when the user reads the file again, the updated
+ * file is displayed.
+ * @author Deni
+ */
 public class DisplayGUI extends JFrame implements ActionListener
 {
 	//data fields
@@ -39,10 +46,13 @@ public class DisplayGUI extends JFrame implements ActionListener
 	// no-argument constructor
 	public DisplayGUI ()
 	{
-		
 	}
 	
-	//constructor with String argument
+	/** Constructor with String argument. It reads the text from the file in the database, writes the text
+	 * to the JTextField and displays the JTextField within the frame. Also, the constructor sets the frame
+	 * properties such as size, location, etc.
+	 * @param s
+	 */
 	public DisplayGUI (String s)
 	{ 
 		this.s = s;
@@ -51,8 +61,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 
 		try 
 		{
-			Scanner fileScanner = new Scanner (new File ("src/" + s +".txt"));
-			//Scanner fileScanner = new Scanner (ResourceLoader.load ("" + s +".txt"));
+			Scanner fileScanner = new Scanner (ResourceLoader.load ( s +".txt"));
 			path = ResourceLoader.getPath();
 			
 			while (fileScanner.hasNextLine())
@@ -124,13 +133,19 @@ public class DisplayGUI extends JFrame implements ActionListener
 	
 	//---------------------------------------------------------------------------------------------------------------------
 
+		/**writeToFile method allows to admin to save the edited changes in the roster and/or schedule 
+		 * files for all the sports. Method reads the text from the JTextField and writes the complete text 
+		 * over the text in the database document such that when the user reads the file again, the program
+		 * displays the updated file.
+		 * @param text
+		 */
 		public void writeToFile (String text)
 		{	
 			// write to a file
 			try 
 			{
-				//Writer writer = new FileWriter ("bin/" + path, false);
-				Writer writer = new FileWriter ("src/" + s +".txt", false);
+				//Writer writer = new FileWriter (path, false);
+				Writer writer = new FileWriter ("bin/" + s +".txt", false);
 
 				writer.write (text);
 				writer.flush();

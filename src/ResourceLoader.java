@@ -6,9 +6,13 @@
  */
 
 import java.io.InputStream;
-import java.io.OutputStream;
 
 
+/**The purpose of the ResourceLoaderclass is to provide the correct file path in order to properly load
+ * files (images, text files, etc.) in JAR file (executable file)
+ * @author Deni
+ *
+ */
 final public class ResourceLoader
 {
 	static String path;
@@ -20,10 +24,11 @@ final public class ResourceLoader
 		
 		if (input == null)
 		{
-			input = ResourceLoader.class.getResourceAsStream("/" + path);
+			input = ResourceLoader.class.getResourceAsStream("" + path);
 		}
 		return input;
 	}
+	
 	
 	public static String getPath()
 	{

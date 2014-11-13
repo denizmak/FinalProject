@@ -42,8 +42,8 @@ public class MenuPanel extends JPanel implements ActionListener
 
 	/**
 	 * No-argument constructor. It creates a JPanel consisting of SportsMenu instance, ListenA instance,
-	 * JMenuItem instances and JButton instances. Constructor also displays the item in specific order
-	 * (design) decided by the team.
+	 * JMenuItem instances and JButton instances. Constructor also displays the item in particular order
+	 * (design) specified by the team.
 	 */
 	public MenuPanel()
 	{
