@@ -285,4 +285,8 @@ public class ReserveAFieldGUI extends JFrame{
 		
 	}
 
+	// JOptionPane for submit button (ask for another reservation, yes and no)
+	// JOptionPane for exit (Confirmation)
+	
+	
 }//endReserveAFieldGUI
