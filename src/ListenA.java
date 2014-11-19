@@ -24,7 +24,7 @@ public class ListenA extends UserLoginA{
 	private JPanel reset = new JPanel();
 	protected static int  userNum =0;
 	protected String [] logCreds  = new String[5];
-	private String userLevel  = new String("user");
+	private String userLevel  = new String("admin"); // "" for normal user, "user" for student, "admin" for admin
 	
 	ListenA(){
 		

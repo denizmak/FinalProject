@@ -13,13 +13,14 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
 /**
  * @author Deni
- * This class creates a JPanel which contents  application title and ERAU logos on each side of the title. 
+ * This class creates a JPanel which displays application title and ERAU logos on each side of the title. 
  */
 public class TitleDesign extends JPanel
 {

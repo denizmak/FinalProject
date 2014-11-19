@@ -8,16 +8,16 @@
 import javax.swing.JFrame;
 
 
-public class RunApp extends HomePage
+public class RunApp
 {
-	/**Main method is used to run the application. It crates an instance of RunApp class and sets the 
-	 * main frame properties
+	/**Main method is used to run the application. It crates an instance of HomePage class and sets the 
+	 * main frame properties.
 	 * @param args
 	 */
 	public static void main(String[] args) 
 	{
 		// create a frame and set its properties 
-		RunApp frame = new RunApp();
+		HomePage frame = new HomePage();
 
 		frame.setSize (950, 630);
 		frame.setLocationRelativeTo (null);
