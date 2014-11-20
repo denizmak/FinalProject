@@ -24,7 +24,7 @@ final public class ResourceLoader
 		
 		if (input == null)
 		{
-			input = ResourceLoader.class.getResourceAsStream("" + path);
+			input = ResourceLoader.class.getResourceAsStream(path);
 		}
 		return input;
 	}
@@ -32,7 +32,7 @@ final public class ResourceLoader
 	
 	public static String getPath()
 	{
-		//System.out.println("Resource loader: " + ResourceLoader.path);
+		System.out.println("Resource loader: " + ResourceLoader.path);
 		return ResourceLoader.path;
 	}
 }

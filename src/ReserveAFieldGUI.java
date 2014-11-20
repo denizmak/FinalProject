@@ -239,7 +239,7 @@ public class ReserveAFieldGUI extends JFrame{
 	 * @throws Exception
 	 */
 	public static void saveData(String content) throws Exception{
-		File file = new File("/Users/kay/Documents/ReservationData.txt");  // The directory for the file
+		File file = new File("bin/ReservationData.txt");  // The directory for the file
 		// if file doesn't exists, then create it
 		if (!file.exists()) {
 			file.createNewFile();

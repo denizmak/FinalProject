@@ -65,7 +65,7 @@ public class MyReservationGUI extends JFrame{
 		StringBuilder readText = new StringBuilder();
 		
 		try{
-			Scanner fileScanner = new Scanner (new File("/Users/kay/Documents/ReservationData.txt"));
+			Scanner fileScanner = new Scanner (new File("bin/ReservationData.txt"));
 			
 			while (fileScanner.hasNextLine()){
 				line = fileScanner.nextLine();

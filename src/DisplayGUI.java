@@ -38,8 +38,8 @@ public class DisplayGUI extends JFrame implements ActionListener
 	private JPanel buttons = new JPanel();
 	private JTextArea text;
 	private String s;
-	private ListenA user = new ListenA();
 	private JScrollPane scroll;
+	private User user = new User();
 	
 	String path = null;
 	
@@ -145,7 +145,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			try 
 			{
 				//Writer writer = new FileWriter (path, false);
-				Writer writer = new FileWriter ("bin/" + s +".txt", false);
+				Writer writer = new FileWriter ("bin/" + path, false);
 
 				writer.write (text);
 				writer.flush();

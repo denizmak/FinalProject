@@ -19,11 +19,6 @@ public class RunApp
 		// create a frame and set its properties 
 		HomePage frame = new HomePage();
 
-		frame.setSize (950, 630);
-		frame.setLocationRelativeTo (null);
-		frame.setResizable (false);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle ("ERAU Eagles Fun Club Application");
 		frame.setVisible (true);
 	}
 }

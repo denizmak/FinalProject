@@ -47,7 +47,7 @@ public class ContentPanel extends JPanel implements ActionListener
 	private JMenuItem intramural = new JMenuItem ("Intramural");
 	private JButton exitButton = new JButton ("Exit");
 
-	private MenuPanel menu = new MenuPanel();
+	//private MenuPanel menu = new MenuPanel();
 
 
 	/**
@@ -120,10 +120,11 @@ public class ContentPanel extends JPanel implements ActionListener
 			System.exit (1);
 		}
 
+		/*
 		else if (e.getSource() == menu.subscription)
 		{
-			System.exit(1);
 		}
+		*/
 
 		else if (e.getSource() == baseball)
 		{

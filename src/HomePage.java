@@ -16,19 +16,19 @@ import javax.swing.JPanel;
 /**
  * @author Deni
  *HomePage class creates instances of MenuPanel, ContentPanel, TitleDesign classes, and JPanel instances.
- *All instances are added to the frame in specific layout that is goint to be visible to the user (final design).  
+ *All instances are added to the frame in specific layout that is going to be visible to the user (final design).  
  */
 public class HomePage extends JFrame
 {
 	// data fields
-	private MenuPanel northPanel = new MenuPanel();
+	private JPanel northPanel = new MenuPanel();
 	private JPanel centerPanel = new JPanel();
 	private TitleDesign titlePanel = new TitleDesign();
 	private JPanel content = new ContentPanel();
 
 	/**
 	 * No-argument constructor. It adds all instances created in the class to the frame using border layout
-	 * in a pattern that is goint to be visible to the user later on. 
+	 * in a pattern that is going to be visible to the user later on. 
 	 */
 	public HomePage()
 	{
@@ -45,5 +45,11 @@ public class HomePage extends JFrame
 		// add component to the main frame
 		getContentPane().add (northPanel, BorderLayout.NORTH);
 		getContentPane().add (centerPanel, BorderLayout.CENTER);
+		
+		setSize (950, 630);
+		setLocationRelativeTo (null);
+		setResizable (false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle ("ERAU Eagles Fun Club Application");
 	}
 }

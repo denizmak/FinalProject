@@ -5,7 +5,6 @@
  * 10/17/14
  */
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -37,7 +36,8 @@ public class MenuPanel extends JPanel implements ActionListener
 	JMenuItem subscription = new JMenuItem ("Subscription");
 	private JButton logInButton = new JButton ("Log In");
 	private JButton logOutButton = new JButton ("Log Out");
-	private ListenA user = new ListenA();
+	private LogIn user = new LogIn();
+
 	
 
 	/**
@@ -45,7 +45,7 @@ public class MenuPanel extends JPanel implements ActionListener
 	 * JMenuItem instances and JButton instances. Constructor also displays the item in particular order
 	 * (design) specified by the team.
 	 */
-	public MenuPanel()
+	public MenuPanel ()
 	{
 		setLayout (new FlowLayout (FlowLayout.LEFT, 7,1));
 		setBackground (Color.WHITE);
@@ -57,7 +57,7 @@ public class MenuPanel extends JPanel implements ActionListener
 		/* If - else statement is choosing which JMenuItems to display along with SportsMenu instance based 
 		 * on what kind of user is signed in (admin, student, regular user)
 		 */
-		if (user.getUserLevel().compareTo("user") == 0)
+		if (user.getUserLevel().compareTo("student") == 0)
 		{
 			add (reserveField);
 			add (myReservations);
@@ -97,16 +97,17 @@ public class MenuPanel extends JPanel implements ActionListener
 	{
 		if (e.getSource() == logOutButton)
 		{
+			user.setUserLevel ("");
+			getRootPane().repaint();
 		}
 		
 		if (e.getSource() == logInButton)
 		{
-			UserLoginA login = new UserLoginA();
+			LogIn login = new LogIn();
 			JFrame frame = new JFrame ("Log In");
 			frame.setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
 			frame.setSize(new Dimension (333, 222));
 			frame.setLocationRelativeTo(null);
-			frame.setLayout(new BorderLayout());
 			frame.add (login);
 			frame.setVisible (true);
 		}
