@@ -154,7 +154,7 @@ public class MyReservationGUI extends JFrame{
 		try{
 		 File inFile = new File(file);
 		//Construct the new file that will later be renamed to the original filename. 
-	     File tempFile = new File(inFile .getAbsolutePath() + ".tmp");
+	     File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
 	      
 	     BufferedReader br = new BufferedReader(new FileReader(file));
 	     PrintWriter pw = new PrintWriter(new FileWriter(tempFile));	     

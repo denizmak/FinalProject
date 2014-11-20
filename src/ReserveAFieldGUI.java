@@ -208,6 +208,10 @@ public class ReserveAFieldGUI extends JFrame{
 				String content =  year +"\t" + month + "\t " + day + "\t" +
 						          hour + ":" + minute + "\t" + field + "\t\t" + type;
 				
+				int reserve = JOptionPane.showConfirmDialog(null, "Do you want to reserve another field?",
+						"Another Reservation?", JOptionPane.YES_NO_CANCEL_OPTION);
+				//if (reserve == JOptionPane.YES_OPTION)
+				
 				try {
 					saveData(content);				//saveData function for writing content to .txt file
 				} catch (Exception e1) {
@@ -285,4 +289,8 @@ public class ReserveAFieldGUI extends JFrame{
 		
 	}
 
+	// TODO JOptionPane for submit button (ask for another reservation, yes and no)
+	// TODO JOptionPane for exit (Confirmation)
+	
+	
 }//endReserveAFieldGUI
