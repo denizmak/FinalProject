@@ -5,8 +5,6 @@
  * 10/17/14
  */
 
-import javax.swing.JFrame;
-
 
 public class RunApp
 {
@@ -18,7 +16,6 @@ public class RunApp
 	{
 		// create a frame and set its properties 
 		HomePage frame = new HomePage();
-
 		frame.setVisible (true);
 	}
 }

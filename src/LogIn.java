@@ -13,15 +13,15 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class LogIn extends JPanel implements ActionListener
+public class LogIn extends JPanel
 {	
-	protected JButton log = new JButton ("Login");
+	protected JButton login = new JButton ("Login");
 	protected JTextField usrName = new JTextField ("User Name");
 	protected JPasswordField passWrd= new JPasswordField ("Password");
 	protected JPanel accessLogIn = new JPanel();
 	protected EagleImage eagle = new EagleImage();
 	//private DatabaseManager db = new DatabaseManager("bin/Users.txt");
-	private String userLevel = "student";
+	private String userLevel;
 
 
 	public LogIn()
@@ -33,38 +33,18 @@ public class LogIn extends JPanel implements ActionListener
 
 		accessLogIn.add(usrName);
 		accessLogIn.add(passWrd);
-		accessLogIn.add(log);
+		accessLogIn.add(login);
 
 		accessLogIn.setBackground(Color.white);
 
 		//set buttons color
-		log.setBackground(Color.white);
-		log.setForeground(Color.BLUE);
-		log.setContentAreaFilled(false);
-		log.setOpaque(true);
-
-		// Register listener with the buttons
-		log.addActionListener (this);
+		login.setBackground(Color.white);
+		login.setForeground(Color.BLUE);
+		login.setContentAreaFilled(false);
+		login.setOpaque(true);
 	}
 
-
-	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
-		if (e.getSource() == log)
-		{
-			/*
-			if (usrName.getText().compareTo("zmakd") == 0) //&& passWrd.getText().compareTo("zmakd") == 0)
-			{
-				userLevel = "student";
-				HomePage home = new HomePage();
-				home.refreshMenu("student");
-			}
-			 */
-			System.out.println ("The user level is: " + this.userLevel);
-		}	
-	}
-
+	
 	/**
 	 * @return userLevel
 	 */
@@ -72,8 +52,8 @@ public class LogIn extends JPanel implements ActionListener
 	{
 		return userLevel;
 	}
-	
-	public void setUserLevel(String userLevel)
+
+	public void setUserLevel (String userLevel)
 	{
 		this.userLevel = userLevel;
 	}
