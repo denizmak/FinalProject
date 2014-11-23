@@ -280,10 +280,9 @@ public class ReserveAFieldGUI extends JFrame{
 		
 		ReserveAFieldGUI frame = new ReserveAFieldGUI();
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);	//So that it can run in the background
-		frame.setPreferredSize(new Dimension(888, 555));
+		frame.setSize(new Dimension(888, 555));
 		frame.setLocationRelativeTo(null);
 		frame.addComponentsToPane(frame.getContentPane());
-		
 		frame.pack(); 				//Automatically resize JFrame
 		frame.setVisible(true);
 		
