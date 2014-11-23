@@ -2,8 +2,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -16,12 +14,11 @@ import javax.swing.JTextField;
 public class LogIn extends JPanel
 {	
 	protected JButton login = new JButton ("Login");
-	protected JTextField usrName = new JTextField ("User Name");
-	protected JPasswordField passWrd= new JPasswordField ("Password");
+	protected JTextField username = new JTextField ("User Name");
+	protected JPasswordField password= new JPasswordField ("Password");
 	protected JPanel accessLogIn = new JPanel();
 	protected EagleImage eagle = new EagleImage();
 	//private DatabaseManager db = new DatabaseManager("bin/Users.txt");
-	private String userLevel;
 
 
 	public LogIn()
@@ -31,8 +28,8 @@ public class LogIn extends JPanel
 		add(accessLogIn, BorderLayout.NORTH);
 		add(eagle, BorderLayout.CENTER);
 
-		accessLogIn.add(usrName);
-		accessLogIn.add(passWrd);
+		accessLogIn.add(username);
+		accessLogIn.add(password);
 		accessLogIn.add(login);
 
 		accessLogIn.setBackground(Color.white);
@@ -43,23 +40,9 @@ public class LogIn extends JPanel
 		login.setContentAreaFilled(false);
 		login.setOpaque(true);
 	}
-
-	
-	/**
-	 * @return userLevel
-	 */
-	public String getUserLevel()
-	{
-		return userLevel;
-	}
-
-	public void setUserLevel (String userLevel)
-	{
-		this.userLevel = userLevel;
-	}
 }
 
-
+//--------------------------------------------------------------------------------------------------------------
 class EagleImage extends JPanel
 {
 	Image image = null;
