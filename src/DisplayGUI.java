@@ -7,6 +7,7 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.net.URI;
+import java.net.URL;
 import java.util.Scanner;
 
 import javax.swing.Box;
@@ -27,6 +30,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.event.HyperlinkEvent;
 
 
 /**DisplayGUI class creates a frame and displays a JTextField within the frame that consists schedule or
@@ -130,7 +134,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 	{ 
 		this.s = s;
 		String line = "";
-		bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.X_AXIS));
+		bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.Y_AXIS));
 		
 		try 
 		{
@@ -140,9 +144,9 @@ public class DisplayGUI extends JFrame implements ActionListener
 			while(fileScanner.hasNextLine())
 			{
 				line = fileScanner.nextLine(); 
-				String[] seperatedInput = line.split(":");
+				String[] seperatedInput = line.split(";");
 				
-				bioPanel.add(new JLabel(seperatedInput[1]));
+				bioPanel.add(new Hyperlink(seperatedInput[1], seperatedInput[2]));
 				bioPanel.add(Box.createRigidArea(new Dimension(20,0)));
 			}
 			
@@ -181,7 +185,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 		buttons.add(close);
 
 		setLayout (new BorderLayout());
-		setSize (999, 555);
+		setSize (200, 555);
 		setLocationRelativeTo (null);
 		setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
 		setTitle ("ERAU Eagles");
