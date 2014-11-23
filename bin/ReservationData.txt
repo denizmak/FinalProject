@@ -1,2 +1,2 @@
 Year	Month	 Day	Time	Field		Field Type
-2014	November	 19	17:00	Tennis Court		Full Field
+2014	December	 01	14:00	Soccer Field		Full Field
