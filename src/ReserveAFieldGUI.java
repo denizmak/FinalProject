@@ -206,18 +206,16 @@ public class ReserveAFieldGUI extends JFrame{
 				Object field = fieldList.getSelectedItem();
 				Object type = typeList.getSelectedItem();
 				String content =  year +"\t" + month + "\t " + day + "\t" +
-						          hour + ":" + minute + "\t" + field + "\t\t" + type;
-				
-				int reserve = JOptionPane.showConfirmDialog(null, "Do you want to reserve another field?",
-						"Another Reservation?", JOptionPane.YES_NO_CANCEL_OPTION);
-				//if (reserve == JOptionPane.YES_OPTION)
-				
+						          hour + ":" + minute + "\t" + field + "\t\t" + type;				
 				try {
 					saveData(content);				//saveData function for writing content to .txt file
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				
+				int reserve = JOptionPane.showConfirmDialog(null, "Do you want to reserve another field?",
+						"Another Reservation?", JOptionPane.YES_NO_OPTION);
+				if (reserve == JOptionPane.NO_OPTION)
+					JOptionPane.showMessageDialog(null, "You have submitted all your reservations.");
 				
 			}
 		});
@@ -228,14 +226,16 @@ public class ReserveAFieldGUI extends JFrame{
 	 */
 		 
 		exit.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);			
+			public void actionPerformed(ActionEvent e) {	
+				int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the ReserveAField page?",
+						"Exit Confirmation?", JOptionPane.YES_NO_OPTION);
+				if (confirmation == JOptionPane.YES_OPTION)
+					setVisible(false);
 			}
 		});
 			
 		
 	}
-
 	/**
 	 * Writing string to the file. Create a new file if not created yet. Then add a default tile 
 	 * for the file in table format
