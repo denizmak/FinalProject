@@ -7,19 +7,30 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.net.URI;
+import java.net.URL;
 import java.util.Scanner;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.event.HyperlinkEvent;
 
 
 /**DisplayGUI class creates a frame and displays a JTextField within the frame that consists schedule or
@@ -36,12 +47,14 @@ public class DisplayGUI extends JFrame implements ActionListener
 	private JButton close = new JButton ("Close");
 	private JButton save = new JButton ("Save");
 	private JPanel buttons = new JPanel();
+	static JPanel bioPanel = new JPanel();
 	private JTextArea text;
 	private String s;
-	private ListenA user = new ListenA();
 	private JScrollPane scroll;
+	private User user = new User();
 	
 	String path = null;
+	
 	
 	// no-argument constructor
 	public DisplayGUI ()
@@ -116,6 +129,75 @@ public class DisplayGUI extends JFrame implements ActionListener
 		save.addActionListener (this);
 	}
 
+	
+	public DisplayGUI (String s, int a)
+	{ 
+		this.s = s;
+		String line = "";
+		bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.Y_AXIS));
+		
+		try 
+		{
+			Scanner fileScanner = new Scanner (ResourceLoader.load ( s +".txt"));
+			path = ResourceLoader.getPath();			
+			
+			while(fileScanner.hasNextLine())
+			{
+				line = fileScanner.nextLine(); 
+				String[] seperatedInput = line.split(";");
+				
+				bioPanel.add(new Hyperlink(seperatedInput[1], seperatedInput[2]));
+				bioPanel.add(Box.createRigidArea(new Dimension(20,0)));
+			}
+			
+			fileScanner.close();
+			
+		} 
+		catch (Exception e)
+		{
+			System.out.println("The file does not exists!");
+		}
+
+		
+		//String stringToDisplay = readText.toString();
+		//text = new JTextArea (stringToDisplay);
+
+
+		bioPanel.setBackground (Color.WHITE);
+		
+		save.setFont (new Font ("Times New Roman", Font.BOLD, 17));
+		close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
+		
+		buttons.setBackground(Color.WHITE);
+		
+		scroll = new JScrollPane(bioPanel);
+		
+		
+		//if (user.getUserLevel().compareTo("admin") == 0)	
+		//	{
+		//		text.setEditable (true);
+		//		buttons.add(save);
+		//	}
+		
+		//else		text.setEditable (false);
+		
+		
+		buttons.add(close);
+
+		setLayout (new BorderLayout());
+		setSize (200, 555);
+		setLocationRelativeTo (null);
+		setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
+		setTitle ("ERAU Eagles");
+		setResizable (false);
+		
+		add (scroll, BorderLayout.CENTER);
+		add (buttons, BorderLayout.SOUTH);
+
+		// Register listener with the buttons
+		close.addActionListener (this);
+		save.addActionListener (this);
+	}
 
 	// handle events by overriding actionPerformed method
 	public void actionPerformed (ActionEvent e)
@@ -145,7 +227,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			try 
 			{
 				//Writer writer = new FileWriter (path, false);
-				Writer writer = new FileWriter ("bin/" + s +".txt", false);
+				Writer writer = new FileWriter ("bin/" + path, false);
 
 				writer.write (text);
 				writer.flush();

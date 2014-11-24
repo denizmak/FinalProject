@@ -243,7 +243,7 @@ public class ReserveAFieldGUI extends JFrame{
 	 * @throws Exception
 	 */
 	public static void saveData(String content) throws Exception{
-		File file = new File("/Users/kay/Documents/ReservationData.txt");  // The directory for the file
+		File file = new File("bin/ReservationData.txt");  // The directory for the file
 		// if file doesn't exists, then create it
 		if (!file.exists()) {
 			file.createNewFile();
@@ -280,10 +280,9 @@ public class ReserveAFieldGUI extends JFrame{
 		
 		ReserveAFieldGUI frame = new ReserveAFieldGUI();
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);	//So that it can run in the background
-		frame.setPreferredSize(new Dimension(888, 555));
+		frame.setSize(new Dimension(888, 555));
 		frame.setLocationRelativeTo(null);
 		frame.addComponentsToPane(frame.getContentPane());
-		
 		frame.pack(); 				//Automatically resize JFrame
 		frame.setVisible(true);
 		

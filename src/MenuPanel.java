@@ -5,7 +5,6 @@
  * 10/17/14
  */
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -30,23 +29,24 @@ public class MenuPanel extends JPanel implements ActionListener
 {
 	// class variables (data fields)
 	private SportsMenu menu = new SportsMenu();
-	JMenuItem reserveField = new JMenuItem ("Reserve A Field");
-	JMenuItem myReservations = new JMenuItem ("My Reservations");
-	JMenuItem reservations = new JMenuItem ("Reservations");
-	JMenuItem intramural = new JMenuItem ("Intramural Sports");
-	JMenuItem subscription = new JMenuItem ("Subscription");
-	private JButton logInButton = new JButton ("Log In");
-	private JButton logOutButton = new JButton ("Log Out");
-	private ListenA user = new ListenA();
-	
+	private JMenuItem reserveField = new JMenuItem ("Reserve A Field");
+	private JMenuItem myReservations = new JMenuItem ("My Reservations");
+	private JMenuItem reservations = new JMenuItem ("Reservations");
+	private JMenuItem intramural = new JMenuItem ("Intramural Sports");
+	private JMenuItem subscription = new JMenuItem ("Subscription");
+	protected JButton logInButton = new JButton ("Log In");
+	protected JButton logOutButton = new JButton ("Log Out");
+	LogIn user = new LogIn();
+
 
 	/**
 	 * No-argument constructor. It creates a JPanel consisting of SportsMenu instance, ListenA instance,
 	 * JMenuItem instances and JButton instances. Constructor also displays the item in particular order
 	 * (design) specified by the team.
 	 */
-	public MenuPanel()
+	public MenuPanel (String s)
 	{
+		String userLevel = s;
 		setLayout (new FlowLayout (FlowLayout.LEFT, 7,1));
 		setBackground (Color.WHITE);
 		logInButton.setForeground (Color.BLUE);
@@ -57,7 +57,7 @@ public class MenuPanel extends JPanel implements ActionListener
 		/* If - else statement is choosing which JMenuItems to display along with SportsMenu instance based 
 		 * on what kind of user is signed in (admin, student, regular user)
 		 */
-		if (user.getUserLevel().compareTo("user") == 0)
+		if (userLevel.compareTo("student") == 0)
 		{
 			add (reserveField);
 			add (myReservations);
@@ -67,7 +67,7 @@ public class MenuPanel extends JPanel implements ActionListener
 			add (logOutButton);
 		}
 
-		else if (user.getUserLevel().compareTo("admin") == 0)
+		else if (userLevel.compareTo("admin") == 0)
 		{
 			add (reservations);
 			add (subscription);
@@ -75,7 +75,7 @@ public class MenuPanel extends JPanel implements ActionListener
 			add (logOutButton);
 		}
 
-		else 
+		else
 		{
 			add(Box.createHorizontalStrut(752));
 			add (logInButton);
@@ -87,35 +87,20 @@ public class MenuPanel extends JPanel implements ActionListener
 		intramural.addActionListener (this);
 		subscription.addActionListener (this);
 		reservations.addActionListener (this);
-		logOutButton.addActionListener (this);
-		logInButton.addActionListener (this);
+		//logOutButton.addActionListener (this);
+		//logInButton.addActionListener (this);
+
 	}
 
-	
+
 	// handle events by overriding actionPerformed method
 	public void actionPerformed (ActionEvent e)
-	{
-		if (e.getSource() == logOutButton)
-		{
-		}
-		
-		if (e.getSource() == logInButton)
-		{
-			UserLoginA login = new UserLoginA();
-			JFrame frame = new JFrame ("Log In");
-			frame.setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
-			frame.setSize(new Dimension (333, 222));
-			frame.setLocationRelativeTo(null);
-			frame.setLayout(new BorderLayout());
-			frame.add (login);
-			frame.setVisible (true);
-		}
-
-		else if (e.getSource() == reserveField)
+	{	
+		if (e.getSource() == reserveField)
 		{
 			ReserveAFieldGUI frame = new ReserveAFieldGUI();
 			frame.createAndShowGUI();
-			
+
 		}
 
 		else if (e.getSource() == myReservations)

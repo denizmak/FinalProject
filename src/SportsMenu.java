@@ -72,6 +72,22 @@ public class SportsMenu extends JMenuBar implements ActionListener
 	private JMenuItem rosterMTF = new JMenuItem ("Roster");
 	private JMenuItem rosterWTF = new JMenuItem ("Roster");
 	private JMenuItem rosterV = new JMenuItem ("Roster");
+	
+	protected JMenuItem bioB = new JMenuItem ("Bio's");
+	private JMenuItem bioS = new JMenuItem ("Bio's");
+	private JMenuItem bioMB = new JMenuItem ("Bio's");
+	private JMenuItem bioWB = new JMenuItem ("Bio's");
+	private JMenuItem bioMCC = new JMenuItem ("Bio's");
+	private JMenuItem bioWCC = new JMenuItem ("Bio's");
+	private JMenuItem bioMG = new JMenuItem ("Bio's");
+	private JMenuItem bioWG = new JMenuItem ("Bio's");
+	private JMenuItem bioMS = new JMenuItem ("Bio's");
+	private JMenuItem bioWS = new JMenuItem ("Bio's");
+	private JMenuItem bioMT = new JMenuItem ("Bio's");
+	private JMenuItem bioWT = new JMenuItem ("Bio's");
+	private JMenuItem bioMTF = new JMenuItem ("Bio's");
+	private JMenuItem bioWTF = new JMenuItem ("Bio's");
+	private JMenuItem bioV = new JMenuItem ("Bio's");
 
 	
 	/**
@@ -83,62 +99,77 @@ public class SportsMenu extends JMenuBar implements ActionListener
 		// add components to the panel and personalize
 		baseball.add(scheduleB);
 		baseball.add(rosterB);
+		baseball.add(bioB);
 		baseball.setFont (new Font ("Times New Roman", 17, 17));
 
 		softball.add(scheduleS);
 		softball.add(rosterS);
+		softball.add(bioS);
 		softball.setFont (new Font ("Times New Roman", 17, 17));
 
 		mensBasketball.add(scheduleMB);
 		mensBasketball.add(rosterMB);
+		mensBasketball.add(bioMB);
 		mensBasketball.setFont (new Font ("Times New Roman", 17, 17));
 
 		womensBasketball.add(scheduleWB);
 		womensBasketball.add(rosterWB);
+		womensBasketball.add(bioWB);
 		womensBasketball.setFont (new Font ("Times New Roman", 17, 17));
 
 		mensCrossCountry.add(scheduleMCC);
 		mensCrossCountry.add(rosterMCC);
+		mensCrossCountry.add(bioMCC);
 		mensCrossCountry.setFont (new Font ("Times New Roman", 17, 17));
 
 		womensCrossCountry.add(scheduleWCC);
 		womensCrossCountry.add(rosterWCC);
+		womensCrossCountry.add(bioWCC);
 		womensCrossCountry.setFont (new Font ("Times New Roman", 17, 17));
 
 		mensGolf.add(scheduleMG);
 		mensGolf.add(rosterMG);
+		mensGolf.add(bioMG);
 		mensGolf.setFont (new Font ("Times New Roman", 17, 17));
 
 		womensGolf.add(scheduleWG);
 		womensGolf.add(rosterWG);
+		womensGolf.add(bioWG);
 		womensGolf.setFont (new Font ("Times New Roman", 17, 17));
 
 		mensSoccer.add(scheduleMS);
 		mensSoccer.add(rosterMS);
+		mensSoccer.add(bioMS);
 		mensSoccer.setFont (new Font ("Times New Roman", 17, 17));
 
 		womensSoccer.add(scheduleWS);
 		womensSoccer.add(rosterWS);
+		womensSoccer.add(bioWS);
 		womensSoccer.setFont (new Font ("Times New Roman", 17, 17));
 
 		mensTennis.add(scheduleMT);
 		mensTennis.add(rosterMT);
+		mensTennis.add(bioMT);
 		mensTennis.setFont (new Font ("Times New Roman", 17, 17));
 
 		womensTennis.add(scheduleWT);
 		womensTennis.add(rosterWT);
+		womensTennis.add(bioWT);
 		womensTennis.setFont (new Font ("Times New Roman", 17, 17));
 
 		mensTrackField.add(scheduleMTF);
 		mensTrackField.add(rosterMTF);
+		mensTrackField.add(bioMTF);
 		mensTrackField.setFont (new Font ("Times New Roman", 17, 17));
 
 		womensTrackField.add(scheduleWTF);
 		womensTrackField.add(rosterWTF);
+		womensTrackField.add(bioWTF);
 		womensTrackField.setFont (new Font ("Times New Roman", 17, 17));
 
 		volleyball.add(scheduleV);
 		volleyball.add(rosterV);
+		volleyball.add(bioV);
 		volleyball.setFont (new Font ("Times New Roman", 17, 17));
 
 		sportsMenu.add(baseball);
@@ -192,6 +223,22 @@ public class SportsMenu extends JMenuBar implements ActionListener
 		rosterMTF.addActionListener (this);
 		rosterWTF.addActionListener (this);
 		rosterV.addActionListener (this);
+		
+		bioB.addActionListener (this);
+		bioS.addActionListener (this);
+		bioMB.addActionListener (this);
+		bioWB.addActionListener (this);
+		bioMCC.addActionListener (this);
+		bioWCC.addActionListener (this);
+		bioMG.addActionListener (this);
+		bioWG.addActionListener (this);
+		bioMS.addActionListener (this);
+		bioWS.addActionListener (this);
+		bioMT.addActionListener (this);
+		bioWT.addActionListener (this);
+		bioMTF.addActionListener (this);
+		bioWTF.addActionListener (this);
+		bioV.addActionListener (this);
 	}
 	
 	// handle events by overriding actionPerformed method and setting specific task for each JMenuItem
@@ -374,6 +421,96 @@ public class SportsMenu extends JMenuBar implements ActionListener
 			else if (e.getSource() == rosterV)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterV");
+				frame.setVisible (true);
+			}
+			
+			if (e.getSource() == bioB)
+			{
+				DisplayGUI frame = new DisplayGUI("bioB", 1);
+				frame.setVisible (true);
+			}
+
+			else if (e.getSource() == bioS)
+			{
+				DisplayGUI frame = new DisplayGUI("bioS", 1);
+				frame.setVisible (true);
+			}
+			
+			if (e.getSource() == bioMB)
+			{
+				DisplayGUI frame = new DisplayGUI("bioMB", 1);
+				frame.setVisible (true);
+			}
+
+			else if (e.getSource() == bioWB)
+			{
+				DisplayGUI frame = new DisplayGUI("bioWB", 1);
+				frame.setVisible (true);
+			}
+			
+			if (e.getSource() == bioMCC)
+			{
+				DisplayGUI frame = new DisplayGUI("bioMCC", 1);
+				frame.setVisible (true);
+			}
+
+			else if (e.getSource() == bioWCC)
+			{
+				DisplayGUI frame = new DisplayGUI("bioWCC", 1);
+				frame.setVisible (true);
+			}
+			
+			if (e.getSource() == bioMG)
+			{
+				DisplayGUI frame = new DisplayGUI("bioMG", 1);
+				frame.setVisible (true);
+			}
+
+			else if (e.getSource() == bioWG)
+			{
+				DisplayGUI frame = new DisplayGUI("bioWG", 1);
+				frame.setVisible (true);
+			}
+			
+			if (e.getSource() == bioMS)
+			{
+				DisplayGUI frame = new DisplayGUI("bioMS", 1);
+				frame.setVisible (true);
+			}
+
+			else if (e.getSource() == bioWS)
+			{
+				DisplayGUI frame = new DisplayGUI("bioWS", 1);
+				frame.setVisible (true);
+			}
+			
+			if (e.getSource() == bioMT)
+			{
+				DisplayGUI frame = new DisplayGUI("bioMT", 1);
+				frame.setVisible (true);
+			}
+
+			else if (e.getSource() == bioWT)
+			{
+				DisplayGUI frame = new DisplayGUI("bioWT", 1);
+				frame.setVisible (true);
+			}
+			
+			if (e.getSource() == bioMTF)
+			{
+				DisplayGUI frame = new DisplayGUI("bioMTF", 1);
+				frame.setVisible (true);
+			}
+
+			else if (e.getSource() == bioWTF)
+			{
+				DisplayGUI frame = new DisplayGUI("bioWTF", 1);
+				frame.setVisible (true);
+			}
+			
+			else if (e.getSource() == bioV)
+			{
+				DisplayGUI frame = new DisplayGUI("bioV", 1);
 				frame.setVisible (true);
 			}
 		}
