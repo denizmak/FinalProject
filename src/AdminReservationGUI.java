@@ -65,7 +65,7 @@ public class AdminReservationGUI extends JFrame{
 		StringBuilder readText = new StringBuilder();
 
 		try{
-			Scanner fileScanner = new Scanner (new File("bin/ReservationData.txt"));
+			Scanner fileScanner = new Scanner (new File("data/ReservationData.txt"));
 
 			while (fileScanner.hasNextLine()){
 				line = fileScanner.nextLine();
@@ -133,20 +133,4 @@ public class AdminReservationGUI extends JFrame{
 		//frame.pack();					// TODO comment
 		frame.setVisible(true);
 	}
-	
-
-	/**
-	 *  Main function that calls GUI display which includes the frames and functions
-	 * @param args
-	 */
-	 
-	 public static void main(String[] args) {
-			javax.swing.SwingUtilities.invokeLater(new Runnable() {
-	            public void run() {
-	            	createAndShowGUI();
-		           }
-		    });
-			
-	 }
-
 }//end AdminReservationGUI

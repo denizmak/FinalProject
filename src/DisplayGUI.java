@@ -74,8 +74,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 
 		try 
 		{
-			Scanner fileScanner = new Scanner (ResourceLoader.load ( s +".txt"));
-			path = ResourceLoader.getPath();
+			Scanner fileScanner = new Scanner ("data" +  s +".txt");
 			
 			while (fileScanner.hasNextLine())
 			{ 
@@ -138,8 +137,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 		
 		try 
 		{
-			Scanner fileScanner = new Scanner (ResourceLoader.load ( s +".txt"));
-			path = ResourceLoader.getPath();			
+			Scanner fileScanner = new Scanner ("data/" + s +".txt");		
 			
 			while(fileScanner.hasNextLine())
 			{
@@ -227,7 +225,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			try 
 			{
 				//Writer writer = new FileWriter (path, false);
-				Writer writer = new FileWriter ("bin/" + path, false);
+				Writer writer = new FileWriter ("data/" + path, false);
 
 				writer.write (text);
 				writer.flush();

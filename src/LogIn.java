@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -57,7 +58,7 @@ class EagleImage extends JPanel
 		super.paintComponent(g);
 
 		try {
-			image = ImageIO.read (ResourceLoader.load ("logo.gif"));
+			image = ImageIO.read (new File ("data/logo.gif"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

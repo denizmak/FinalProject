@@ -316,20 +316,4 @@ public class ReserveAFieldGUI extends JFrame{
 		frame.setVisible(true);
 		
 	}
-	
-
-	/**
-	 *  Main function that calls GUI display which includes the frames and functions
-	 * @param args
-	 */
-	 
-	 public static void main(String[] args) {
-			javax.swing.SwingUtilities.invokeLater(new Runnable() {
-	            public void run() {
-	            	createAndShowGUI();
-		           }
-		    });
-			
-	 }
-	
 }//endReserveAFieldGUI
