@@ -139,6 +139,9 @@ public class ContentPanel extends JPanel implements ActionListener
 				image = "baseball.png";
 				repaint();
 			}
+			String one = "bio";
+			String two = "rosterMT";
+			System.out.println(two.compareTo(one));
 		}
 
 		else if (e.getSource() == softball)
