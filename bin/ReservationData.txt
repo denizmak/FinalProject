@@ -1,2 +1,0 @@
-Year	Month	 Day	Time	Field		Field Type
-2014	December	 01	14:00	Soccer Field		Full Field
