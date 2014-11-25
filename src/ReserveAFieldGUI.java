@@ -15,6 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
 
 /**
  *  GUI class for reserve a field using GridBagLayout
@@ -26,6 +27,8 @@ public class ReserveAFieldGUI extends JFrame{
 		
 	final static boolean shouldFill = true; 
 	int classification = 0;					//Temp. int. to determine between students and admin (student = 0, admin = 1)
+	static int number;
+	static int old_number = number;
 	
 	// Create RerserveAField constructor
 	public ReserveAFieldGUI(){
@@ -197,17 +200,45 @@ public class ReserveAFieldGUI extends JFrame{
 	 */
 		
 		submit.addActionListener(new ActionListener(){
+			private String year;
+			private String month;
+			private String day;
+			private String minute;
+			private String hour;
+			private String field;
+			private String type;
+			
 			public void actionPerformed(ActionEvent e){
-				Object year = yearList.getSelectedItem();
-				Object month = monthList.getSelectedItem();
-				Object day = dayList.getSelectedItem();
-				Object hour = hourList.getSelectedItem();
-				Object minute = minuteList.getSelectedItem();
-				Object field = fieldList.getSelectedItem();
-				Object type = typeList.getSelectedItem();
-				String content =  year +"\t" + month + "\t " + day + "\t" +
-						          hour + ":" + minute + "\t" + field + "\t\t" + type;				
-				try {
+				String year = (String) yearList.getSelectedItem();
+				String month = (String) monthList.getSelectedItem();
+				String day = (String) dayList.getSelectedItem();
+				String hour = (String) hourList.getSelectedItem();
+				String minute = (String) minuteList.getSelectedItem();
+				String field = (String) fieldList.getSelectedItem();
+				String type = (String) typeList.getSelectedItem();
+				
+				/**
+				 * Reading data from ReservationData.txt file 
+				 * @Sting line = line which stores the data from reading (go to new line when one line is ended)
+				 * @StringBuilder readText = the StringBuilder that combines all lines together
+				 */
+				String line = "";						 
+				StringBuilder readText = new StringBuilder();
+
+				try{
+					File fileRead = new File("bin/ReservationData.txt");
+					if(fileRead.exists()){
+					Scanner fileScanner = new Scanner (fileRead);
+
+					while (fileScanner.hasNextLine()){
+						line = fileScanner.nextLine();
+						readText.append(line+"\n");
+					}
+					fileScanner.close();
+					}
+					number++;
+					String content =  number + "\t" + year +"\t" + month + "\t " + day + "\t" +
+					          hour + ":" + minute + "\t" + field + "\t\t" + type;
 					saveData(content);				//saveData function for writing content to .txt file
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -248,7 +279,7 @@ public class ReserveAFieldGUI extends JFrame{
 		if (!file.exists()) {
 			file.createNewFile();
 			// Default title for the file
-			String title =  "Year" +"\t" + "Month" + "\t " + "Day" + "\t" +
+			String title = "Number" + "\t" + "Year" +"\t" + "Month" + "\t " + "Day" + "\t" +
 			          "Time" + "\t" + "Field" + "\t\t" + "Field Type";
 			BufferedWriter bufWriter = new BufferedWriter(new FileWriter(file, true));
 			PrintWriter out	= new PrintWriter(bufWriter, true);
@@ -266,8 +297,6 @@ public class ReserveAFieldGUI extends JFrame{
 		}catch (IOException e){
 			System.err.println(e);
 		}
-	
-	
 	
 	}
 	
@@ -287,9 +316,20 @@ public class ReserveAFieldGUI extends JFrame{
 		frame.setVisible(true);
 		
 	}
-
-	// TODO JOptionPane for submit button (ask for another reservation, yes and no)
-	// TODO JOptionPane for exit (Confirmation)
 	
+
+	/**
+	 *  Main function that calls GUI display which includes the frames and functions
+	 * @param args
+	 */
+	 
+	 public static void main(String[] args) {
+			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+	            public void run() {
+	            	createAndShowGUI();
+		           }
+		    });
+			
+	 }
 	
 }//endReserveAFieldGUI
