@@ -121,7 +121,6 @@ public class ContentPanel extends JPanel implements ActionListener
 			System.exit (1);
 		}
 
-
 		else if (e.getSource() == baseball)
 		{
 			if (image.compareTo("baseball.png") == 0)

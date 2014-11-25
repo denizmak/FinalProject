@@ -19,7 +19,6 @@ public class LogIn extends JPanel
 	protected JPasswordField password= new JPasswordField ("Password");
 	protected JPanel accessLogIn = new JPanel();
 	protected EagleImage eagle = new EagleImage();
-	//private DatabaseManager db = new DatabaseManager("bin/Users.txt");
 
 
 	public LogIn()

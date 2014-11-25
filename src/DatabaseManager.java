@@ -47,13 +47,13 @@ public class DatabaseManager
 			{
 				instr = in.readLine();
 
-				//Try to parse the movie using the appropriate movie constructor.  If it fails, an exception is caught
+				//Try to parse the user using the appropriate movie constructor.  If it fails, an exception is caught
 				try
 				{
 					user = new User(instr);
 
 					////////////////////////////////////////////////////
-					//Add code to insert m here into your list
+					//Add code to insert user here into your list
 					list.addUser(user);
 					////////////////////////////////////////////////////
 
@@ -61,7 +61,7 @@ public class DatabaseManager
 
 				catch (InvalidUserException e) 
 				{
-					System.out.println("Invalid muser string " + instr + " in file " + file);
+					System.out.println("Invalid user string " + instr + " in file " + file);
 				}
 			}	
 		}
@@ -180,7 +180,7 @@ public class DatabaseManager
 	{
 
 		//Create manager and have it populate with input file content.
-		DatabaseManager dm = new DatabaseManager("data/Users.txt");
+		DatabaseManager dm = new DatabaseManager("bin/Users.txt");
 
 		//Console runs in an infinite loop.
 		while (true) 

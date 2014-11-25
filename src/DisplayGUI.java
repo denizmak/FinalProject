@@ -12,9 +12,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//<<<<<<< HEAD
+import java.io.File;
+//=======
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+//>>>>>>> 5801351d4e92a577ef6a8c5324ad9fbbec6d92ce
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -49,10 +53,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 	private JPanel buttons = new JPanel();
 	static JPanel bioPanel = new JPanel();
 	private JTextArea text;
-	private String s;
 	private JScrollPane scroll;
-	private User user = new User();
-	
 	String path = null;
 	
 	
@@ -66,15 +67,15 @@ public class DisplayGUI extends JFrame implements ActionListener
 	 * properties such as size, location, etc.
 	 * @param s
 	 */
-	public DisplayGUI (String s)
+	public DisplayGUI (String path)
 	{ 
-		this.s = s;
+		this.path = path;
 		String line = "";
 		StringBuilder readText = new StringBuilder();
 
 		try 
 		{
-			Scanner fileScanner = new Scanner ("data" +  s +".txt");
+			Scanner fileScanner = new Scanner (new File ("data/" + path +".txt")); 
 			
 			while (fileScanner.hasNextLine())
 			{ 
@@ -102,7 +103,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 		scroll = new JScrollPane(text);
 		
 		
-		if (user.getUserLevel().compareTo("admin") == 0)	
+		if (MenuPanel.userLevel.compareTo("admin") == 0)	
 			{
 				text.setEditable (true);
 				buttons.add(save);
@@ -131,13 +132,13 @@ public class DisplayGUI extends JFrame implements ActionListener
 	
 	public DisplayGUI (String s, int a)
 	{ 
-		this.s = s;
+		path = s;
 		String line = "";
 		bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.Y_AXIS));
 		
 		try 
 		{
-			Scanner fileScanner = new Scanner ("data/" + s +".txt");		
+			Scanner fileScanner = new Scanner (new File (path +".txt"));		
 			
 			while(fileScanner.hasNextLine())
 			{
@@ -212,7 +213,6 @@ public class DisplayGUI extends JFrame implements ActionListener
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------
-
 		/**writeToFile method allows to admin to save the edited changes in the roster and/or schedule 
 		 * files for all the sports. Method reads the text from the JTextField and writes the complete text 
 		 * over the text in the database document such that when the user reads the file again, the program
@@ -224,8 +224,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			// write to a file
 			try 
 			{
-				//Writer writer = new FileWriter (path, false);
-				Writer writer = new FileWriter ("data/" + path, false);
+				Writer writer = new FileWriter ("data/" + path + ".txt", false);
 
 				writer.write (text);
 				writer.flush();

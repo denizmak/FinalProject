@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 public class HomePage extends JFrame implements ActionListener, KeyListener
 {
 	// data fields
-	private MenuPanel northPanel = new MenuPanel("student");
+	private MenuPanel northPanel = new MenuPanel ("student");
 	private JPanel centerPanel = new JPanel();
 	private TitleDesign titlePanel = new TitleDesign();
 	private JPanel content = new ContentPanel();
