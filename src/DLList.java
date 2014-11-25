@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /*
  * Deni Zmak
  * SE 300 - Fall 2014
@@ -253,27 +257,29 @@ public class DLList
 	 *method parameter. The method is case-sensitive.
 	 * @param username
 	 */
-	public void getUser(String username)
+	public User getUser(String username)
 	{
-		if (head == null) 
-		{
-			System.out.println("The o with the requested title does not exist in this list. The list is empty!");
-			return;
-		}
-
-		DLLNode  cur = head;
-
-		while(cur != null && ((User) cur.o).getUsername().compareTo(username) != 0) 
-		{
-			cur = cur.next;
-		}
-
-		if (cur == null)
-		{
-			System.out.println("The o with the requested title does not exist in this list.");
-		}
-
-		else System.out.println(cur.o);
+	    if (head == null)
+	    {
+	        System.out.println ("The list is empty!");
+	        return null;
+	    }
+	    
+	    DLLNode  cur = head;
+	    
+	    while (cur != null && ((User)cur.o).getUsername().compareTo(username) != 0)
+	    {
+	        cur = cur.next;
+	    }
+	    
+	    if (cur == null)
+	    {
+	        System.out.println ("The user with the requested username does not exist in this list.");
+	    }
+	    
+	    else System.out.println (cur.o);
+	    
+	    return (User) cur.o;
 	}
 
 	
@@ -305,4 +311,48 @@ public class DLList
 			cur = cur.prev;
 		}
 	}
+	
+	
+
+/**
+ * Parses the input file so that you can add all of items found in the list in alphabetical order by title.
+ */
+private DLList parseInputFile(String file)
+{
+    //Create a file input stream
+    DLList list = null;
+    User user;
+    String instr;
+    
+    try
+    {
+        //Create input reader
+        BufferedReader in = new BufferedReader(new FileReader(file));
+        while (in.ready())
+        {
+            instr = in.readLine();
+            
+            //parse the user using the appropriate movie constructor.  If it fails, an exception is caught
+            try
+            {
+                user = new User(instr);
+                list.addUser(user);
+            }
+            
+            catch (InvalidUserException e)
+            {
+                System.out.println ("Invalid user string " + instr + " in file " + file);
+            }
+        }
+        
+        return list;
+    }
+    
+    catch (IOException io) 
+    {
+        System.err.println("Error in Parsing file.");
+        io.printStackTrace();	
+    }
+    return list;
+}
 }

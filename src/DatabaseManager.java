@@ -175,12 +175,12 @@ public class DatabaseManager
 		}
 	}
 
-/*
+
 	public static void main(String [] args)
 	{
 
 		//Create manager and have it populate with input file content.
-		DatabaseManager dm = new DatabaseManager("bin/Users.txt");
+		DatabaseManager dm = new DatabaseManager("data/Users.txt");
 
 		//Console runs in an infinite loop.
 		while (true) 
@@ -188,5 +188,5 @@ public class DatabaseManager
 			dm.consoleIO();
 		}
 	}
-	*/
+	
 }

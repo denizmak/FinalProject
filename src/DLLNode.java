@@ -13,9 +13,10 @@
 public class DLLNode
 {
 	// class variables
-	public Object o;
+	protected Object o;
 	public DLLNode next;
 	public DLLNode prev;
+	protected User user;
 
 
 	/**

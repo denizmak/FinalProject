@@ -5,6 +5,11 @@
  * 11/18/14
  */
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
 /**
  * Defines a simple user class and provides required constructors, method to string, and getters for
  * username, password and userLevel .
@@ -92,5 +97,14 @@ public class User
 	public String getUserLevel()
 	{
 		return userLevel;
+	}
+
+
+	/**
+	 * @param userLevel
+	 */
+	public void setUserLevel (String userLevel) 
+	{
+		this.userLevel = userLevel;
 	}
 }
