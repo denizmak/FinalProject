@@ -83,6 +83,7 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 			northPanel.logInButton.removeActionListener(this); //remove action listener once clicked
 			
 			close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
+			close.setToolTipText ("Click to close log in window and go back to main window");
 
 			//create panel that will contain close button and be placed on the bottom of the frame
 			JPanel closePanel = new JPanel();

@@ -53,6 +53,10 @@ public class MenuPanel extends JPanel implements ActionListener
 		setBackground (Color.WHITE);
 		logInButton.setForeground (Color.BLUE);
 		logOutButton.setForeground (Color.RED);
+		
+
+		logInButton.setToolTipText ("Click to log in");
+		logOutButton.setToolTipText ("Click to log out");
 
 		add (menu);
 

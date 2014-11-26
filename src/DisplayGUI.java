@@ -61,6 +61,9 @@ public class DisplayGUI extends JFrame implements ActionListener
 		this.path = path;
 		String line = "";
 		StringBuilder readText = new StringBuilder();
+		
+		//--------------------------------------------------------------------------------------------------------------
+		//updated by B.A.
 		bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.Y_AXIS));
 		
 		if (path.compareTo("bio") < 4 && MenuPanel.userLevel.compareTo("admin") != 0)	
@@ -83,7 +86,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			} 
 			catch (Exception e)
 			{
-				System.out.println("The file does not exists!");
+				System.out.println ("The file does not exists!");
 			}
 
 			bioPanel.setBackground (Color.WHITE);
@@ -97,6 +100,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			
 			setSize (200, 555);
 		}
+		//-------------------------------------------------------------------------------------------------------------
 		else
 		{
 			try 
@@ -111,7 +115,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			}
 			catch (Exception e)
 			{
-				System.out.println("The file does not exists!");
+				System.out.println ("The file does not exists!");
 			}
 	
 			

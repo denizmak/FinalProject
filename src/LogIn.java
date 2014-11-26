@@ -30,15 +30,23 @@ public class LogIn extends JFrame
 	protected JButton login = new JButton ("Login");
 	protected JTextField username = new JTextField ("User Name");
 	protected JPasswordField password= new JPasswordField ("Password");
-	protected JPanel accessLogIn = new JPanel();
 	protected EagleImage eagle = new EagleImage();
+	private Hyperlink link = new Hyperlink();
 
 
 	public LogIn()
 	{
 		setLayout(new BorderLayout());
 
+		JPanel accessLogIn = new JPanel();
+		JPanel row1 = new JPanel();
+		JPanel row2 = new JPanel();
 		accessLogIn.setBackground (Color.white);
+		accessLogIn.setLayout (new BorderLayout ());
+		row1.setLayout (new GridLayout (1, 4));
+		row1.setBackground (Color.white);
+		row2.setBackground (Color.white);
+		
 
 		//set buttons color
 		login.setBackground (Color.white);
@@ -52,10 +60,15 @@ public class LogIn extends JFrame
 		username.setToolTipText ("Please enter your username.");
 		password.setToolTipText ("Please enter your password.");
 
-		accessLogIn.setLayout (new GridLayout (1, 4));
-		accessLogIn.add (username, BorderLayout.CENTER);
-		accessLogIn.add (password, BorderLayout.CENTER);
-		accessLogIn.add (login, BorderLayout.EAST);
+		
+		row1.add (username, BorderLayout.CENTER);
+		row1.add (password, BorderLayout.CENTER);
+		row1.add (login, BorderLayout.EAST);
+		row2.add (link, BorderLayout.CENTER);
+		
+		accessLogIn.add (row1, BorderLayout.CENTER);
+		accessLogIn.add (row2, BorderLayout.SOUTH);
+		
 
 		username.setHorizontalAlignment (JTextField.CENTER);
 		username.setSelectedTextColor (Color.YELLOW);
