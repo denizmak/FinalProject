@@ -8,6 +8,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -16,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,8 +36,9 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	private JPanel centerPanel = new JPanel();
 	private TitleDesign titlePanel = new TitleDesign();
 	private JPanel content = new ContentPanel();
-	private LogIn login = new LogIn();
+	private LogIn login;
 	private DLList list = new DLList();
+	private JButton close = new JButton ("Close");
 
 
 	/**
@@ -77,14 +80,33 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	{
 		if (e.getSource() == northPanel.logInButton)
 		{
+			northPanel.logInButton.removeActionListener(this); //remove action listener once clicked
+			
+			close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
 
+			//create panel that will contain close button and be placed on the bottom of the frame
+			JPanel closePanel = new JPanel();
+			closePanel.setBackground (Color.WHITE);
+			closePanel.add (close);
+			
+			login = new LogIn();
+			login.add (closePanel, BorderLayout.SOUTH);
+			login.setAlwaysOnTop(true);
 			login.setVisible (true);
 			login.login.addActionListener(this);
 			login.username.addKeyListener(this);
 			login.password.addKeyListener(this);
+			
+			close.addActionListener (this);
+		}
+		
+		else if (e.getSource() == close)
+		{
+			login.setVisible(false);
+			northPanel.logInButton.addActionListener(this); // register action listener if user closed login frame without logging in
 		}
 
-		if (e.getSource() == login.login)
+		else if (e.getSource() == login.login)
 		{
 			verification();
 		}

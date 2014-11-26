@@ -8,9 +8,12 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -35,43 +38,44 @@ public class LogIn extends JFrame
 	{
 		setLayout(new BorderLayout());
 
-		accessLogIn.setBackground(Color.white);
+		accessLogIn.setBackground (Color.white);
 
 		//set buttons color
-		login.setBackground(Color.white);
-		login.setForeground(Color.BLUE);
-		login.setContentAreaFilled(false);
-		login.setOpaque(true);
-		login.setToolTipText("Click to log in");
-		
-		
+		login.setBackground (Color.white);
+		login.setForeground (Color.BLUE);
+		login.setContentAreaFilled (false);
+		login.setOpaque (true);
+		login.setToolTipText ("Click to log in");
+
+
 		//username.setOpaque(true);
-		username.setToolTipText("Please enter your username.");
-		password.setToolTipText("Please enter your password.");
-		
-		accessLogIn.setLayout(new GridLayout (1, 4));
-		accessLogIn.add(username, BorderLayout.CENTER);
-		accessLogIn.add(password, BorderLayout.CENTER);
-		accessLogIn.add(login, BorderLayout.EAST);
-		
-		username.setHorizontalAlignment(JTextField.CENTER);
-		username.setSelectedTextColor(Color.YELLOW);
-		username.setSelectionColor(Color.BLUE);
-		
-		password.setHorizontalAlignment(JPasswordField.CENTER);
-		password.setSelectedTextColor(Color.YELLOW);
-		password.setSelectionColor(Color.BLUE);
-		
-		
-		add(accessLogIn, BorderLayout.NORTH);
-		add(eagle, BorderLayout.CENTER);
-		
-		setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
-		setSize (new Dimension (444, 272));
+		username.setToolTipText ("Please enter your username.");
+		password.setToolTipText ("Please enter your password.");
+
+		accessLogIn.setLayout (new GridLayout (1, 4));
+		accessLogIn.add (username, BorderLayout.CENTER);
+		accessLogIn.add (password, BorderLayout.CENTER);
+		accessLogIn.add (login, BorderLayout.EAST);
+
+		username.setHorizontalAlignment (JTextField.CENTER);
+		username.setSelectedTextColor (Color.YELLOW);
+		username.setSelectionColor (Color.BLUE);
+
+		password.setHorizontalAlignment (JPasswordField.CENTER);
+		password.setSelectedTextColor (Color.YELLOW);
+		password.setSelectionColor (Color.BLUE);
+
+
+		add (accessLogIn, BorderLayout.NORTH);
+		add (eagle, BorderLayout.CENTER);
+
+		setDefaultCloseOperation (JFrame.DO_NOTHING_ON_CLOSE);
+		setSize (new Dimension (444, 303));
 		setLocationRelativeTo (null);
 		setResizable (false);
 	}
 }
+
 
 //--------------------------------------------------------------------------------------------------------------
 class EagleImage extends JPanel
@@ -84,12 +88,17 @@ class EagleImage extends JPanel
 	}  
 
 	@Override /** Draw image on the panel */
-	protected void paintComponent(Graphics g) {
+	protected void paintComponent(Graphics g) 
+	{
 		super.paintComponent(g);
 
-		try {
+		try 
+		{
 			image = ImageIO.read (new File ("data/logo.gif"));
-		} catch (IOException e) {
+		} 
+
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 
