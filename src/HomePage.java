@@ -193,7 +193,8 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 				{
 					System.out.println("Invalid user string " + instr + " in file " + file);
 				}
-			}	
+			}
+			in.close();
 		}
 
 		catch (IOException io) 

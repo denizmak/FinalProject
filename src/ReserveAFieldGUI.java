@@ -14,7 +14,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -178,7 +177,7 @@ public class ReserveAFieldGUI extends JFrame{
 		}
 		
 		// Create Button for Submit
-		final JButton submit = new JButton("Submit");
+		JButton submit = new JButton("Submit");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
 		c.weightx = 0.5;
@@ -187,7 +186,7 @@ public class ReserveAFieldGUI extends JFrame{
 		pane.add(submit, c);
 		
 		// Create Button for exit
-	    final JButton exit = new JButton("Exit");
+	    JButton exit = new JButton("Exit");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
 		c.weightx = 0.5;
@@ -211,17 +210,17 @@ public class ReserveAFieldGUI extends JFrame{
 			private String type;
 			
 			public void actionPerformed(ActionEvent e){
-				String year = (String) yearList.getSelectedItem();
-				String month = (String) monthList.getSelectedItem();
-				String day = (String) dayList.getSelectedItem();
-				String hour = (String) hourList.getSelectedItem();
-				String minute = (String) minuteList.getSelectedItem();
-				String field = (String) fieldList.getSelectedItem();
-				String type = (String) typeList.getSelectedItem();
+				year =  (String) yearList.getSelectedItem();
+				month = (String) monthList.getSelectedItem();
+				day = (String) dayList.getSelectedItem();
+				hour = (String) hourList.getSelectedItem();
+				minute = (String) minuteList.getSelectedItem();
+				field = (String) fieldList.getSelectedItem();
+				type = (String) typeList.getSelectedItem();
 				
 				/**
 				 * Reading data from ReservationData.txt file 
-				 * @Sting line = line which stores the data from reading (go to new line when one line is ended)
+				 * @String line = line which stores the data from reading (go to new line when one line is ended)
 				 * @StringBuilder readText = the StringBuilder that combines all lines together
 				 */
 				String line = "";						 
@@ -243,16 +242,17 @@ public class ReserveAFieldGUI extends JFrame{
 			    	boolean matches = matcher.matches();
 			        System.out.println("matches = " + matches);
 			        
+			        // if the line matches the pattern, the first digit is stored and converted to int
+			        // this step is to ensure that if there are previous data in the file, the count
+			        // in the program doesn't start from 1 again. It picks up from the last number.
 			        if (matches){
 			        	String[] result = line.split("\t", 2);
 			            String num = result[0];
 			            number = Integer.parseInt(num);
-			            System.out.println(number);
-			        }
-			        
+			        }  
 					fileScanner.close();
 					}
-					number++;
+					number++;   					// add one so that the next number is in ascending order
 					String content =  number + "\t" + year +"\t" + month + "\t " + day + "\t" +
 					          hour + ":" + minute + "\t" + field + "\t\t" + type;
 					saveData(content);				//saveData function for writing content to .txt file

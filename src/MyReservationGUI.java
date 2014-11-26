@@ -9,7 +9,6 @@
 import javax.swing.*;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -27,9 +26,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /** 
- * GUI for myReservation using BoxLayout
- * Considered a lot of other layouts but BoxLayout turned out to be suitable because we are 
- * stacking one component to another vertically
+ * GUI for myReservation using BorderLayout
+ * created JPanels for each section and add them to BorderLayout
  */
 
 public class MyReservationGUI extends JFrame{
@@ -58,9 +56,6 @@ public class MyReservationGUI extends JFrame{
 	 */
 
 	public void addComponentsToPane(final Container pane){
-
-//		header.setLayout(new BoxLayout(header, BoxLayout.Y_AXIS));		//Stack up components vertically
-//		header.setPreferredSize(new Dimension(500,500));
 		
 		JLabel Reservation = new JLabel("My Reservation(s)");		//Title for myReservation file
 		Reservation.setFont(new Font("Calibri", Font.BOLD, 16));
@@ -93,7 +88,6 @@ public class MyReservationGUI extends JFrame{
 		 * Display the string built using JTextArea
 		 */
 
-//		body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));	
 		String stringToDisplay = readText.toString();
 		text = new JTextArea (stringToDisplay);
 		text.setBackground(null);
@@ -109,7 +103,6 @@ public class MyReservationGUI extends JFrame{
 		button.add(exit);
 		button.setAlignmentY(BOTTOM_ALIGNMENT);
 		
-
 
 		/**
 		 *  Add listener for exit button 
@@ -127,11 +120,9 @@ public class MyReservationGUI extends JFrame{
 		 *  Once the button is clicked, the data from JComboBox is deleted except the title
 		 *  Before the data are to be deleted, the program display a JOptionPane box that asks 
 		 *  for confirmation from user. 
-		 *  Once the user say yes, all the data from ReservationData.txt file are wiped out
-		 *  When the user checks MyReservation page again next time, the data will not be there
-		 *  TODO: Fix the above function. Data should be gone once the user clicks yes. Not when 
-		 *  the user reruns the program
-		 *  choice = to store the answer from the user for cancellation, which will then be
+		 *  Once the user say yes, the selected data from ReservationData.txt file are wiped out
+		 *  When the user checks MyReservation page again next time, the selected data will not be there
+		 *  @param choice = to store the answer from the user for cancellation, which will then be
 		 *  compared with YES_OPTION to delete the data 
 		 */
 
@@ -142,7 +133,7 @@ public class MyReservationGUI extends JFrame{
 
 				String option = JOptionPane.showInputDialog("Please choose which reservation you want to cancel"
 						        + "(i.e.input a reservation number).");
-				int optint = Integer.parseInt(option);
+				int optint = Integer.parseInt(option);    // store the user selected number
 				
 				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete reservation"
 						+ " number " + optint + " ?", "Cancellation Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -225,6 +216,7 @@ public class MyReservationGUI extends JFrame{
 		    	Matcher matcher = pattern.matcher(line);  // check to see if the line matches the pattern
 		    	boolean matches = matcher.matches();
 		        
+		    	// if the line matches, extract the first digit 
 		        if (matches){
 		        	String[] result = line.split("\t", 2);
 		            String num = result[0];
@@ -232,10 +224,13 @@ public class MyReservationGUI extends JFrame{
 		            compare = Integer.parseInt(num);
 		        }
 		       
-		       
+		        // if the line to delete is title
 				if (line.trim().startsWith(lineToMaintain))
 					pw.println(line); 
 
+				// this function is to pick out which line to delete and if the deleted line's
+				// number is less than that of remaining lines, recount the numbers so that they
+				// are in ascending orders
 				else if(compare != option){
 					if(compare > option){
 						numNew = compare - 1;
@@ -280,13 +275,13 @@ public class MyReservationGUI extends JFrame{
 
 		//Create and set up the window.
 		MyReservationGUI frame = new MyReservationGUI();
-		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);   //TODO HIDE_ON_CLOSE
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);   
 		frame.setSize(new Dimension(888, 555));  //TODO 888,555 to run on Deni's com
 		frame.setLocationRelativeTo(null);
 		//Set up the content pane.
 		frame.addComponentsToPane(frame.getContentPane());
 		//Display the window.
-		//frame.pack();					// TODO comment
+		//frame.pack();					
 		frame.setVisible(true);
 	}
 
