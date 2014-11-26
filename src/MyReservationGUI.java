@@ -76,7 +76,7 @@ public class MyReservationGUI extends JFrame{
 		StringBuilder readText = new StringBuilder();
 
 		try{
-			Scanner fileScanner = new Scanner (new File("data/ReservationData.txt"));
+			Scanner fileScanner = new Scanner (new File("bin/ReservationData.txt"));
 
 			while (fileScanner.hasNextLine()){
 				line = fileScanner.nextLine();
@@ -143,11 +143,18 @@ public class MyReservationGUI extends JFrame{
 				String option = JOptionPane.showInputDialog("Please choose which reservation you want to cancel"
 						        + "(i.e.input a reservation number).");
 				int optint = Integer.parseInt(option);
-			
-				deleteData("bin/ReservationData.txt", title, optint);
+				
+				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete reservation"
+						+ " number " + optint + " ?", "Cancellation Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
+
+				if(choice == JOptionPane.YES_OPTION){
+					deleteData("bin/ReservationData.txt", title, optint);
+					JOptionPane.showMessageDialog(null, "You have deleted reservation number " + optint 
+						+ " Please refresh the page to see the updated reservation(s)");
+				}
 				
 /** The below is an attempt to rewrite the file so that the user will be able to see the updated
- *  file after cancelling the reservation(s) but it doesn't work
+ *  file after canceling the reservation(s) but it doesn't work
  */
 //				update = true;
 //				
