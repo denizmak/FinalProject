@@ -1,6 +1,6 @@
 /*
  * Deni Zmak
- * See 300 Fall 2014
+ * SE 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
  * 10/17/14
  */
@@ -77,7 +77,7 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	{
 		if (e.getSource() == northPanel.logInButton)
 		{
-			
+
 			login.setVisible (true);
 			login.login.addActionListener(this);
 			login.username.addKeyListener(this);
@@ -99,57 +99,12 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 		}
 	}
 
-	public void verification()
-	{
 
-		User user = list.getUser(login.username.getText());
-		String password = "";
-		char[] letters = login.password.getPassword();
-		for (int i = 0; i < letters.length; i++) password += letters[i];
-
-		if (user != null)
-		{
-			//if (login.username.getText().compareTo("zmakd@my.erau.edu") == 0 && password.compareTo("zmakd") == 0)
-			if (user.getUsername().compareTo(login.username.getText()) == 0 
-					&& user.getPassword().compareTo(password) == 0)
-			{
-				login.setVisible (false);
-				getContentPane().remove(northPanel);
-				northPanel = new MenuPanel(user.getUserLevel());
-				getContentPane().add(northPanel, BorderLayout.NORTH);
-				revalidate();
-				northPanel.logOutButton.addActionListener (this);
-				login.username.setText("Username");
-				login.password.setText("Password");
-			}
-
-			else
-			{
-				JTextField message = new JTextField ("Incorrect username or password!");
-				message.setBackground(Color.YELLOW);
-				message.setOpaque(true);
-				message.setForeground(Color.BLUE);
-				JOptionPane.showMessageDialog (login, message, "Warning!", JOptionPane.WARNING_MESSAGE);
-			}
-		}
-
-		else
-		{
-			JTextField message = new JTextField ("Incorrect username or password!");
-			message.setBackground(Color.YELLOW);
-			message.setOpaque(true);
-			message.setForeground(Color.BLUE);
-			JOptionPane.showMessageDialog (login, message, "Warning!", JOptionPane.WARNING_MESSAGE);
-		}
-	}
-	
-
-	
 	@Override
 	public void keyTyped(KeyEvent k) 
 	{
 	}
-
+	//handle event if enter key is pressed when log in frame is displayed
 	@Override
 	public void keyPressed(KeyEvent y) 
 	{
@@ -161,9 +116,61 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	{
 	}
 
+
+	/**
+	 * Verification method retrieves the user data from the list (username, password, userLevel) and uses
+	 * the data in order to compare it with the typed username and password. If the data matches, the
+	 * userLevel is compared and the user is signed in with the options corresponding to userLevel.
+	 */
+	public void verification()
+	{
+		User user = list.getUser(login.username.getText()); //crating the user object by sending text typed in the username field as a parameter
+		String password = "";
+		char[] letters = login.password.getPassword(); //Since password is protected from directly getting the text from the field it has to be retrieved by getting one character at the time
+		for (int i = 0; i < letters.length; i++) password += letters[i]; //for loop is adding one by one character in order to get password as a string
+
+		if (user != null) // if user with typed username exists
+		{
+			if (user.getUsername().compareTo(login.username.getText()) == 0 
+					&& user.getPassword().compareTo(password) == 0) //check if username and password match
+			{
+				login.setVisible (false); //remove log in frame
+				getContentPane().remove(northPanel); // remove basic MenuPanel
+				northPanel = new MenuPanel(user.getUserLevel()); //create new MenuPanel corresponding to the userLevel
+				getContentPane().add(northPanel, BorderLayout.NORTH); //add new MenuPanel to the frame
+				revalidate();
+				northPanel.logOutButton.addActionListener (this); // register action listener with log out button
+				login.password.setText("Password"); //reset password field for the next log in
+				login.username.setText("Username"); //reset username field for the next log in
+			}
+
+			else
+			{
+				JTextField message = new JTextField ("Incorrect username or password!"); //text in order if username or password is incorrect 
+				message.setBackground(Color.YELLOW);
+				message.setForeground(Color.BLUE);
+				JOptionPane.showMessageDialog (login, message, "Warning!", JOptionPane.WARNING_MESSAGE); //create and display warning message
+			}
+		}
+
+		else
+		{
+			JTextField message = new JTextField ("Incorrect username or password!"); //text in order if username or password is incorrect 
+			message.setBackground(Color.YELLOW);
+			message.setForeground(Color.BLUE);
+			JOptionPane.showMessageDialog (login, message, "Warning!", JOptionPane.WARNING_MESSAGE); //create and display warning message
+		}
+	}
+
+
+	/**
+	 * ParseInputFile method reads data from a file and populates the doubly linked list with the users
+	 * from the file.
+	 * @param file - file path for the file consisting users and its info
+	 */
 	private void parseInputFile (String file)
 	{
-		//Create a file input stream
+		//method data fields
 		User user;
 		String instr;
 
@@ -175,7 +182,7 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 			{
 				instr = in.readLine();
 
-				//Try to parse the user using the appropriate movie constructor.  If it fails, an exception is caught
+				//Try to parse the user using the appropriate user constructor. If it fails, an exception is caught
 				try
 				{
 					user = new User(instr);

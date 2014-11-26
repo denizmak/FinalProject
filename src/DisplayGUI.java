@@ -1,6 +1,6 @@
 /*
  * Deni Zmak
- * See 300 Fall 2014
+ * SE 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
  * 10/25/14
  */

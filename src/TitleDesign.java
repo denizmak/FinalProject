@@ -1,4 +1,4 @@
-/**
+/*
  * Deni Zmak
  * SE 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
@@ -14,7 +14,6 @@ import java.awt.Image;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 

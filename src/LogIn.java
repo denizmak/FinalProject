@@ -1,7 +1,15 @@
+/*
+ * Deni Zmak
+ * SE 300 Fall 2014
+ * Final Project: ERAU Athletics Fan App
+ * 11/21/14
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -41,13 +49,19 @@ public class LogIn extends JFrame
 		username.setToolTipText("Please enter your username.");
 		password.setToolTipText("Please enter your password.");
 		
-		//accessLogIn.setLayout(new FlowLayout());
+		accessLogIn.setLayout(new GridLayout (1, 4));
 		accessLogIn.add(username, BorderLayout.CENTER);
 		accessLogIn.add(password, BorderLayout.CENTER);
 		accessLogIn.add(login, BorderLayout.EAST);
 		
-		username.setSize(new Dimension (222,22));
-		password.setSize(new Dimension (111,22));
+		username.setHorizontalAlignment(JTextField.CENTER);
+		username.setSelectedTextColor(Color.YELLOW);
+		username.setSelectionColor(Color.BLUE);
+		
+		password.setHorizontalAlignment(JPasswordField.CENTER);
+		password.setSelectedTextColor(Color.YELLOW);
+		password.setSelectionColor(Color.BLUE);
+		
 		
 		add(accessLogIn, BorderLayout.NORTH);
 		add(eagle, BorderLayout.CENTER);

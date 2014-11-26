@@ -1,7 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 /*
  * Deni Zmak
  * SE 300 - Fall 2014
@@ -294,20 +290,5 @@ public class DLList
 			System.out.println(cur.o);
 			cur = cur.next;
 		}		
-	}
-
-
-	/**
-	 *printDescending() method prints all the users in the list in alphabetical descending order.
-	 */
-	public void printDescending() 
-	{
-		DLLNode  cur = tail;
-
-		while (cur != null) 
-		{
-			System.out.println(cur.o);
-			cur = cur.prev;
-		}
 	}
 }

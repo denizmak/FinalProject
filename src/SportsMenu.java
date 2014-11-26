@@ -2,7 +2,7 @@
  * Deni Zmak
  * SE 300 - Fall 2014
  * Final Project: ERAU Athletics Fan App
- * 10/17/14
+ * 10/17/14 => Edited by Brandon Antosh on 11/21/14
  */
 
 import java.awt.Font;
@@ -73,6 +73,7 @@ public class SportsMenu extends JMenuBar implements ActionListener
 	private JMenuItem rosterWTF = new JMenuItem ("Roster");
 	private JMenuItem rosterV = new JMenuItem ("Roster");
 	
+	//B.A. update
 	protected JMenuItem bioB = new JMenuItem ("Bio's");
 	private JMenuItem bioS = new JMenuItem ("Bio's");
 	private JMenuItem bioMB = new JMenuItem ("Bio's");
@@ -224,6 +225,7 @@ public class SportsMenu extends JMenuBar implements ActionListener
 		rosterWTF.addActionListener (this);
 		rosterV.addActionListener (this);
 		
+		//B.A. update
 		bioB.addActionListener (this);
 		bioS.addActionListener (this);
 		bioMB.addActionListener (this);
@@ -424,6 +426,7 @@ public class SportsMenu extends JMenuBar implements ActionListener
 				frame.setVisible (true);
 			}
 			
+			//B.A. update
 			if (e.getSource() == bioB)
 			{
 				DisplayGUI frame = new DisplayGUI("bioB", 1);
