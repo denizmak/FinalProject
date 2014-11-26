@@ -273,7 +273,7 @@ public class MyReservationGUI extends JFrame{
 
 		//Create and set up the window.
 		MyReservationGUI frame = new MyReservationGUI();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //TODO HIDE_ON_CLOSE
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);   //TODO HIDE_ON_CLOSE
 		frame.setSize(new Dimension(888, 555));  //TODO 888,555 to run on Deni's com
 		frame.setLocationRelativeTo(null);
 		//Set up the content pane.
@@ -282,20 +282,6 @@ public class MyReservationGUI extends JFrame{
 		//frame.pack();					// TODO comment
 		frame.setVisible(true);
 	}
-	
 
-	/**
-	 *  Main function that calls GUI display which includes the frames and functions
-	 * @param args
-	 */
-	 
-	 public static void main(String[] args) {
-			javax.swing.SwingUtilities.invokeLater(new Runnable() {
-	            public void run() {
-	            	createAndShowGUI();
-		           }
-		    });
-			
-	 }
 
 }//end myReservationGUI
