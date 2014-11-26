@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *  GUI class for reserve a field using GridBagLayout
@@ -234,6 +236,20 @@ public class ReserveAFieldGUI extends JFrame{
 						line = fileScanner.nextLine();
 						readText.append(line+"\n");
 					}
+					
+					String patternString = ("^\\d{1}.*");   // Search for first digit of the sentence
+					Pattern pattern = Pattern.compile(patternString);
+			    	Matcher matcher = pattern.matcher(line);  // check to see if the line matches the pattern
+			    	boolean matches = matcher.matches();
+			        System.out.println("matches = " + matches);
+			        
+			        if (matches){
+			        	String[] result = line.split("\t", 2);
+			            String num = result[0];
+			            number = Integer.parseInt(num);
+			            System.out.println(number);
+			        }
+			        
 					fileScanner.close();
 					}
 					number++;
