@@ -124,7 +124,7 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	 */
 	public void verification()
 	{
-		User user = list.getUser(login.username.getText()); //crating the user object by sending text typed in the username field as a parameter
+		User user = list.getUser(login.username.getText()); //getting the user object by sending text typed in the username field as a parameter
 		String password = "";
 		char[] letters = login.password.getPassword(); //Since password is protected from directly getting the text from the field it has to be retrieved by getting one character at the time
 		for (int i = 0; i < letters.length; i++) password += letters[i]; //for loop is adding one by one character in order to get password as a string
@@ -193,8 +193,7 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 				{
 					System.out.println("Invalid user string " + instr + " in file " + file);
 				}
-			}
-			in.close();
+			}	
 		}
 
 		catch (IOException io) 

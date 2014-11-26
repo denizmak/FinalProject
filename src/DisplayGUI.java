@@ -2,7 +2,7 @@
  * Deni Zmak
  * SE 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
- * 10/25/14
+ * 10/25/14 - Edited by Brandon Antosh on 11/22/14 (Bio's option)
  */
 
 import java.awt.BorderLayout;
@@ -11,10 +11,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//<<<<<<< HEAD
 import java.io.File;
-
-//>>>>>>> 5801351d4e92a577ef6a8c5324ad9fbbec6d92ce
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -57,7 +54,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 	/** Constructor with String argument. It reads the text from the file in the database, writes the text
 	 * to the JTextField and displays the JTextField within the frame. Also, the constructor sets the frame
 	 * properties such as size, location, etc.
-	 * @param s
+	 * @param path - name of the JMenuItem which is associated with the file to read from
 	 */
 	public DisplayGUI (String path)
 	{ 
@@ -111,7 +108,6 @@ public class DisplayGUI extends JFrame implements ActionListener
 					line = fileScanner.nextLine(); 
 					readText.append (line + "\n");
 				}
-				fileScanner.close();
 			}
 			catch (Exception e)
 			{
@@ -140,8 +136,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 					buttons.add(save);
 				}
 			
-			else		
-				text.setEditable (false);
+			else		text.setEditable (false);
 		}
 		
 		buttons.add(close);
