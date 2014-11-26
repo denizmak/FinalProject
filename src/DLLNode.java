@@ -13,9 +13,10 @@
 public class DLLNode
 {
 	// class variables
-	public Object o;
+	protected Object o;
 	public DLLNode next;
 	public DLLNode prev;
+	protected User user;
 
 
 	/**
@@ -49,47 +50,5 @@ public class DLLNode
 		this(o);
 		this.prev = prev;
 		this.next = next;
-	}
-
-
-	/**
-	 * printChainFwd() method prints the list of the objects created in the ascending order
-	 * (order in which the objects have been created)
-	 */
-	public void printChainFwd()
-	{
-		System.out.print(o);
-
-		if (next != null)
-		{
-			System.out.print(" -> ");
-			next.printChainFwd();
-		}
-
-		else
-		{
-			System.out.println();
-		}
-	}
-
-
-	/**
-	 * printChainRev() method prints the list of the objects created in the descending order
-	 * (in opposite order in which the o have been created).
-	 */
-	public void printChainRev()
-	{
-		System.out.print(o);
-
-		if (prev != null)
-		{
-			System.out.print(" -> ");
-			prev.printChainRev();
-		}
-
-		else
-		{
-			System.out.println();
-		}
 	}
 }

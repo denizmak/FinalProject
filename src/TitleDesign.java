@@ -1,4 +1,4 @@
-/**
+/*
  * Deni Zmak
  * SE 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
@@ -11,9 +11,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -51,7 +51,7 @@ public class TitleDesign extends JPanel
 		
 		try
 		{
-			logo = ImageIO.read (ResourceLoader.load ("logo.gif"));
+			logo = ImageIO.read (new File ("data/logo.gif"));
 		}
 		catch (Exception e) 
 		{

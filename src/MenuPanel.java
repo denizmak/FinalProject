@@ -1,6 +1,6 @@
 /*
  * Deni Zmak
- * See 300 Fall 2014
+ * SE 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
  * 10/17/14
  */
@@ -15,7 +15,9 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 /**
@@ -36,8 +38,8 @@ public class MenuPanel extends JPanel implements ActionListener
 	private JMenuItem subscription = new JMenuItem ("Subscription");
 	protected JButton logInButton = new JButton ("Log In");
 	protected JButton logOutButton = new JButton ("Log Out");
-	LogIn user = new LogIn();
-
+	protected static String userLevel;
+	
 
 	/**
 	 * No-argument constructor. It creates a JPanel consisting of SportsMenu instance, ListenA instance,
@@ -46,7 +48,7 @@ public class MenuPanel extends JPanel implements ActionListener
 	 */
 	public MenuPanel (String s)
 	{
-		String userLevel = s;
+		userLevel = s;
 		setLayout (new FlowLayout (FlowLayout.LEFT, 7,1));
 		setBackground (Color.WHITE);
 		logInButton.setForeground (Color.BLUE);
@@ -87,9 +89,6 @@ public class MenuPanel extends JPanel implements ActionListener
 		intramural.addActionListener (this);
 		subscription.addActionListener (this);
 		reservations.addActionListener (this);
-		//logOutButton.addActionListener (this);
-		//logInButton.addActionListener (this);
-
 	}
 
 
@@ -111,6 +110,11 @@ public class MenuPanel extends JPanel implements ActionListener
 
 		else if (e.getSource() == intramural)
 		{
+			JTextField message = new JTextField ("Coming soon!");
+			message.setBackground(Color.BLUE);
+			message.setOpaque(true);
+			message.setForeground(Color.YELLOW);
+			JOptionPane.showMessageDialog (null, message, "Info!", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		else if (e.getSource() == subscription)

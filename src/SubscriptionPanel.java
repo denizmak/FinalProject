@@ -80,7 +80,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	private JTextField smsTextField = new JTextField(15);
 	private JTextField emailTextField = new JTextField(15);
 	
-	final ImageIcon icon = new ImageIcon("/happyIcon.png"); 
+	final ImageIcon icon = new ImageIcon("data/happyIcon.png"); 
 	// ***********************************************************************************************************************
 	
 	/**

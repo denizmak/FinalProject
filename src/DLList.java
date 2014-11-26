@@ -23,7 +23,7 @@ public class DLList
 		head = tail = null;
 	}
 
-	
+
 	/**
 	 * addToHead() method creates a new DLLNode in the beginning of the list and stores the object in it.
 	 * Also, it updates the prev and next reference, as well as head reference (and tail reference if needed).
@@ -59,7 +59,7 @@ public class DLList
 		else	(tail.prev).next = tail;	
 	}
 
-	
+
 	/**
 	 * addUser() method enables program to add the user in the list. The method takes separate user 
 	 * info as parameters and creates a user object and node in the method. Also, it updates the prev and 
@@ -114,7 +114,7 @@ public class DLList
 		if (cur == null)	addToTail(add);
 	}		
 
-	
+
 	/**
 	 * addUser() method enables program to add the user on the list. The method takes o object as 
 	 * parameter and creates the node in the method. Also, it updates the prev and next reference, as 
@@ -172,8 +172,8 @@ public class DLList
 		if (cur == null)	addToTail (add);
 	}
 
-	
-	
+
+
 	/**
 	 *deleteByUsername() method deletes the user with the username specified in the method parameter,
 	 *if the user exists in the list. The method is case-sensitive.
@@ -204,7 +204,7 @@ public class DLList
 		if (cur == null)	System.out.println ("'" + s + "' o was not found in the list!");
 	}
 
-	
+
 
 	/**
 	 *  deleteNode() method is the "addition" to the deleteByUsername method. This method deletes 
@@ -253,30 +253,31 @@ public class DLList
 	 *method parameter. The method is case-sensitive.
 	 * @param username
 	 */
-	public void getUser(String username)
+	public User getUser(String username)
 	{
-		if (head == null) 
+		if (head == null)
 		{
-			System.out.println("The o with the requested title does not exist in this list. The list is empty!");
-			return;
+			System.out.println ("The list is empty!");
+			return null;
 		}
 
 		DLLNode  cur = head;
 
-		while(cur != null && ((User) cur.o).getUsername().compareTo(username) != 0) 
+		while (cur != null && ((User)cur.o).getUsername().compareTo(username) != 0)
 		{
 			cur = cur.next;
 		}
 
 		if (cur == null)
 		{
-			System.out.println("The o with the requested title does not exist in this list.");
+			System.out.println ("The user with the requested username does not exist in this list.");
+			return null;
 		}
 
-		else System.out.println(cur.o);
+		else return (User) cur.o;
 	}
 
-	
+
 	/**
 	 * * printAscending() method prints all the users in the list in alphabetical ascending order.
 	 */
@@ -289,20 +290,5 @@ public class DLList
 			System.out.println(cur.o);
 			cur = cur.next;
 		}		
-	}
-
-
-	/**
-	 *printDescending() method prints all the users in the list in alphabetical descending order.
-	 */
-	public void printDescending() 
-	{
-		DLLNode  cur = tail;
-
-		while (cur != null) 
-		{
-			System.out.println(cur.o);
-			cur = cur.prev;
-		}
 	}
 }

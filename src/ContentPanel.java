@@ -14,6 +14,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -99,7 +100,7 @@ public class ContentPanel extends JPanel implements ActionListener
 	{
 		try
 		{
-			map = ImageIO.read (ResourceLoader.load (image));
+			map = ImageIO.read (new File ("data/" + image));
 		}
 		catch (Exception e) 
 		{
@@ -119,12 +120,6 @@ public class ContentPanel extends JPanel implements ActionListener
 		{
 			System.exit (1);
 		}
-
-		/*
-		else if (e.getSource() == menu.subscription)
-		{
-		}
-		*/
 
 		else if (e.getSource() == baseball)
 		{

@@ -2,7 +2,7 @@
  * Deni Zmak
  * SE 300 - Fall 2014
  * Final Project: ERAU Athletics Fan App
- * 10/17/14
+ * 10/17/14 => Edited by Brandon Antosh on 11/21/14
  */
 
 import java.awt.Font;
@@ -73,6 +73,7 @@ public class SportsMenu extends JMenuBar implements ActionListener
 	private JMenuItem rosterWTF = new JMenuItem ("Roster");
 	private JMenuItem rosterV = new JMenuItem ("Roster");
 	
+	//B.A. update
 	protected JMenuItem bioB = new JMenuItem ("Bio's");
 	private JMenuItem bioS = new JMenuItem ("Bio's");
 	private JMenuItem bioMB = new JMenuItem ("Bio's");
@@ -224,6 +225,7 @@ public class SportsMenu extends JMenuBar implements ActionListener
 		rosterWTF.addActionListener (this);
 		rosterV.addActionListener (this);
 		
+		//B.A. update
 		bioB.addActionListener (this);
 		bioS.addActionListener (this);
 		bioMB.addActionListener (this);
@@ -424,93 +426,94 @@ public class SportsMenu extends JMenuBar implements ActionListener
 				frame.setVisible (true);
 			}
 			
+			//B.A. update
 			if (e.getSource() == bioB)
 			{
-				DisplayGUI frame = new DisplayGUI("bioB", 1);
+				DisplayGUI frame = new DisplayGUI("bioB");
 				frame.setVisible (true);
 			}
 
 			else if (e.getSource() == bioS)
 			{
-				DisplayGUI frame = new DisplayGUI("bioS", 1);
+				DisplayGUI frame = new DisplayGUI("bioS");
 				frame.setVisible (true);
 			}
 			
 			if (e.getSource() == bioMB)
 			{
-				DisplayGUI frame = new DisplayGUI("bioMB", 1);
+				DisplayGUI frame = new DisplayGUI("bioMB");
 				frame.setVisible (true);
 			}
 
 			else if (e.getSource() == bioWB)
 			{
-				DisplayGUI frame = new DisplayGUI("bioWB", 1);
+				DisplayGUI frame = new DisplayGUI("bioWB");
 				frame.setVisible (true);
 			}
 			
 			if (e.getSource() == bioMCC)
 			{
-				DisplayGUI frame = new DisplayGUI("bioMCC", 1);
+				DisplayGUI frame = new DisplayGUI("bioMCC");
 				frame.setVisible (true);
 			}
 
 			else if (e.getSource() == bioWCC)
 			{
-				DisplayGUI frame = new DisplayGUI("bioWCC", 1);
+				DisplayGUI frame = new DisplayGUI("bioWCC");
 				frame.setVisible (true);
 			}
 			
 			if (e.getSource() == bioMG)
 			{
-				DisplayGUI frame = new DisplayGUI("bioMG", 1);
+				DisplayGUI frame = new DisplayGUI("bioMG");
 				frame.setVisible (true);
 			}
 
 			else if (e.getSource() == bioWG)
 			{
-				DisplayGUI frame = new DisplayGUI("bioWG", 1);
+				DisplayGUI frame = new DisplayGUI("bioWG");
 				frame.setVisible (true);
 			}
 			
 			if (e.getSource() == bioMS)
 			{
-				DisplayGUI frame = new DisplayGUI("bioMS", 1);
+				DisplayGUI frame = new DisplayGUI("bioMS");
 				frame.setVisible (true);
 			}
 
 			else if (e.getSource() == bioWS)
 			{
-				DisplayGUI frame = new DisplayGUI("bioWS", 1);
+				DisplayGUI frame = new DisplayGUI("bioWS");
 				frame.setVisible (true);
 			}
 			
 			if (e.getSource() == bioMT)
 			{
-				DisplayGUI frame = new DisplayGUI("bioMT", 1);
+				DisplayGUI frame = new DisplayGUI("bioMT");
 				frame.setVisible (true);
 			}
 
 			else if (e.getSource() == bioWT)
 			{
-				DisplayGUI frame = new DisplayGUI("bioWT", 1);
+				DisplayGUI frame = new DisplayGUI("bioWT");
 				frame.setVisible (true);
 			}
 			
 			if (e.getSource() == bioMTF)
 			{
-				DisplayGUI frame = new DisplayGUI("bioMTF", 1);
+				DisplayGUI frame = new DisplayGUI("bioMTF");
 				frame.setVisible (true);
 			}
 
 			else if (e.getSource() == bioWTF)
 			{
-				DisplayGUI frame = new DisplayGUI("bioWTF", 1);
+				DisplayGUI frame = new DisplayGUI("bioWTF");
 				frame.setVisible (true);
 			}
 			
 			else if (e.getSource() == bioV)
 			{
-				DisplayGUI frame = new DisplayGUI("bioV", 1);
+				DisplayGUI frame = new DisplayGUI("bioV");
 				frame.setVisible (true);
 			}
 		}
