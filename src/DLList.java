@@ -27,7 +27,7 @@ public class DLList
 		head = tail = null;
 	}
 
-	
+
 	/**
 	 * addToHead() method creates a new DLLNode in the beginning of the list and stores the object in it.
 	 * Also, it updates the prev and next reference, as well as head reference (and tail reference if needed).
@@ -63,7 +63,7 @@ public class DLList
 		else	(tail.prev).next = tail;	
 	}
 
-	
+
 	/**
 	 * addUser() method enables program to add the user in the list. The method takes separate user 
 	 * info as parameters and creates a user object and node in the method. Also, it updates the prev and 
@@ -118,7 +118,7 @@ public class DLList
 		if (cur == null)	addToTail(add);
 	}		
 
-	
+
 	/**
 	 * addUser() method enables program to add the user on the list. The method takes o object as 
 	 * parameter and creates the node in the method. Also, it updates the prev and next reference, as 
@@ -176,8 +176,8 @@ public class DLList
 		if (cur == null)	addToTail (add);
 	}
 
-	
-	
+
+
 	/**
 	 *deleteByUsername() method deletes the user with the username specified in the method parameter,
 	 *if the user exists in the list. The method is case-sensitive.
@@ -208,7 +208,7 @@ public class DLList
 		if (cur == null)	System.out.println ("'" + s + "' o was not found in the list!");
 	}
 
-	
+
 
 	/**
 	 *  deleteNode() method is the "addition" to the deleteByUsername method. This method deletes 
@@ -259,30 +259,29 @@ public class DLList
 	 */
 	public User getUser(String username)
 	{
-	    if (head == null)
-	    {
-	        System.out.println ("The list is empty!");
-	        return null;
-	    }
-	    
-	    DLLNode  cur = head;
-	    
-	    while (cur != null && ((User)cur.o).getUsername().compareTo(username) != 0)
-	    {
-	        cur = cur.next;
-	    }
-	    
-	    if (cur == null)
-	    {
-	        System.out.println ("The user with the requested username does not exist in this list.");
-	    }
-	    
-	    else System.out.println (cur.o);
-	    
-	    return (User) cur.o;
+		if (head == null)
+		{
+			System.out.println ("The list is empty!");
+			return null;
+		}
+
+		DLLNode  cur = head;
+
+		while (cur != null && ((User)cur.o).getUsername().compareTo(username) != 0)
+		{
+			cur = cur.next;
+		}
+
+		if (cur == null)
+		{
+			System.out.println ("The user with the requested username does not exist in this list.");
+			return null;
+		}
+
+		else return (User) cur.o;
 	}
 
-	
+
 	/**
 	 * * printAscending() method prints all the users in the list in alphabetical ascending order.
 	 */
@@ -311,48 +310,4 @@ public class DLList
 			cur = cur.prev;
 		}
 	}
-	
-	
-
-/**
- * Parses the input file so that you can add all of items found in the list in alphabetical order by title.
- */
-private DLList parseInputFile(String file)
-{
-    //Create a file input stream
-    DLList list = null;
-    User user;
-    String instr;
-    
-    try
-    {
-        //Create input reader
-        BufferedReader in = new BufferedReader(new FileReader(file));
-        while (in.ready())
-        {
-            instr = in.readLine();
-            
-            //parse the user using the appropriate movie constructor.  If it fails, an exception is caught
-            try
-            {
-                user = new User(instr);
-                list.addUser(user);
-            }
-            
-            catch (InvalidUserException e)
-            {
-                System.out.println ("Invalid user string " + instr + " in file " + file);
-            }
-        }
-        
-        return list;
-    }
-    
-    catch (IOException io) 
-    {
-        System.err.println("Error in Parsing file.");
-        io.printStackTrace();	
-    }
-    return list;
-}
 }

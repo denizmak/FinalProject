@@ -12,6 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -27,12 +30,13 @@ import javax.swing.JTextField;
 public class HomePage extends JFrame implements ActionListener, KeyListener
 {
 	// data fields
-	private MenuPanel northPanel = new MenuPanel ("student");
+	private MenuPanel northPanel = new MenuPanel ("user");
 	private JPanel centerPanel = new JPanel();
 	private TitleDesign titlePanel = new TitleDesign();
 	private JPanel content = new ContentPanel();
-	private JFrame frame = new JFrame ("Log In");
-	private LogIn user = new LogIn();
+	private LogIn login = new LogIn();
+	private DLList list = new DLList();
+
 
 	/**
 	 * No-argument constructor. It adds all instances created in the class to the frame using border layout
@@ -40,6 +44,8 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	 */
 	public HomePage()
 	{
+		parseInputFile("data/Users.txt");
+
 		setLayout(new BorderLayout());
 
 		northPanel.setPreferredSize (new Dimension (950, 33));
@@ -71,17 +77,14 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	{
 		if (e.getSource() == northPanel.logInButton)
 		{
-			frame.setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
-			frame.setSize(new Dimension (333, 222));
-			frame.setLocationRelativeTo(null);
-			frame.add (user);
-			frame.setVisible (true);
-			user.login.addActionListener(this);
-			user.username.addKeyListener(this);
-			user.password.addKeyListener(this);
+			
+			login.setVisible (true);
+			login.login.addActionListener(this);
+			login.username.addKeyListener(this);
+			login.password.addKeyListener(this);
 		}
 
-		if (e.getSource() == user.login)
+		if (e.getSource() == login.login)
 		{
 			verification();
 		}
@@ -98,78 +101,36 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 
 	public void verification()
 	{
+
+		User user = list.getUser(login.username.getText());
 		String password = "";
-		char[] letters = user.password.getPassword();
+		char[] letters = login.password.getPassword();
 		for (int i = 0; i < letters.length; i++) password += letters[i];
 
-
-		if (user.username.getText().compareTo("zmakd@my.erau.edu") == 0 
-				&& password.compareTo("zmakd") == 0)
+		if (user != null)
 		{
-			frame.setVisible (false);
-			getContentPane().remove(northPanel);
-			northPanel = new MenuPanel("student");
-			getContentPane().add(northPanel, BorderLayout.NORTH);
-			revalidate();
-			northPanel.logOutButton.addActionListener (this);
-		}
+			//if (login.username.getText().compareTo("zmakd@my.erau.edu") == 0 && password.compareTo("zmakd") == 0)
+			if (user.getUsername().compareTo(login.username.getText()) == 0 
+					&& user.getPassword().compareTo(password) == 0)
+			{
+				login.setVisible (false);
+				getContentPane().remove(northPanel);
+				northPanel = new MenuPanel(user.getUserLevel());
+				getContentPane().add(northPanel, BorderLayout.NORTH);
+				revalidate();
+				northPanel.logOutButton.addActionListener (this);
+				login.username.setText("Username");
+				login.password.setText("Password");
+			}
 
-		else if (user.username.getText().compareTo("jafers@erau.edu") == 0 
-				&& password.compareTo("jafers") == 0)
-		{
-			frame.setVisible (false);
-			getContentPane().remove(northPanel);
-			northPanel = new MenuPanel("admin");
-			getContentPane().add(northPanel, BorderLayout.NORTH);
-			revalidate();
-			northPanel.logOutButton.addActionListener (this);
-		}
-
-
-		else if (user.username.getText().compareTo("almuhanf@my.erau.edu") == 0 
-				&& password.compareTo("almuhanf") == 0)
-		{
-			frame.setVisible (false);
-			getContentPane().remove(northPanel);
-			northPanel = new MenuPanel("student");
-			getContentPane().add(northPanel, BorderLayout.NORTH);
-			revalidate();
-			northPanel.logOutButton.addActionListener (this);
-		}
-
-		else if (user.username.getText().compareTo("antoshb@my.erau.edu") == 0 
-				&& password.compareTo("antoshb") == 0)
-		{
-			frame.setVisible (false);
-			getContentPane().remove(northPanel);
-			northPanel = new MenuPanel("student");
-			getContentPane().add(northPanel, BorderLayout.NORTH);
-			revalidate();
-			northPanel.logOutButton.addActionListener (this);
-		}
-
-
-		else if (user.username.getText().compareTo("khinep@my.erau.edu") == 0 
-				&& password.compareTo("khinep") == 0)
-		{
-			frame.setVisible (false);
-			getContentPane().remove(northPanel);
-			northPanel = new MenuPanel("student");
-			getContentPane().add(northPanel, BorderLayout.NORTH);
-			revalidate();
-			northPanel.logOutButton.addActionListener (this);
-		}
-
-
-		else if (user.username.getText().compareTo("mcknighs3@my.erau.edu") == 0 
-				&& password.compareTo("mcknighs3") == 0)
-		{
-			frame.setVisible (false);
-			getContentPane().remove(northPanel);
-			northPanel = new MenuPanel("student");
-			getContentPane().add(northPanel, BorderLayout.NORTH);
-			revalidate();
-			northPanel.logOutButton.addActionListener (this);
+			else
+			{
+				JTextField message = new JTextField ("Incorrect username or password!");
+				message.setBackground(Color.YELLOW);
+				message.setOpaque(true);
+				message.setForeground(Color.BLUE);
+				JOptionPane.showMessageDialog (login, message, "Warning!", JOptionPane.WARNING_MESSAGE);
+			}
 		}
 
 		else
@@ -178,10 +139,12 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 			message.setBackground(Color.YELLOW);
 			message.setOpaque(true);
 			message.setForeground(Color.BLUE);
-			JOptionPane.showMessageDialog (frame, message, "Warning!", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog (login, message, "Warning!", JOptionPane.WARNING_MESSAGE);
 		}
 	}
+	
 
+	
 	@Override
 	public void keyTyped(KeyEvent k) 
 	{
@@ -197,4 +160,40 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	public void keyReleased(KeyEvent i) 
 	{
 	}
+
+	private void parseInputFile (String file)
+	{
+		//Create a file input stream
+		User user;
+		String instr;
+
+		try 
+		{
+			//Create input reader
+			BufferedReader in = new BufferedReader(new FileReader(file));
+			while (in.ready())
+			{
+				instr = in.readLine();
+
+				//Try to parse the user using the appropriate movie constructor.  If it fails, an exception is caught
+				try
+				{
+					user = new User(instr);
+					list.addUser(user);
+				} 
+
+				catch (InvalidUserException e) 
+				{
+					System.out.println("Invalid user string " + instr + " in file " + file);
+				}
+			}	
+		}
+
+		catch (IOException io) 
+		{
+			System.err.println("Error in Parsing file.");
+			io.printStackTrace();	
+		}
+	}
+
 }

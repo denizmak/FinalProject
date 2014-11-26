@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -7,12 +8,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class LogIn extends JPanel
+public class LogIn extends JFrame
 {	
 	protected JButton login = new JButton ("Login");
 	protected JTextField username = new JTextField ("User Name");
@@ -25,13 +27,6 @@ public class LogIn extends JPanel
 	{
 		setLayout(new BorderLayout());
 
-		add(accessLogIn, BorderLayout.NORTH);
-		add(eagle, BorderLayout.CENTER);
-
-		accessLogIn.add(username);
-		accessLogIn.add(password);
-		accessLogIn.add(login);
-
 		accessLogIn.setBackground(Color.white);
 
 		//set buttons color
@@ -39,6 +34,28 @@ public class LogIn extends JPanel
 		login.setForeground(Color.BLUE);
 		login.setContentAreaFilled(false);
 		login.setOpaque(true);
+		login.setToolTipText("Click to log in");
+		
+		
+		//username.setOpaque(true);
+		username.setToolTipText("Please enter your username.");
+		password.setToolTipText("Please enter your password.");
+		
+		//accessLogIn.setLayout(new FlowLayout());
+		accessLogIn.add(username, BorderLayout.CENTER);
+		accessLogIn.add(password, BorderLayout.CENTER);
+		accessLogIn.add(login, BorderLayout.EAST);
+		
+		username.setSize(new Dimension (222,22));
+		password.setSize(new Dimension (111,22));
+		
+		add(accessLogIn, BorderLayout.NORTH);
+		add(eagle, BorderLayout.CENTER);
+		
+		setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
+		setSize (new Dimension (444, 272));
+		setLocationRelativeTo (null);
+		setResizable (false);
 	}
 }
 
