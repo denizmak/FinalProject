@@ -72,119 +72,87 @@ public class DisplayGUI extends JFrame implements ActionListener
 		this.path = path;
 		String line = "";
 		StringBuilder readText = new StringBuilder();
-
-		try 
-		{
-			Scanner fileScanner = new Scanner (new File ("data/" + path +".txt")); 
-			
-			while (fileScanner.hasNextLine())
-			{ 
-				line = fileScanner.nextLine(); 
-				readText.append (line + "\n");
-			}
-		}
-		catch (Exception e)
-		{
-			System.out.println("The file does not exists!");
-		}
-
-		
-		String stringToDisplay = readText.toString();
-		text = new JTextArea (stringToDisplay);
-
-
-		text.setBackground (Color.WHITE);
-		
-		save.setFont (new Font ("Times New Roman", Font.BOLD, 17));
-		close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
-		
-		buttons.setBackground(Color.WHITE);
-		
-		scroll = new JScrollPane(text);
-		
-		
-		if (MenuPanel.userLevel.compareTo("admin") == 0)	
-			{
-				text.setEditable (true);
-				buttons.add(save);
-			}
-		
-		else		text.setEditable (false);
-		
-		
-		buttons.add(close);
-
-		setLayout (new BorderLayout());
-		setSize (999, 555);
-		setLocationRelativeTo (null);
-		setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
-		setTitle ("ERAU Eagles");
-		setResizable (false);
-		
-		add (scroll, BorderLayout.CENTER);
-		add (buttons, BorderLayout.SOUTH);
-
-		// Register listener with the buttons
-		close.addActionListener (this);
-		save.addActionListener (this);
-	}
-
-	
-	public DisplayGUI (String s, int a)
-	{ 
-		path = s;
-		String line = "";
 		bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.Y_AXIS));
 		
-		try 
+		if (path.compareTo("bio") < 4 && MenuPanel.userLevel.compareTo("admin") != 0)	
 		{
-			Scanner fileScanner = new Scanner (new File (path +".txt"));		
-			
-			while(fileScanner.hasNextLine())
+			try 
 			{
-				line = fileScanner.nextLine(); 
-				String[] seperatedInput = line.split(";");
+				Scanner fileScanner = new Scanner (new File ("data/" + path +".txt"));		
 				
-				bioPanel.add(new Hyperlink(seperatedInput[1], seperatedInput[2]));
-				bioPanel.add(Box.createRigidArea(new Dimension(20,0)));
+				while(fileScanner.hasNextLine())
+				{
+					line = fileScanner.nextLine(); 
+					String[] seperatedInput = line.split(";");
+					
+					bioPanel.add(new Hyperlink(seperatedInput[1], seperatedInput[2]));
+					bioPanel.add(Box.createRigidArea(new Dimension(20,0)));
+				}
+				
+				fileScanner.close();
+				
+			} 
+			catch (Exception e)
+			{
+				System.out.println("The file does not exists!");
 			}
+
+			bioPanel.setBackground (Color.WHITE);
 			
-			fileScanner.close();
+			save.setFont (new Font ("Times New Roman", Font.BOLD, 17));
+			close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
 			
-		} 
-		catch (Exception e)
-		{
-			System.out.println("The file does not exists!");
+			buttons.setBackground(Color.WHITE);
+			
+			scroll = new JScrollPane(bioPanel);
+			
+			setSize (200, 555);
 		}
+		else
+		{
+			try 
+			{
+				Scanner fileScanner = new Scanner (new File ("data/" + path +".txt")); 
+				
+				while (fileScanner.hasNextLine())
+				{ 
+					line = fileScanner.nextLine(); 
+					readText.append (line + "\n");
+				}
+			}
+			catch (Exception e)
+			{
+				System.out.println("The file does not exists!");
+			}
+	
+			
+			String stringToDisplay = readText.toString();
+			text = new JTextArea (stringToDisplay);
+	
+	
+			text.setBackground (Color.WHITE);
+			
+			save.setFont (new Font ("Times New Roman", Font.BOLD, 17));
+			close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
+			
+			buttons.setBackground(Color.WHITE);
+			
+			scroll = new JScrollPane(text);
+		
+			setSize (999, 555);
 
-		
-		//String stringToDisplay = readText.toString();
-		//text = new JTextArea (stringToDisplay);
-
-
-		bioPanel.setBackground (Color.WHITE);
-		
-		save.setFont (new Font ("Times New Roman", Font.BOLD, 17));
-		close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
-		
-		buttons.setBackground(Color.WHITE);
-		
-		scroll = new JScrollPane(bioPanel);
-		
-		
-		//if (user.getUserLevel().compareTo("admin") == 0)	
-		//	{
-		//		text.setEditable (true);
-		//		buttons.add(save);
-		//	}
-		
-		//else		text.setEditable (false);
-		
+			if (MenuPanel.userLevel.compareTo("admin") == 0)	
+				{
+					text.setEditable (true);
+					buttons.add(save);
+				}
+			
+			else		text.setEditable (false);
+		}
 		
 		buttons.add(close);
 
 		setLayout (new BorderLayout());
-		setSize (200, 555);
 		setLocationRelativeTo (null);
 		setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
 		setTitle ("ERAU Eagles");
@@ -197,6 +165,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 		close.addActionListener (this);
 		save.addActionListener (this);
 	}
+
 
 	// handle events by overriding actionPerformed method
 	public void actionPerformed (ActionEvent e)
