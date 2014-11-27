@@ -1,7 +1,7 @@
-Rodolfo Arreygue
-Luke De Caires
-Miguel Lopez Gomez
-Jaime Sanchez-Canamares Rios
-Juan Verberne
-Fabian Zierleyn
-Deni Zmak
+;Rodolfo Arreygue;http://erauathletics.com/roster.aspx?rp_id=3047&path=mten
+;Luke De Caires;http://erauathletics.com/roster.aspx?rp_id=3040&path=mten
+;Miguel Lopez Gomez;http://erauathletics.com/roster.aspx?rp_id=3041&path=mten
+;Jaime Sanchez-Canamares Rios;http://erauathletics.com/roster.aspx?rp_id=3042&path=mten
+;Juan Verberne;http://erauathletics.com/roster.aspx?rp_id=3043&path=mten
+;Fabian Zierleyn;http://erauathletics.com/roster.aspx?rp_id=3048&path=mten
+;Deni Zmak;http://erauathletics.com/roster.aspx?rp_id=3044&path=mten

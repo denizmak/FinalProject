@@ -1,1 +1,13 @@
-		
+				WOMEN'S GOLF ROSTER
+
+
+Name		Year	Ht.	Hometown
+___________________________________________________________________
+
+Fatima Carriles		Jr.	5-6	Madrid, Spain
+MacKenzie Cunningham	Jr.	5-8	Carmel, Ind.
+Olivia Lynch		Jr.	5-7	Naples, Fla.
+Sophie Olley		Sr.	5-7	Leeds, England
+Charlotte Orren		Sr.	5-7	San Diego, Calif.
+Hannah Robb		So.	5-4	St. Andrews, Scotland
+Abbey Trinca		So.	5-2	Melbourne, Australia

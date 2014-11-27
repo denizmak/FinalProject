@@ -1,17 +1,17 @@
-Vincent Bett
-Andrew Carosi
-Andrew Carpenter
-Jacob Dordick
-James Fell
-Matt Graves
-Alec Hernandez
-Dalton L'Heureux
-Ryan Larson
-Adam Lawrence
-Palmer Lintz
-Jamin Mays
-Paul McKenna
-Paul Meesala
-DeVontae Persha
-Keneth J Pineiro-Collazo
-Jason Riggs
+;Vincent Bett;http://erauathletics.com/roster.aspx?rp_id=2869&path=mcross
+;Andrew Carosi;http://erauathletics.com/roster.aspx?rp_id=2870&path=mcross
+;Andrew Carpenter;http://erauathletics.com/roster.aspx?rp_id=2976&path=mcross
+;Jacob Dordick;http://erauathletics.com/roster.aspx?rp_id=2872&path=mcross
+;James Fell;http://erauathletics.com/roster.aspx?rp_id=2886&path=mcross
+;Matt Graves;http://erauathletics.com/roster.aspx?rp_id=2873&path=mcross
+;Alec Hernandez;http://erauathletics.com/roster.aspx?rp_id=2874&path=mcross
+;Dalton L'Heureux;http://erauathletics.com/roster.aspx?rp_id=2875&path=mcross
+;Ryan Larson;http://erauathletics.com/roster.aspx?rp_id=2876&path=mcross
+;Adam Lawrence;http://erauathletics.com/roster.aspx?rp_id=2975&path=mcross
+;Palmer Lintz;http://erauathletics.com/roster.aspx?rp_id=2877&path=mcross
+;Jamin Mays;http://erauathletics.com/roster.aspx?rp_id=2878&path=mcross
+;Paul McKenna;http://erauathletics.com/roster.aspx?rp_id=2879&path=mcross
+;Paul Meesala;http://erauathletics.com/roster.aspx?rp_id=2883&path=mcross
+;DeVontae Persha;http://erauathletics.com/roster.aspx?rp_id=2885&path=mcross
+;Keneth J Pineiro-Collazo;http://erauathletics.com/roster.aspx?rp_id=2884&path=mcross
+;Jason Riggs;http://erauathletics.com/roster.aspx?rp_id=2880&path=mcross

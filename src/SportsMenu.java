@@ -250,180 +250,210 @@ public class SportsMenu extends JMenuBar implements ActionListener
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleB");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == scheduleS)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleS");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == scheduleMB)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleMB");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == scheduleWB)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleWB");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == scheduleMCC)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleMCC");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == scheduleWCC)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleWCC");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == scheduleMG)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleMG");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == scheduleWG)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleWG");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == scheduleMS)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleMS");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == scheduleWS)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleWS");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == scheduleMT)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleMT");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == scheduleWT)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleWT");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == scheduleMTF)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleMTF");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == scheduleWTF)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleWTF");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			else if (e.getSource() == scheduleV)
 			{
 				DisplayGUI frame = new DisplayGUI("scheduleV");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == rosterB)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterB");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == rosterS)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterS");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == rosterMB)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterMB");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == rosterWB)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterWB");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == rosterMCC)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterMCC");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == rosterWCC)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterWCC");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == rosterMG)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterMG");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == rosterWG)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterWG");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == rosterMS)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterMS");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == rosterWS)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterWS");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == rosterMT)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterMT");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == rosterWT)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterWT");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			if (e.getSource() == rosterMTF)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterMTF");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 
 			else if (e.getSource() == rosterWTF)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterWTF");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			else if (e.getSource() == rosterV)
 			{
 				DisplayGUI frame = new DisplayGUI("rosterV");
 				frame.setVisible (true);
+				frame.setAlwaysOnTop(true);
 			}
 			
 			//B.A. update
