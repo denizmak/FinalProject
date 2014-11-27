@@ -9,17 +9,17 @@ ________________________________________________________________________________
 3	Matt Jacobs		UTL	R/R	6-0	190	So.	Altamonte Springs, Fla.
 4	Alex Currier		OF	L/L	6-2	170	Fr.	Manchester, N.H.
 5	Colt Hankamer		INF	S/R	5-9	170	Sr.	Austin, Texas
-7	Kevin Lindheim	UTL	R/R	6-1	210	Sr.	Naples, Fla.
-8	Jordan Johnson		INF	R/R	5-10	175	Sr.	Daytona Beach, Fla.
+7	Kevin Lindheim		UTL	R/R	6-1	210	Sr.	Naples, Fla.
+8	Jordan Johnson	INF	R/R	5-10	175	Sr.	Daytona Beach, Fla.
 9	Liam Goodall		OF	R/R	6-3	195	Jr.	Nanaimo, British Columbia
 10	J Rhet Montana		UTL	R/R	6-4	215	So.	Oceanside, Calif.
 11	Jake Cavender		UTL	R/R	5-11	185	Jr.	Leesburg, Fla.
-12	Clayton Wagner	LHP	L/L	6-3	185	Jr.	Ocala, Fla.
+12	Clayton Wagner		LHP	L/L	6-3	185	Jr.	Ocala, Fla.
 13	Kyle Buchanan		OF	R/R	6-0	180	Jr.	Frostproof, Fla.
 16	Brian Johnson		RHP	R/R	6-0	195	Sr.	Casselberry, Fla.
 17	Daniel Poncedeleon	RHP	R/R	6-4	195	Sr.	La Mirada, Calif.
 18	Hunter Bruehl		C/1B	L/R	6-3	220	Jr.	Apopka, Fla.
-19	Austen Thrailkill	LHP	L/L	6-4	210	Jr.	Tampa, Fla.
+19	Austen Thrailkill		LHP	L/L	6-4	210	Jr.	Tampa, Fla.
 20	Corey Tufts		RHP	R/R	6-5	225	So.	Clermont, Fla.
 21	Chris Cabrera		RHP	R/R	6-0	185	Fr.	Miami, Fla.
 22	Darryl Knight		C	R/R	6-2	220	Jr.	Orlando, Fla.

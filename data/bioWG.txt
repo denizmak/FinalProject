@@ -1,7 +1,7 @@
-Fatima Carriles
-MacKenzie Cunningham
-Olivia Lynch
-Sophie Olley
-Charlotte Orren
-Hannah Robb
-Abbey Trinca
+;Fatima Carriles;http://erauathletics.com/roster.aspx?rp_id=3006&path=wgolf
+;MacKenzie Cunningham;http://erauathletics.com/roster.aspx?rp_id=3007&path=wgolf
+;Olivia Lynch;http://erauathletics.com/roster.aspx?rp_id=3008&path=wgolf
+;Sophie Olley;http://erauathletics.com/roster.aspx?rp_id=3009&path=wgolf
+;Charlotte Orren;http://erauathletics.com/roster.aspx?rp_id=3010&path=wgolf
+;Hannah Robb;http://erauathletics.com/roster.aspx?rp_id=3011&path=wgolf
+;Abbey Trinca;http://erauathletics.com/roster.aspx?rp_id=3012&path=wgolf

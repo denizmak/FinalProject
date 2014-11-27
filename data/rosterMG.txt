@@ -1,1 +1,16 @@
-		
+				MEN'S GOLF ROSTER
+
+Name		Ht.	Year	Hometown
+____________________________________________________________________________________________________________________
+
+Patrick Byrne		5-11	So.	Raymore, Mo.
+ Seth Courtney		6-0	Jr.	Winter Springs, Fla.
+Thomas Garnier	6-1	Jr.	Sainte-Anne, Guadeloupe
+Brent Graham		6-2	So.	Stuart, Fla.
+Tyler Green		6-1	Fr.	Port Orange, Fla.
+Colt Hankamer		5-9	Sr.	Austin, Texas
+Jonathan Kopsell	5-11	Sr.	Land O' Lakes, Fla.
+Adam LaGrange	6-1	Fr.	Terre Haute, Ind.
+Alejandro Lozano	6-5	Jr.	Bogota, Colombia
+Kyle Morgan		5-8	Jr.	Merritt Island, Fla.
+Henrik Petersson	6-5	Sr.	Stockholm, Sweden
