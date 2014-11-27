@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
  * created JPanels for each section and add them to BorderLayout
  */
 
-public class MyReservationGUI extends JFrame{
+public class AdminReservationGUI extends JFrame{
 
 	//Initialize the two buttons
 	JButton exit = new JButton("Exit");						
@@ -41,14 +41,13 @@ public class MyReservationGUI extends JFrame{
 	JPanel header = new JPanel();
 	JPanel body = new JPanel();
 	JPanel button = new JPanel();
+	JPanel body2 = new JPanel();
 	JTextArea text;
 	JTextArea text2;
-
 	
 	//myReservationGUI constructor
-	public MyReservationGUI(){
+	public AdminReservationGUI(){
 		super();
-		setBackground(Color.WHITE);
 		setResizable(false);			// The frame is not resizeable
 	}
 
@@ -62,7 +61,7 @@ public class MyReservationGUI extends JFrame{
 		JLabel Reservation = new JLabel("My Reservation(s)");		//Title for myReservation file
 		Reservation.setFont(new Font("Calibri", Font.BOLD, 16));
 		header.add(Reservation);
-		header.setBackground(Color.WHITE);
+		
 
 		/**
 		 * Reading data from ReservationData.txt file 
@@ -92,8 +91,9 @@ public class MyReservationGUI extends JFrame{
 
 		String stringToDisplay = readText.toString();
 		text = new JTextArea (stringToDisplay);
+		text.setBackground(null);
 		body.add(text);
-		body.setBackground(Color.WHITE);
+		
 
 		/**
 		 * Adds exit and Cancel buttons and align them in BoxLayout
@@ -102,13 +102,10 @@ public class MyReservationGUI extends JFrame{
 		exit.setAlignmentX(RIGHT_ALIGNMENT);
 		button.add(cancel);
 		button.add(exit);
-		button.setBackground(Color.WHITE);
 		
-		pane.setBackground(Color.WHITE);
 		pane.add(header, BorderLayout.NORTH);
 		pane.add(body, BorderLayout.CENTER);
 		pane.add(button, BorderLayout.SOUTH);
-		
 		
 		/**
 		 *  Add listener for exit button 
@@ -165,6 +162,7 @@ public class MyReservationGUI extends JFrame{
 						}
 						stringToDisplay2 = readText2.toString();
 						text2 = new JTextArea (stringToDisplay2);
+						text2.setBackground(null);
 						
 						fileScanner2.close();
 				
@@ -283,14 +281,13 @@ public class MyReservationGUI extends JFrame{
 	public static void createAndShowGUI() {
 
 		//Create and set up the window.
-		MyReservationGUI frame = new MyReservationGUI();
-		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);  
-		frame.setBackground(Color.WHITE);
+		AdminReservationGUI frame = new AdminReservationGUI();
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);   
 		frame.setSize(new Dimension(888, 555));  //TODO 888,555 to run on Deni's com
 		frame.setLocationRelativeTo(null);
+		frame.setBackground(Color.WHITE);
 		//Set up the content pane.
 		frame.addComponentsToPane(frame.getContentPane());
-		
 		//Display the window.
 		//frame.pack();					
 		frame.setVisible(true);

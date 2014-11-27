@@ -44,6 +44,7 @@ public class ReserveAFieldGUI extends JFrame{
 	public void addComponentsToPane(final Container pane){
 		// Set up GridbagLayout for the GUI
 		pane.setLayout(new GridBagLayout());
+		pane.setBackground(Color.WHITE);
 		GridBagConstraints c = new GridBagConstraints();  //Set up constraints for the layout(Used for placing components in the GridBag)
 		
 		if(shouldFill){
@@ -194,6 +195,7 @@ public class ReserveAFieldGUI extends JFrame{
 		c.gridy = 5;
 		pane.add(exit, c);
 		
+		
 	/**
 	 *  Add listener for submit button 
 	 *  Once the button is clicked, the data from JComboBox is gathered and written in string(table) format
@@ -324,6 +326,7 @@ public class ReserveAFieldGUI extends JFrame{
 		
 		ReserveAFieldGUI frame = new ReserveAFieldGUI();
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);	//So that it can run in the background
+		frame.setBackground(Color.WHITE);
 		frame.setSize(new Dimension(888, 555));
 		frame.setLocationRelativeTo(null);
 		frame.addComponentsToPane(frame.getContentPane());
