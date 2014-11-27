@@ -1,2 +1,9 @@
 Number	Year	Month	 Day	Time	Field		Field Type
+<<<<<<< HEAD
+0	2014	January	 01	11:00	Tennis Court		Full Field
+1	2014	January	 01	08:00	Tennis Court		Full Field
+2	2016	January	 01	11:30	Tennis Court		Full Field
+3	2016	January	 01	13:30	Tennis Court		Full Field
+=======
 1	2014	January	 01	11:00	Tennis Court		Full Field
+>>>>>>> a80da0022d573c8b452e15ce3b87be488a0d8dc4
