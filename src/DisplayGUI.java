@@ -58,6 +58,8 @@ public class DisplayGUI extends JFrame implements ActionListener
 	 */
 	public DisplayGUI (String path)
 	{ 
+		if (path == null) path = "";
+		
 		this.path = path;
 		String line = "";
 		StringBuilder readText = new StringBuilder();

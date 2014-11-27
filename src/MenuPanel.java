@@ -49,6 +49,8 @@ public class MenuPanel extends JPanel implements ActionListener
 	 */
 	public MenuPanel (String userLevel)
 	{
+		if (userLevel == null) userLevel = "";
+		
 		this.userLevel = userLevel;
 		setLayout (new FlowLayout (FlowLayout.LEFT, 7,1));
 		setBackground (Color.WHITE);
