@@ -35,15 +35,12 @@ public class AdminReservationGUI extends JFrame{
 
 	//Initialize the two buttons
 	JButton exit = new JButton("Exit");						
-	JButton cancel = new JButton("Cancel My Reservation(s)");
-	boolean update = false;
-	boolean reset = false;
+	JButton approve = new JButton("Approve");
+	JButton reject = new JButton("Reject");
 	JPanel header = new JPanel();
 	JPanel body = new JPanel();
 	JPanel button = new JPanel();
-	JPanel body2 = new JPanel();
 	JTextArea text;
-	JTextArea text2;
 	
 	//myReservationGUI constructor
 	public AdminReservationGUI(){
@@ -58,53 +55,24 @@ public class AdminReservationGUI extends JFrame{
 
 	public void addComponentsToPane(final Container pane){
 		
-		JLabel Reservation = new JLabel("My Reservation(s)");		//Title for myReservation file
+		pane.setBackground(Color.WHITE);
+		JLabel Reservation = new JLabel("Incoming Reservation(s)");		//Title for myReservation file
 		Reservation.setFont(new Font("Calibri", Font.BOLD, 16));
 		header.add(Reservation);
-		
-
-		/**
-		 * Reading data from ReservationData.txt file 
-		 * @Sting line = line which stores the data from reading (go to new line when one line is ended)
-		 * @StringBuilder readText = the StringBuilder that combines all lines together
-		 */
-		String line = "";						 
-		StringBuilder readText = new StringBuilder();
-
-		try{
-			Scanner fileScanner = new Scanner (new File("bin/ReservationData.txt"));
-
-			while (fileScanner.hasNextLine()){
-				line = fileScanner.nextLine();
-				readText.append(line+"\n");
-			}
-			fileScanner.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-
-		/**
-		 * Display the string built using JTextArea
-		 */
-
-		String stringToDisplay = readText.toString();
-		text = new JTextArea (stringToDisplay);
-		text.setBackground(null);
-		body.add(text);
-		
+		header.setBackground(Color.WHITE);
 
 		/**
 		 * Adds exit and Cancel buttons and align them in BoxLayout
 		 */
-		cancel.setAlignmentX(LEFT_ALIGNMENT);
+		approve.setAlignmentX(LEFT_ALIGNMENT);
+		reject.setAlignmentX(CENTER_ALIGNMENT);
 		exit.setAlignmentX(RIGHT_ALIGNMENT);
-		button.add(cancel);
+		button.add(approve);
+		button.add(reject);
 		button.add(exit);
+		button.setBackground(Color.WHITE);
 		
 		pane.add(header, BorderLayout.NORTH);
-		pane.add(body, BorderLayout.CENTER);
 		pane.add(button, BorderLayout.SOUTH);
 		
 		/**
@@ -118,160 +86,7 @@ public class AdminReservationGUI extends JFrame{
 			}
 		});	
 
-
-		/**
-		 *  Add listener for cancel button 
-		 *  Once the button is clicked, the data from JComboBox is deleted except the title
-		 *  Before the data are to be deleted, the program display a JOptionPane box that asks 
-		 *  for confirmation from user. 
-		 *  Once the user say yes, the selected data from ReservationData.txt file are wiped out
-		 *  When the user checks MyReservation page again next time, the selected data will not be there
-		 *  @param choice = to store the answer from the user for cancellation, which will then be
-		 *  compared with YES_OPTION to delete the data 
-		 */
-
-		cancel.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				String title =  "Number" + "\t" + "Year" +"\t" + "Month" + "\t " + "Day" + "\t" +
-						"Time" + "\t" + "Field" + "\t\t" + "Field Type";
-
-				String option = JOptionPane.showInputDialog("Please choose which reservation you want to cancel"
-						        + "(i.e.input a reservation number).");
-				int optint = Integer.parseInt(option);    // store the user selected number
-				
-				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete reservation"
-						+ " number " + optint + " ?", "Cancellation Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
-
-				if(choice == JOptionPane.YES_OPTION){
-					deleteData("bin/ReservationData.txt", title, optint);
-					
-					// The below codes are for refreshing the page once the selected data is deleted
-					pane.remove(body);
-					String line2 = "";			
-					String stringToDisplay2 = "";
-					StringBuilder readText2 = new StringBuilder();
-			
-					try{
-						File infile2 = new File("bin/ReservationData.txt");
-						Scanner fileScanner2 = new Scanner (infile2);
-			
-						while (fileScanner2.hasNextLine()){
-							line2 = fileScanner2.nextLine();
-							readText2.append(line2+"\n");
-			
-						}
-						stringToDisplay2 = readText2.toString();
-						text2 = new JTextArea (stringToDisplay2);
-						text2.setBackground(null);
-						
-						fileScanner2.close();
-				
-			
-					}
-					catch (Exception f)
-					{
-						f.printStackTrace();
-					}
-					body.remove(text);
-					body.add(text2);
-					text = text2;
-					pane.add(body, BorderLayout.CENTER);
-				
-					pane.revalidate();
-					pane.repaint();
-					
-					JOptionPane.showMessageDialog(null, "You have deleted reservation number " + optint);
-				}
-				
-				
-				
-				
-			}// actionPerformed
-		});// actionListener
-		
-		
-}// addComponentsToPane
-
-	/**
-	 * deleteData function which reads the data from file, disregards the title and deletes all
-	 * other data
-	 * The function converts the original file as a temp file to store data temporarily which
-	 * will then be renamed to the original file's name(.txt) once the writing data process is
-	 * complete
-	 */
-	public void deleteData(String file, String lineToMaintain, int option){
-		int compare = 0;
-		int numNew = 0;
-		String numnum = null;
-		String line = null;
-		String rest = null;
-		
-		try{
-			File inFile = new File(file);
-			//Construct the new file that will later be renamed to the original filename. 
-			File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
-
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			PrintWriter pw = new PrintWriter(new FileWriter(tempFile));	     
-
-	        
-			//Read from the original file and write to the new 
-			//unless content matches data to be removed.
-			while ((line = br.readLine()) != null) {
-				String patternString = ("^\\d{1}.*");   // Search for first digit of the sentence
-				Pattern pattern = Pattern.compile(patternString);
-		    	Matcher matcher = pattern.matcher(line);  // check to see if the line matches the pattern
-		    	boolean matches = matcher.matches();
-		        
-		    	// if the line matches, extract the first digit 
-		        if (matches){
-		        	String[] result = line.split("\t", 2);
-		            String num = result[0];
-		            rest = result[1];
-		            compare = Integer.parseInt(num);
-		        }
-		       
-		        // if the line to delete is title
-				if (line.trim().startsWith(lineToMaintain))
-					pw.println(line); 
-
-				// this function is to pick out which line to delete and if the deleted line's
-				// number is less than that of remaining lines, recount the numbers so that they
-				// are in ascending orders
-				else if(compare != option){
-					if(compare > option){
-						numNew = compare - 1;
-						numnum = String.valueOf(numNew);
-						pw.println(numnum+ "\t"+ rest);
-					}
-					else
-						pw.println(line);
-				}
-				pw.flush();
-			}
-			
-			pw.close();
-			br.close();
-
-			//Delete the original file
-			if (!inFile.delete()) {
-				System.out.println("Could not delete file");
-				return;
-			} 
-			//Rename the new file to the filename the original file had
-			if (!tempFile.renameTo(inFile))
-				System.out.println("Could not rename file");
-			  
-		}
-		catch (FileNotFoundException ex) {
-			ex.printStackTrace();
-		}
-		catch (IOException ex) {
-			ex.printStackTrace();
-		}
 	}
-
-		
 	/**
 	 *  The function that calls the layout and add it to the frame.
 	 *  The Frame dimension is set by trial and error to be in the center of display.
@@ -292,5 +107,6 @@ public class AdminReservationGUI extends JFrame{
 		//frame.pack();					
 		frame.setVisible(true);
 	}
+
 	
 }//end myReservationGUI
