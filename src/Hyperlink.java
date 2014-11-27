@@ -12,15 +12,12 @@
  */
 import java.awt.Cursor;
 import java.awt.Desktop;
-import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 
 public class Hyperlink extends JLabel
