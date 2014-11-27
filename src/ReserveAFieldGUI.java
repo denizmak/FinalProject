@@ -240,7 +240,6 @@ public class ReserveAFieldGUI extends JFrame{
 					Pattern pattern = Pattern.compile(patternString);
 			    	Matcher matcher = pattern.matcher(line);  // check to see if the line matches the pattern
 			    	boolean matches = matcher.matches();
-			        System.out.println("matches = " + matches);
 			        
 			        // if the line matches the pattern, the first digit is stored and converted to int
 			        // this step is to ensure that if there are previous data in the file, the count
@@ -332,4 +331,5 @@ public class ReserveAFieldGUI extends JFrame{
 		frame.setVisible(true);
 		
 	}
+	
 }//endReserveAFieldGUI

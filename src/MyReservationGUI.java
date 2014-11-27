@@ -9,6 +9,7 @@
 import javax.swing.*;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -101,9 +102,11 @@ public class MyReservationGUI extends JFrame{
 		exit.setAlignmentX(RIGHT_ALIGNMENT);
 		button.add(cancel);
 		button.add(exit);
-		button.setAlignmentY(BOTTOM_ALIGNMENT);
 		
-
+		pane.add(header, BorderLayout.NORTH);
+		pane.add(body, BorderLayout.CENTER);
+		pane.add(button, BorderLayout.SOUTH);
+		
 		/**
 		 *  Add listener for exit button 
 		 *  Once clicked, the frame will be hidden, the program will still be running
@@ -111,9 +114,10 @@ public class MyReservationGUI extends JFrame{
 
 		exit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);		
+				setVisible(false);	
 			}
 		});	
+
 
 		/**
 		 *  Add listener for cancel button 
@@ -140,49 +144,52 @@ public class MyReservationGUI extends JFrame{
 
 				if(choice == JOptionPane.YES_OPTION){
 					deleteData("bin/ReservationData.txt", title, optint);
-					JOptionPane.showMessageDialog(null, "You have deleted reservation number " + optint 
-						+ " Please refresh the page to see the updated reservation(s)");
+					
+					// The below codes are for refreshing the page once the selected data is deleted
+					pane.remove(body);
+					String line2 = "";			
+					String stringToDisplay2 = "";
+					StringBuilder readText2 = new StringBuilder();
+			
+					try{
+						File infile2 = new File("bin/ReservationData.txt");
+						Scanner fileScanner2 = new Scanner (infile2);
+			
+						while (fileScanner2.hasNextLine()){
+							line2 = fileScanner2.nextLine();
+							readText2.append(line2+"\n");
+			
+						}
+						stringToDisplay2 = readText2.toString();
+						text2 = new JTextArea (stringToDisplay2);
+						text2.setBackground(null);
+						
+						fileScanner2.close();
+				
+			
+					}
+					catch (Exception f)
+					{
+						f.printStackTrace();
+					}
+					body.remove(text);
+					body.add(text2);
+					text = text2;
+					pane.add(body, BorderLayout.CENTER);
+				
+					pane.revalidate();
+					pane.repaint();
+					
+					JOptionPane.showMessageDialog(null, "You have deleted reservation number " + optint);
 				}
 				
-/** The below is an attempt to rewrite the file so that the user will be able to see the updated
- *  file after canceling the reservation(s) but it doesn't work
- */
-//				update = true;
-//				
-//				while(update == true){
-//					String line2 = "";			
-//					String stringToDisplay2 = "";
-//					StringBuilder readText2 = new StringBuilder();
-//			
-//					try{
-//						File infile2 = new File("bin/ReservationData.txt");
-//						Scanner fileScanner2 = new Scanner (infile2);
-//			
-//						while (fileScanner2.hasNextLine()){
-//							line2 = fileScanner2.nextLine();
-//							readText2.append(line2+"\n");
-//			
-//						}
-//						stringToDisplay2 = readText2.toString();
-//						text2 = new JTextArea (stringToDisplay2);
-//						text2.setBackground(null);
-//						//System.out.println(stringToDisplay2);
-//						update = false;
-//						fileScanner2.close();
-//			
-//					}
-//					catch (Exception f)
-//					{
-//						f.printStackTrace();
-//					}
-//				} // while
+				
+				
 				
 			}// actionPerformed
 		});// actionListener
-		pane.add(header, BorderLayout.NORTH);
-		pane.add(body, BorderLayout.WEST);
-		pane.add(button, BorderLayout.SOUTH);
-
+		
+		
 }// addComponentsToPane
 
 	/**
@@ -278,12 +285,12 @@ public class MyReservationGUI extends JFrame{
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);   
 		frame.setSize(new Dimension(888, 555));  //TODO 888,555 to run on Deni's com
 		frame.setLocationRelativeTo(null);
+		frame.setBackground(Color.WHITE);
 		//Set up the content pane.
 		frame.addComponentsToPane(frame.getContentPane());
 		//Display the window.
 		//frame.pack();					
 		frame.setVisible(true);
 	}
-
-
+	
 }//end myReservationGUI
