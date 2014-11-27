@@ -1,4 +1,15 @@
+/*
+ * Brandon Antosh
+ * SE 300 - Fall 2014
+ * Final Project: ERAU Athletics Fan App
+ * 11/22/14
+ */
 
+
+/**
+ * Creates a clickable hyperlink that opens in the default browser.
+ * @author Brandon Antosh
+ */
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.EventQueue;
@@ -15,6 +26,11 @@ import javax.swing.JPanel;
 public class Hyperlink extends JLabel
 {
 	//private JLabel link;
+	/**
+	 * Default constructor with parameterized data
+	 * @param name attached to link
+	 * @param website that opens
+	 */
 	public Hyperlink(String name, final String url)
 	{
 		setText(name);
@@ -39,6 +55,9 @@ public class Hyperlink extends JLabel
 	
 	//----------------------------------------------------------------------------------------------------------------
 	//updated by D.Z.
+	/**
+	 * No-argument constructor for forgotten username/password
+	 */
 	public Hyperlink()
 	{
 		setText ("Forgot username/password");
