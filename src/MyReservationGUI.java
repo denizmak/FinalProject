@@ -142,20 +142,20 @@ public class MyReservationGUI extends JFrame{
 				//added try catch, B.A.
 				try
 				{
-				String option = JOptionPane.showInputDialog("Please choose which reservation you want to cancel"
-						        + "(i.e.input a reservation number).");
-				optint = Integer.parseInt(option);    // store the user selected number
-				
-				choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete reservation"
-						+ " number " + optint + " ?", "Cancellation Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
-				}
+					String option = JOptionPane.showInputDialog("Please choose which reservation you want to cancel"
+							        + "(i.e.input a reservation number).");
+					optint = Integer.parseInt(option);    // store the user selected number
+					
+					choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete reservation"
+							+ " number " + optint + " ?", "Cancellation Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
+					}
 				catch (Exception g)
 				{
 					System.out.print("No input");
 				}
 				
 				if(choice == JOptionPane.YES_OPTION){
-					deleteData("bin/ReservationData.txt", title, optint);
+					deleteData("data/ReservationData.txt", title, optint);
 					
 					// The below codes are for refreshing the page once the selected data is deleted
 					pane.remove(body);
@@ -164,7 +164,7 @@ public class MyReservationGUI extends JFrame{
 					StringBuilder readText2 = new StringBuilder();
 			
 					try{
-						File infile2 = new File("bin/ReservationData.txt");
+						File infile2 = new File("data/ReservationData.txt");
 						Scanner fileScanner2 = new Scanner (infile2);
 			
 						while (fileScanner2.hasNextLine()){

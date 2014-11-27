@@ -229,7 +229,7 @@ public class ReserveAFieldGUI extends JFrame{
 				StringBuilder readText = new StringBuilder();
 
 				try{
-					File fileRead = new File("bin/ReservationData.txt");
+					File fileRead = new File("data/ReservationData.txt");
 					if(fileRead.exists()){
 					Scanner fileScanner = new Scanner (fileRead);
 
@@ -291,7 +291,7 @@ public class ReserveAFieldGUI extends JFrame{
 	 * @throws Exception
 	 */
 	public static void saveData(String content) throws Exception{
-		File file = new File("bin/ReservationData.txt");  // The directory for the file
+		File file = new File("data/ReservationData.txt");  // The directory for the file
 		// if file doesn't exists, then create it
 		if (!file.exists()) {
 			file.createNewFile();
