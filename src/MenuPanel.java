@@ -45,14 +45,19 @@ public class MenuPanel extends JPanel implements ActionListener
 	 * No-argument constructor. It creates a JPanel consisting of SportsMenu instance, ListenA instance,
 	 * JMenuItem instances and JButton instances. Constructor also displays the item in particular order
 	 * (design) specified by the team.
+	 * @param userLevel - based on user level, constructor adds different components to the panel
 	 */
-	public MenuPanel (String s)
+	public MenuPanel (String userLevel)
 	{
-		userLevel = s;
+		this.userLevel = userLevel;
 		setLayout (new FlowLayout (FlowLayout.LEFT, 7,1));
 		setBackground (Color.WHITE);
 		logInButton.setForeground (Color.BLUE);
 		logOutButton.setForeground (Color.RED);
+		
+
+		logInButton.setToolTipText ("Click to log in");
+		logOutButton.setToolTipText ("Click to log out");
 
 		add (menu);
 

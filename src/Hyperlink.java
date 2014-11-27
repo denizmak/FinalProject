@@ -35,5 +35,30 @@ public class Hyperlink extends JLabel
 			}
 		});
 	}
+	
+	
+	//----------------------------------------------------------------------------------------------------------------
+	//updated by D.Z.
+	public Hyperlink()
+	{
+		setText ("Forgot username/password");
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
+		addMouseListener(new MouseAdapter() 
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				try
+				{
+					Desktop.getDesktop().browse (new URI ("http://myaccount.erau.edu"));
+				}
+				catch (URISyntaxException | IOException ex)
+				{
+					System.out.println("URL error");
+				}
+			}
+		});
+	}
+	//----------------------------------------------------------------------------------------------------------------
  
 }

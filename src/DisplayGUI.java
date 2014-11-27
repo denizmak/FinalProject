@@ -2,39 +2,28 @@
  * Deni Zmak
  * SE 300 Fall 2014
  * Final Project: ERAU Athletics Fan App
- * 10/25/14
+ * 10/25/14 - Edited by Brandon Antosh on 11/22/14 (Bio's option)
  */
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//<<<<<<< HEAD
 import java.io.File;
-//=======
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-//>>>>>>> 5801351d4e92a577ef6a8c5324ad9fbbec6d92ce
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.net.URI;
-import java.net.URL;
 import java.util.Scanner;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.event.HyperlinkEvent;
 
 
 /**DisplayGUI class creates a frame and displays a JTextField within the frame that consists schedule or
@@ -65,13 +54,16 @@ public class DisplayGUI extends JFrame implements ActionListener
 	/** Constructor with String argument. It reads the text from the file in the database, writes the text
 	 * to the JTextField and displays the JTextField within the frame. Also, the constructor sets the frame
 	 * properties such as size, location, etc.
-	 * @param s
+	 * @param path - name of the JMenuItem which is associated with the file to read from
 	 */
 	public DisplayGUI (String path)
 	{ 
 		this.path = path;
 		String line = "";
 		StringBuilder readText = new StringBuilder();
+		
+		//--------------------------------------------------------------------------------------------------------------
+		//updated by B.A.
 		bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.Y_AXIS));
 		
 		if (path.compareTo("bio") < 4 && MenuPanel.userLevel.compareTo("admin") != 0)	
@@ -94,7 +86,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			} 
 			catch (Exception e)
 			{
-				System.out.println("The file does not exists!");
+				System.out.println ("The file does not exists!");
 			}
 
 			bioPanel.setBackground (Color.WHITE);
@@ -108,6 +100,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			
 			setSize (200, 555);
 		}
+		//-------------------------------------------------------------------------------------------------------------
 		else
 		{
 			try 
@@ -122,7 +115,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 			}
 			catch (Exception e)
 			{
-				System.out.println("The file does not exists!");
+				System.out.println ("The file does not exists!");
 			}
 	
 			

@@ -1,0 +1,5 @@
+Number	Year	Month	 Day	Time	Field		Field Type
+1	2015	January	 01	10:15	Softball Court		Full Field
+2	2014	January	 01	08:00	Soccer Field		Full Field
+3	2014	January	 01	08:00	Tennis Court		Full Field
+4	2014	August	 01	08:00	Tennis Court		Full Field
