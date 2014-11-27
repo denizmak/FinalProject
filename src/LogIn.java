@@ -59,6 +59,7 @@ public class LogIn extends JFrame
 		//username.setOpaque(true);
 		username.setToolTipText ("Please enter your username.");
 		password.setToolTipText ("Please enter your password.");
+		
 
 		
 		row1.add (username, BorderLayout.CENTER);
