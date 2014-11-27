@@ -1,5 +1,0 @@
-Number	Year	Month	 Day	Time	Field		Field Type
-1	2014	January	 01	11:00	Tennis Court		Full Field
-2	2014	January	 01	08:00	Tennis Court		Full Field
-3	2016	January	 01	11:30	Tennis Court		Full Field
-4	2016	January	 01	13:30	Tennis Court		Full Field
