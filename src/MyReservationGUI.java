@@ -195,8 +195,6 @@ public class MyReservationGUI extends JFrame{
 				}
 				
 				
-				
-				
 			}// actionPerformed
 		});// actionListener
 		
