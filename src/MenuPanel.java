@@ -36,6 +36,7 @@ public class MenuPanel extends JPanel implements ActionListener
 	private JMenuItem reservations = new JMenuItem ("Reservations");
 	private JMenuItem intramural = new JMenuItem ("Intramural Sports");
 	private JMenuItem subscription = new JMenuItem ("Subscription");
+	private JMenuItem notification = new JMenuItem ("Send Notification");
 	protected JButton logInButton = new JButton ("Log In");
 	protected JButton logOutButton = new JButton ("Log Out");
 	protected static String userLevel;
@@ -80,7 +81,8 @@ public class MenuPanel extends JPanel implements ActionListener
 		{
 			add (reservations);
 			add (subscription);
-			add(Box.createHorizontalStrut(466));
+			add (notification);
+ 			add(Box.createHorizontalStrut(466));
 			add (logOutButton);
 		}
 
@@ -95,6 +97,7 @@ public class MenuPanel extends JPanel implements ActionListener
 		myReservations.addActionListener (this);
 		intramural.addActionListener (this);
 		subscription.addActionListener (this);
+		notification.addActionListener (this);
 		reservations.addActionListener (this);
 	}
 
@@ -127,6 +130,12 @@ public class MenuPanel extends JPanel implements ActionListener
 		else if (e.getSource() == subscription)
 		{
 			SubscriptionPanel frame = new SubscriptionPanel();
+			frame.setVisible(true);
+		}
+		
+		else if (e.getSource() == notification)
+		{
+			NotificationPanel frame = new NotificationPanel();
 			frame.setVisible(true);
 		}
 

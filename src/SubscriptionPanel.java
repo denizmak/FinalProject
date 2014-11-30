@@ -5,8 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import java.io.*;
-import java.util.*;
-import java.lang.*;
+
 
 
 /**
@@ -17,7 +16,7 @@ import java.lang.*;
  */
 public class SubscriptionPanel extends JFrame implements ActionListener
 {	
-	
+
 	private JPanel mainPanel = new JPanel(); // Act as JFrame [ this panel contains everything ] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	private JPanel centerPanel = new JPanel();
 	private JPanel receiveViaColoumn = new JPanel();
@@ -27,16 +26,21 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	private JPanel southPanel = new JPanel();
 
 	private JPanel smsPanel = new JPanel();
+	private JPanel carriersPanel = new JPanel();
 	private JPanel emailPanel = new JPanel();
 	private JPanel badgesPanel = new JPanel();
+	
+	private JPanel numberFormatPanel = new JPanel();
 
 
 	private JLabel subscriptionTitle = new JLabel("SUBSCRIPTION", JLabel.CENTER);
 	private JLabel reseiveNotificationBy = new JLabel("Reseive Notification By", JLabel.CENTER);
 	private JLabel sms = new JLabel(" SMS  ");
+	private JLabel carriers = new JLabel("Carriers");
 	private JLabel email = new JLabel("EMAIL");
 	private JLabel badges = new JLabel("Badges");
 	private JLabel receiveNewsOf = new JLabel("Reseive News of", JLabel.CENTER);
+	private JLabel numberFormat = new JLabel("Number Format: \"123456789\"");
 
 	private JLabel menSoccer = new JLabel("Soccer  |  Men");	
 	private JLabel womenSoccer = new JLabel("Soccer  |  Women");
@@ -79,10 +83,22 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	private JTextField smsTextField = new JTextField(15);
 	private JTextField emailTextField = new JTextField(15);
-	
+
 	final ImageIcon icon = new ImageIcon("data/happyIcon.png"); 
+	private String[] carriersArray = { "AT&T", "SPRINT", "T-MOBILE", "Virgin Mobile", "Verizon", "Cingular", "Nextel" };
+	private JComboBox carriersList = new JComboBox(carriersArray);
+	private String changedSMS;
+	private String att = "@txt.att.net";
+	private String verizon = "@vtext.com";
+	private String tmobile = "@tmomail.net";
+	private String virginMobile = "@vmobl.com";
+	private String cingular = "@cingularme.com";
+	private String sprint = "@messaging.sprintpcs.com";
+	private String nextel = "@messaging.nextel.com";
+
+
 	// ***********************************************************************************************************************
-	
+
 	/**
 	 * Main method that contains all panels needed to organize the interface with labels and buttons
 	 */
@@ -103,22 +119,33 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 		receiveViaColoumn.add(reseiveNotificationBy, BorderLayout.NORTH);
 		receiveViaColoumn.add(receiveViaColoumnBody, BorderLayout.CENTER);
-		
+
 		receiveViaColoumnBody.setLayout(new GridLayout(10,1));
+
 		receiveViaColoumnBody.add(smsPanel);
 		smsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		smsPanel.add(smsCheckBox);
 		smsPanel.add(sms);
 		smsPanel.add(smsTextField);
-		badgesPanel.add(badgesCheckBox);
-		badgesPanel.add(badges);
+		//
+		receiveViaColoumnBody.add(numberFormatPanel);
+		numberFormatPanel.add(numberFormat);
+		numberFormat.setFont (new Font ("Times New Roman", Font.BOLD, 12));
 		
+		receiveViaColoumnBody.add(carriersPanel);
+		carriersPanel.add(carriers);
+		carriersPanel.add(carriersList);
+		carriersList.addActionListener(this);
+
+
+		//
+
 		receiveViaColoumnBody.add(emailPanel);
 		emailPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		emailPanel.add(emailCheckBox);
 		emailPanel.add(email);
 		emailPanel.add(emailTextField);
-		
+
 		receiveViaColoumnBody.add(badgesPanel);
 		badgesPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		badgesPanel.add(badgesCheckBox);
@@ -141,31 +168,31 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 		receiveAboutColoumnBody.add(baseballCheckBox);//5
 		receiveAboutColoumnBody.add(baseball);
-		
+
 		receiveAboutColoumnBody.add(menBasketballCheckBox);//7
 		receiveAboutColoumnBody.add(menBasketball);
-		
+
 		receiveAboutColoumnBody.add(womenBasketballCheckBox);//8
 		receiveAboutColoumnBody.add(womenBasketball);
-		
+
 		receiveAboutColoumnBody.add(menCrossCountryCheckBox);//9
 		receiveAboutColoumnBody.add(menCrossCountry);
 
 		receiveAboutColoumnBody.add(womenCrossCountryCheckBox);//10
 		receiveAboutColoumnBody.add(womenCrossCountry);
-		
+
 		receiveAboutColoumnBody.add(menGolfCheckBox); //11
 		receiveAboutColoumnBody.add(menGolf);
 
 		receiveAboutColoumnBody.add(womenGolfCheckBox); //12
 		receiveAboutColoumnBody.add(womenGolf);
-		
+
 		receiveAboutColoumnBody.add(menSoccerCheckBox); //1
 		receiveAboutColoumnBody.add(menSoccer);	
 
 		receiveAboutColoumnBody.add(womenSoccerCheckBox); //2 
 		receiveAboutColoumnBody.add(womenSoccer);
-		
+
 		receiveAboutColoumnBody.add(softballCheckBox);//6
 		receiveAboutColoumnBody.add(softball);
 
@@ -221,10 +248,12 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 		emailPanel.setBackground(Color.WHITE);
 		badgesPanel.setBackground(Color.WHITE);
 		southPanel.setBackground(Color.WHITE);
-	
+		carriersPanel.setBackground(Color.WHITE);
+		numberFormatPanel.setBackground(Color.WHITE);
+
 		// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   								END
 
-		setSize(618,483);
+		setSize(650,483);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setResizable(false); // cannot be resizable by mouse when run
@@ -240,9 +269,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		if (e.getSource() == exit)
 		{
-
 			setVisible(false);
-
 		}
 		if (e.getSource() == submit)
 		{
@@ -254,7 +281,49 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToMenSoccerSMS (smsTextField.getText());
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToMenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToMenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToMenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToMenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToMenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToMenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToMenSoccerEmail (changedSMS);
+					}
+
 				}
 			}
 			if (womenSoccerCheckBox.isSelected() == true) // <<<<<< WOMEN SOCCER 
@@ -265,7 +334,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToWomenSoccerSMS (smsTextField.getText());
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToWomenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToWomenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToWomenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToWomenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToWomenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToWomenSoccerEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToWomenSoccerEmail (changedSMS);
+					}
 				}
 			}
 			if (menTennisCheckBox.isSelected() == true) // <<<<<< WOMEN TENNIS 
@@ -276,7 +386,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToMenTennisSMS (smsTextField.getText());
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToMenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToMenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToMenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToMenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToMenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToMenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToMenTennisEmail (changedSMS);
+					}
 				}
 			}
 			if (womenTennisCheckBox.isSelected() == true) // <<<<<< WOMEN TENNIS
@@ -287,7 +438,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToWomenTennisSMS (smsTextField.getText());
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToWomenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToWomenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToWomenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToWomenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToWomenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToWomenTennisEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToWomenTennisEmail (changedSMS);
+					}
 				}
 			}
 			if (menBasketballCheckBox.isSelected() == true) // <<<<<< MEN BASKET 
@@ -298,9 +490,51 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToMenBasketballSMS (smsTextField.getText());
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToMenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToMenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToMenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToMenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToMenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToMenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToMenBasketballEmail (changedSMS);
+					}
 				}
 			}
+			////////////<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///////////
 			if (womenBasketballCheckBox.isSelected() == true) // <<<<<< WOMEN BASKET 
 			{
 				if (emailCheckBox.isSelected() == true) // EAMIL
@@ -309,8 +543,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToWomenBasketballSMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToWomenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToWomenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToWomenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToWomenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToWomenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToWomenBasketballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToWomenBasketballEmail (changedSMS);
+					}				}
 			}
 			if (menCrossCountryCheckBox.isSelected() == true) // <<<<<< MEN C C 
 			{
@@ -320,8 +594,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToMenCrossCountrySMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToMenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToMenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToMenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToMenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToMenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToMenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToMenCrossCountryEmail (changedSMS);
+					}				}
 			}
 			if (womenCrossCountryCheckBox.isSelected() == true) // <<<<<< WOMEN C C 
 			{
@@ -331,8 +645,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToWomenCrossCountrySMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToWomenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToWomenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToWomenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToWomenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToWomenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToWomenCrossCountryEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToWomenCrossCountryEmail (changedSMS);
+					}				}
 			}
 			if (menGolfCheckBox.isSelected() == true) // <<<<<< MEN Golf
 			{
@@ -342,8 +696,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToMenGolfSMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToMenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToMenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToMenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToMenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToMenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToMenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToMenGolfEmail (changedSMS);
+					}				}
 			}
 			if (womenGolfCheckBox.isSelected() == true) // <<<<<< WOMEN Golf
 			{
@@ -353,8 +747,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToWomenGolfSMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToWomenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToWomenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToWomenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToWomenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToWomenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToWomenGolfEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToWomenGolfEmail (changedSMS);
+					}				}
 			}
 			if (menTrackFieldCheckBox.isSelected() == true) // <<<<<< MEN Track And Field 
 			{
@@ -364,8 +798,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToMenTrackFieldSMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToMenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToMenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToMenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToMenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToMenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToMenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToMenTrackFieldEmail (changedSMS);
+					}				}
 			}
 			if (womenTrackFieldCheckBox.isSelected() == true) // <<<<<< WOMEN Track And Field 
 			{
@@ -375,8 +849,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToWomenTrackFieldSMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToWomenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToWomenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToWomenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToWomenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToWomenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToWomenTrackFieldEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToWomenTrackFieldEmail (changedSMS);
+					}				}
 			}
 			if (baseballCheckBox.isSelected() == true) // <<<<<< BASEBALL
 			{
@@ -386,8 +900,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToBaseballSMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToBaseballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToBaseballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToBaseballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToBaseballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToBaseballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToBaseballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToBaseballEmail (changedSMS);
+					}				}
 			}
 			if (softballCheckBox.isSelected() == true) // <<<<<< SOFTBALL
 			{
@@ -397,8 +951,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToSoftballSMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToSoftballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToSoftballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToSoftballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToSoftballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToSoftballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToSoftballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToSoftballEmail (changedSMS);
+					}				}
 			}
 			if (VolleyballCheckBox.isSelected() == true) // <<<<<< VolleyBALL
 			{
@@ -408,8 +1002,48 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 				}
 				if (smsCheckBox.isSelected() == true) // SMS
 				{
-					addToVolleyballSMS (smsTextField.getText());
-				}
+					if (carriersList.getSelectedItem().toString() == "AT&T")
+					{
+						changedSMS = smsTextField.getText() + att;
+						// System.out.println(changedSMS);
+						addToVolleyballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "SPRINT")
+					{
+						changedSMS = smsTextField.getText() + sprint;
+						// System.out.println(changedSMS);
+						addToVolleyballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "T-MOBILE")
+					{
+						changedSMS = smsTextField.getText() + tmobile;
+						// System.out.println(changedSMS);
+						addToVolleyballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Virgin Mobile")
+					{
+						changedSMS = smsTextField.getText() + virginMobile;
+						// System.out.println(changedSMS);
+						addToVolleyballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Verizon")
+					{
+						changedSMS = smsTextField.getText() + verizon;
+						// System.out.println(changedSMS);
+						addToVolleyballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Cingular")
+					{
+						changedSMS = smsTextField.getText() + cingular;
+						// System.out.println(changedSMS);
+						addToVolleyballEmail (changedSMS);
+					}
+					if (carriersList.getSelectedItem().toString() == "Nextel")
+					{
+						changedSMS = smsTextField.getText() + nextel;
+						// System.out.println(changedSMS);
+						addToVolleyballEmail (changedSMS);
+					}				}
 			}
 			JOptionPane.showMessageDialog(null, "Thank you for subscribing to our newsletter, Your subscription is now completed. ", "Subscription Successful",JOptionPane.INFORMATION_MESSAGE, icon);
 
@@ -427,7 +1061,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/menSoccer.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/soccerm/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -436,23 +1070,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToMenSoccerSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/menSoccer.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                 WOMENS SOCCER			2
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -462,7 +1080,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/womenSoccer.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/soccerw/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -471,23 +1089,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToWomenSoccerSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/womenSoccer.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                        MEN TENNIS 	3
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -497,7 +1099,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/menTennis.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/tennism/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -506,23 +1108,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToMenTennisSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/menTennis.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                    WOMEN TENNIS		4
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -532,7 +1118,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/womenTennis.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/tennisw/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -541,23 +1127,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToWomenTennisSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/womenTennis.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                              WOMEN BASKET				5
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -567,7 +1137,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/womenBasketball.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/basketballw/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -576,23 +1146,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToWomenBasketballSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/womenBasketball.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                 MEN BASKET		6
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -602,7 +1156,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/menBasketball.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/basketballm/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -611,23 +1165,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToMenBasketballSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/menBasketball.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                BASEBALL			7
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -637,7 +1175,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/baseball.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/baseball/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -646,23 +1184,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToBaseballSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/baseball.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									VOLLEYBALL		8
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -672,7 +1194,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/volleyball.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/volleyball/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -681,23 +1203,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToVolleyballSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/volleyball.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									SOFTBALL	9
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -707,7 +1213,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/softball.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/softball/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -716,23 +1222,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToSoftballSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/softball.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	//
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 										Women Golf		10
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
@@ -743,7 +1233,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/womenGolf.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/golfw/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -752,23 +1242,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToWomenGolfSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/womenGolf.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 										Men Golf		11
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -778,7 +1252,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/menGolf.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/golfm/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -787,23 +1261,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToMenGolfSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/menGolf.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Men Cross Country		12
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -813,7 +1271,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/menCrossCountry.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/crosscountrym/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -822,23 +1280,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToMenCrossCountrySMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/menCrossCountry.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Women Cross Country		13
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -848,7 +1290,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/womenCrossCountry.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/crosscountryw/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -857,23 +1299,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToWomenCrossCountrySMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/womenCrossCountry.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									Women Track Field 14
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -883,7 +1309,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/womenTrackField.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/trackw/email.txt", true)));
 			out.println(email);
 			out.close();
 		}
@@ -892,23 +1318,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToWomenTrackFieldSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/womenTrackField.txt", true)));
-			out.println(SMS);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Men Track Field			15
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
 	/** This method will add the user's email into the email Database
@@ -918,25 +1328,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	{
 		try 
 		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/EMAIL/menTrackField.txt", true)));
+			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/trackm/email.txt", true)));
 			out.println(email);
-			out.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SMS
-	/** This method will add the user's phone number into the phone number DataBase
-	 * @param SMS is an input string to store it in the database
-	 */
-	public void addToMenTrackFieldSMS (String SMS)
-	{
-		try 
-		{
-			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("Data/Subscription/SMS/menTrackField.txt", true)));
-			out.println(SMS);
 			out.close();
 		}
 		catch (Exception e)

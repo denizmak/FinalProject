@@ -1,17 +1,17 @@
 import javax.mail.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
+
 import javax.mail.internet.*;
 import javax.swing.*;
 
-
 import java.awt.*;
-import java.util.Properties;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
 
 
-public class NotificationPanel extends JFrame {
+public class NotificationPanel extends JFrame implements ActionListener {
 
 	private static final String SMTP_HOST_NAME = "smtp.gmail.com";
 	private static final int SMTP_HOST_PORT = 465;
@@ -65,7 +65,7 @@ public class NotificationPanel extends JFrame {
 	private JCheckBox menTrackFieldCheckBox = new JCheckBox(); // Track
 	private JCheckBox womenTrackFieldCheckBox = new JCheckBox();
 	private JCheckBox VolleyballCheckBox = new JCheckBox();
-	private JCheckBox allCheckBox = new JCheckBox();
+	//private JCheckBox allCheckBox = new JCheckBox();
 
 	private JLabel notificationTitle = new JLabel("NOTIFICATION", JLabel.CENTER);
 	private JLabel sendToLabel = new JLabel("Send To Subscribers Of");
@@ -84,7 +84,7 @@ public class NotificationPanel extends JFrame {
 	private JLabel menTrackField = new JLabel("Track & Field | Men");
 	private JLabel womenTrackField = new JLabel("Track & Field | Women");
 	private JLabel Volleyball = new JLabel("Volleyball");
-	private JLabel all = new JLabel("All");
+	//private JLabel all = new JLabel("All");
 	private JLabel subjectLabel = new JLabel("Subject: ");
 	private JLabel messageLabel = new JLabel("Message: ");
 
@@ -93,6 +93,7 @@ public class NotificationPanel extends JFrame {
 	private JTextArea messageText = new JTextArea(10,10);
 
 	private JScrollPane scrollPane = new JScrollPane(messageText);;
+	final ImageIcon icon = new ImageIcon("data/happyIcon.png"); 
 
 	public NotificationPanel () 
 	{
@@ -165,8 +166,8 @@ public class NotificationPanel extends JFrame {
 		contentPanel14.add(womenTrackField);
 		contentPanel15.add(VolleyballCheckBox);//15
 		contentPanel15.add(Volleyball);
-		contentPanel16.add(allCheckBox);
-		contentPanel16.add(all);
+		//contentPanel16.add(allCheckBox);
+		//contentPanel16.add(all);
 
 		contentPanel1.setLayout(new FlowLayout(FlowLayout.LEFT));
 		contentPanel2.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -206,39 +207,245 @@ public class NotificationPanel extends JFrame {
 		southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		southPanel.add(send);
 		southPanel.add(cancel);
+		cancel.addActionListener(this);
+		send.addActionListener(this);
+
+		// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Set Background to WHite 
+		mainPanel.setBackground(Color.WHITE);
+		notificationTitlePanel.setBackground(Color.WHITE);
+		sendToPanel.setBackground(Color.WHITE);
+		sendToNorth.setBackground(Color.WHITE);
+		sendToCenter.setBackground(Color.WHITE);
+		subjectPanel.setBackground(Color.WHITE);
+		messagePanel.setBackground(Color.WHITE);
+		southPanel.setBackground(Color.WHITE);
+		contentPanel1.setBackground(Color.WHITE);
+		contentPanel2.setBackground(Color.WHITE);
+		contentPanel3.setBackground(Color.WHITE);
+		contentPanel4.setBackground(Color.WHITE);
+		contentPanel5.setBackground(Color.WHITE);
+		contentPanel6.setBackground(Color.WHITE);
+		contentPanel7.setBackground(Color.WHITE);
+		contentPanel8.setBackground(Color.WHITE);
+		contentPanel9.setBackground(Color.WHITE);
+		contentPanel10.setBackground(Color.WHITE);
+		contentPanel11.setBackground(Color.WHITE);
+		contentPanel12.setBackground(Color.WHITE);
+		contentPanel13.setBackground(Color.WHITE);
+		contentPanel14.setBackground(Color.WHITE);
+		contentPanel15.setBackground(Color.WHITE);
+		contentPanel16.setBackground(Color.WHITE);
 
 		// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SET JFRAME PREFERENCES  
 		setSize(760,483);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setResizable(false); // cannot be resizable by mouse when run
+		setResizable(false); // cannot be resizable by mouse when run
 		setVisible(true);
 
 
 	}
-	
-	public void read() {
+
+	public void actionPerformed (ActionEvent e)
+	{
+
+		if (e.getSource() == cancel)
+		{
+			setVisible(false);
+		}
+		if (e.getSource() == send)
+		{
+
+
+			if (baseballCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/baseball/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (menBasketballCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/basketballm/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (womenBasketballCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/basketballw/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (menCrossCountryCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/crosscountrym/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (womenCrossCountryCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/crosscountryw/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (menGolfCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/golfm/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (womenGolfCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/golfw/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (menSoccerCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/soccerm/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (womenSoccerCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/soccerw/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (softballCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/softball/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (menTennisCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/tennism/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (womenTennisCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/tennisw/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (menTrackFieldCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/trackm/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (womenTrackFieldCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/trackw/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+			if (VolleyballCheckBox.isSelected() == true)  // <<<<< Baseball
+			{
+				//
+				try {
+					sendToEmail("data/sub/volleyball/email.txt", subjectTextField.getText(), messageText.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//
+			}
+
+			JOptionPane.showMessageDialog(null, "Notification has been sent to the subscribers. ", "Notification Successful",JOptionPane.INFORMATION_MESSAGE, icon);
+
+
+		}
+	}
+
+	public static  void sendToEmail(String txtFile, String subject, String content) throws Exception 
+	{
 		try {
-			File file = new File("test.txt");
+			File file = new File(txtFile);
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			StringBuffer stringBuffer = new StringBuffer();
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
-				stringBuffer.append(line);
-				stringBuffer.append("\n");
+				send(line, subject, content);
 			}
 			fileReader.close();
-			System.out.println("Contents of file:");
-			System.out.println(stringBuffer.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-
-
-	public void send(String email, String subject, String content) throws Exception{
+	
+	public static void send(String email, String subject, String content) throws Exception{
 		Properties props = new Properties();
 
 		props.put("mail.transport.protocol", "smtps");
@@ -264,16 +471,5 @@ public class NotificationPanel extends JFrame {
 				message.getRecipients(Message.RecipientType.TO));
 		transport.close();
 	}
-
-	// Temprory main method
-
-	public static void main(String[] args) throws Exception{
-
-		new NotificationPanel () ;
-		// new NotificationPanel().send();
-	}
-
-
-
 
 }
