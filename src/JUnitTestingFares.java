@@ -134,10 +134,11 @@ public class JUnitTestingFares
 	{
 		System.out.println ("Running empty string constructor test (DisplayGUI)...");
 		
+		String s = null;
 		try 
 		{
 			NotificationPanel test = new NotificationPanel ();
-			test.send("", "", "");    // empty string 
+			test.send(s,s,s);    // empty string 
 		} 
 
 		catch( Exception e) 

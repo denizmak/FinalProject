@@ -451,15 +451,7 @@ public class NotificationPanel extends JFrame implements ActionListener {
 	 */
 	public static  void sendToEmail(String txtFile, String subject, String content) throws Exception 
 	{
-		if (txtFile == null){
-			txtFile = "";
-		}
-		if (subject == null){
-			subject = "";
-		}
-		if (content == null){
-			content = "";
-		}
+		
 		try {
 			File file = new File(txtFile);
 			FileReader fileReader = new FileReader(file);
@@ -486,6 +478,12 @@ public class NotificationPanel extends JFrame implements ActionListener {
 	 * @throws Exception
 	 */
 	public static void send(String email, String subject, String content) throws Exception{
+		
+		if (email == null || email == "") throw new NullPointerException();
+		if (subject == null || subject == "") throw new NullPointerException();
+		if (content == null || content == "") throw new NullPointerException();
+	
+		
 		Properties props = new Properties();
 
 		props.put("mail.transport.protocol", "smtps");
