@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import stringAnalyzer.Analyzer;
+//import stringAnalyzer.Analyzer;
 
 /**
  * Required JUnit Testings (2 per member)
