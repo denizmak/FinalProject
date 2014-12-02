@@ -41,19 +41,6 @@ public class JUnitTestingKay {
 
 	//Test saveData function in ReserveAFieldGUI constructor
 	@Test
-	public void testNullString() {
-		try {
-			ReserveAFieldGUI a = new ReserveAFieldGUI(); 
-			a.saveData(null);				// pass in null string
-			} 
-		catch( Exception e) {
-			// should arrive here if the exception is properly thrown
-			return;
-			}
-		fail("Expected Exception on call to saveData(null)"); // fail the test
-	}
-	
-	@Test
 	// ----------------------------------------------------------------------------------
 	//Implement this unit test to verify that the saveData function in ReserveAFieldGUI()
 	//works for a "regular" string argument
