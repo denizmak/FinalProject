@@ -82,8 +82,9 @@ public class MenuPanel extends JPanel implements ActionListener
 			add (reservations);
 			add (subscription);
 			add (notification);
- 			add(Box.createHorizontalStrut(466));
+ 			add(Box.createHorizontalStrut(300));
 			add (logOutButton);
+			
 		}
 
 		else

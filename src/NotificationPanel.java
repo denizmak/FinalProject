@@ -11,17 +11,20 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 
+/**
+ * @author Fares Almuhanna
+ *	General idea: Notification is the way the administrator can send mass email or sms to subscribers
+ *	Programming idea: By using the database content already created by subscriptionPanel, this program can send mass email or sms for all subscribers based on type of sport
+ */
 public class NotificationPanel extends JFrame implements ActionListener {
 
 	private static final String SMTP_HOST_NAME = "smtp.gmail.com";
 	private static final int SMTP_HOST_PORT = 465;
 	private static final String SMTP_AUTH_USER = "BazingaSE@gmail.com";
-	private static final String SMTP_AUTH_PWD  = "almuhanna3A";
+	private static final String SMTP_AUTH_PWD  = "shafagh3A";
 
 	private JPanel mainPanel = new JPanel(); 
-
 	private JPanel notificationTitlePanel = new JPanel();
-
 	private JPanel sendToPanel = new JPanel();
 	private JPanel sendToNorth = new JPanel();
 	private JPanel sendToCenter = new JPanel();
@@ -95,6 +98,10 @@ public class NotificationPanel extends JFrame implements ActionListener {
 	private JScrollPane scrollPane = new JScrollPane(messageText);;
 	final ImageIcon icon = new ImageIcon("data/happyIcon.png"); 
 
+	/**
+	 * 	 * Default method that contains all panels needed to organize the interface with labels and buttons
+
+	 */
 	public NotificationPanel () 
 	{
 		add(mainPanel);
@@ -246,6 +253,12 @@ public class NotificationPanel extends JFrame implements ActionListener {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 * 
+	 * All Action Performed for all buttons, checkboxs, and textfields ... etc 
+	 * 
+	 */
 	public void actionPerformed (ActionEvent e)
 	{
 
@@ -429,6 +442,13 @@ public class NotificationPanel extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * SendToEmail method check each line of txt file that has phone-numbers/emails and pass each line to "send" method, with param of subject and contect
+	 * @param txtFile is a string of a file location.
+	 * @param subject is the title of the mass message.
+	 * @param content is the content of the mass message.
+	 * @throws Exception
+	 */
 	public static  void sendToEmail(String txtFile, String subject, String content) throws Exception 
 	{
 		try {
@@ -445,6 +465,17 @@ public class NotificationPanel extends JFrame implements ActionListener {
 		}
 	}
 	
+	/**
+	 * send method is the sending function used to send all emails and SMS.
+	 * Send email with SMTPS - JAVA MAIL (GMAIL)
+	 * Account used to send messages is "BazingaSE@gmail.com" 
+	 * Reference : The concept of this method was taked from-> "http://www.rgagnon.com/javadetails/java-0570.html"
+	 * 
+	 * @param email is the receiver address whether its phone number or email
+	 * @param subject is the title of the mass message.
+	 * @param content is the content of the mass message.
+	 * @throws Exception
+	 */
 	public static void send(String email, String subject, String content) throws Exception{
 		Properties props = new Properties();
 

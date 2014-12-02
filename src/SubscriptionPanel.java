@@ -100,7 +100,7 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	// ***********************************************************************************************************************
 
 	/**
-	 * Main method that contains all panels needed to organize the interface with labels and buttons
+	 * Default method that contains all panels needed to organize the interface with labels and buttons
 	 */
 	public SubscriptionPanel ()
 	{
@@ -1054,8 +1054,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                MENS SOCCER     		1
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToMenSoccerEmail (String email)
 	{
@@ -1073,8 +1073,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                 WOMENS SOCCER			2
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToWomenSoccerEmail (String email)
 	{
@@ -1092,8 +1092,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                        MEN TENNIS 	3
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToMenTennisEmail (String email)
 	{
@@ -1111,8 +1111,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                    WOMEN TENNIS		4
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToWomenTennisEmail (String email)
 	{
@@ -1130,8 +1130,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                              WOMEN BASKET				5
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToWomenBasketballEmail (String email)
 	{
@@ -1149,8 +1149,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                 MEN BASKET		6
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToMenBasketballEmail (String email)
 	{
@@ -1168,8 +1168,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                                BASEBALL			7
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToBaseballEmail (String email)
 	{
@@ -1187,8 +1187,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									VOLLEYBALL		8
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToVolleyballEmail (String email)
 	{
@@ -1206,8 +1206,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									SOFTBALL	9
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToSoftballEmail (String email)
 	{
@@ -1226,8 +1226,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	//
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 										Women Golf		10
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToWomenGolfEmail (String email)
 	{
@@ -1245,8 +1245,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 										Men Golf		11
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToMenGolfEmail (String email)
 	{
@@ -1264,8 +1264,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Men Cross Country		12
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToMenCrossCountryEmail (String email)
 	{
@@ -1283,8 +1283,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Women Cross Country		13
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToWomenCrossCountryEmail (String email)
 	{
@@ -1302,8 +1302,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 									Women Track Field 14
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToWomenTrackFieldEmail (String email)
 	{
@@ -1321,8 +1321,8 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 							Men Track Field			15
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<EMAIL
-	/** This method will add the user's email into the email Database
-	 * @param email is a input string to save it in the database
+	/** This method will add the user's input ( phone number or email ) into the contact Database
+	 * @param email is a input string [email/phone-number] to save it in the database
 	 */
 	public void addToMenTrackFieldEmail (String email)
 	{
