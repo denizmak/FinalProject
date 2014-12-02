@@ -5,6 +5,4 @@ Number	Year	Month	 Day	Time	Field		Field Type
 4	2014	January	 01	11:00	Softball Court		Full Field
 5	2014	January	 01	08:00	Softball Court		Full Field
 6	2015	January	 01	08:00	Softball Court		Full Field
-test string
-null
 
