@@ -451,6 +451,15 @@ public class NotificationPanel extends JFrame implements ActionListener {
 	 */
 	public static  void sendToEmail(String txtFile, String subject, String content) throws Exception 
 	{
+		if (txtFile == null){
+			txtFile = "";
+		}
+		if (subject == null){
+			subject = "";
+		}
+		if (content == null){
+			content = "";
+		}
 		try {
 			File file = new File(txtFile);
 			FileReader fileReader = new FileReader(file);

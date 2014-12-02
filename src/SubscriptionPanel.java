@@ -1097,6 +1097,11 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToMenTennisEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
+		
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/tennism/email.txt", true)));
@@ -1116,6 +1121,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToWomenTennisEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/tennisw/email.txt", true)));
@@ -1135,6 +1144,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToWomenBasketballEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/basketballw/email.txt", true)));
@@ -1154,6 +1167,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToMenBasketballEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/basketballm/email.txt", true)));
@@ -1173,6 +1190,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToBaseballEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/baseball/email.txt", true)));
@@ -1192,6 +1213,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToVolleyballEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/volleyball/email.txt", true)));
@@ -1211,6 +1236,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToSoftballEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/softball/email.txt", true)));
@@ -1231,6 +1260,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToWomenGolfEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/golfw/email.txt", true)));
@@ -1250,6 +1283,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToMenGolfEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/golfm/email.txt", true)));
@@ -1269,6 +1306,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToMenCrossCountryEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/crosscountrym/email.txt", true)));
@@ -1288,6 +1329,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToWomenCrossCountryEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/crosscountryw/email.txt", true)));
@@ -1307,6 +1352,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToWomenTrackFieldEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/trackw/email.txt", true)));
@@ -1326,6 +1375,10 @@ public class SubscriptionPanel extends JFrame implements ActionListener
 	 */
 	public void addToMenTrackFieldEmail (String email)
 	{
+		if (email == null)
+		{
+			email = "";
+		}
 		try 
 		{
 			PrintWriter out = new PrintWriter (new BufferedWriter ( new FileWriter("data/sub/trackm/email.txt", true)));

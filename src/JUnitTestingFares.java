@@ -71,11 +71,11 @@ public class JUnitTestingFares
 	public void testEmptyStringConstruction() 
 	{
 		System.out.println ("Running empty string constructor test (MenuPanel)...");
-		
+		String s = "";
 		try 
 		{
 			SubscriptionPanel test = new SubscriptionPanel ();
-			test.addToBaseballEmail(""); 			// pass in an empty string
+			test.addToBaseballEmail(s); 			// pass in an empty string
 		} 
 
 		catch( Exception e) 
