@@ -117,7 +117,10 @@ public class MyReservationGUI extends JFrame{
 
 		exit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);	
+				int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit My Reservations page?",
+						"Exit Confirmation?", JOptionPane.YES_NO_OPTION);
+				if (confirmation == JOptionPane.YES_OPTION)
+					setVisible(false);
 			}
 		});	
 
