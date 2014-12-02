@@ -6,18 +6,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-<<<<<<< HEAD
-=======
-//import stringAnalyzer.Analyzer;
->>>>>>> ff17ba222e82846681f3347106768fbb2a54fb07
 
 /**
  * Required JUnit Testings (2 per member)
  * @author Kay
- * Testing of 
  */
 
-public class JUnuitTestingKay {
+public class JUnitTestingKay {
 
 	@BeforeClass
 	// This method is called only once at the beginning, each time JUnit is run.

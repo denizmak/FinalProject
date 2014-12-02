@@ -256,6 +256,9 @@ public class ReserveAFieldGUI extends JFrame{
 					number++;   					// add one so that the next number is in ascending order
 					String content =  number + "\t" + year +"\t" + month + "\t " + day + "\t" +
 					          hour + ":" + minute + "\t" + field + "\t\t" + type;
+					// For JUnit testing
+					if (content == null)
+						content = "";
 					saveData(content);				//saveData function for writing content to .txt file
 				} catch (Exception e1) {
 					e1.printStackTrace();
