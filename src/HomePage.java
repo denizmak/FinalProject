@@ -68,7 +68,7 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 		setLocationRelativeTo (null);
 		setResizable (false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle ("ERAU Eagles Fun Club Application");
+		setTitle ("ERAU Eagles Fan Club Application");
 
 		//register listener with log in button
 		northPanel.logInButton.addActionListener(this);
