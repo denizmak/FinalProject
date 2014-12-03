@@ -98,6 +98,9 @@ public class SportsMenu extends JMenuBar implements ActionListener
 	 */
 	public SportsMenu()
 	{
+
+		sportsMenu.setToolTipText ("Click here to see all ERAU sports available");
+		
 		// add components to the panel and personalize
 		baseball.add(scheduleB);
 		baseball.add(rosterB);

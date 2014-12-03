@@ -143,6 +143,8 @@ public class MenuPanel extends JPanel implements ActionListener
 
 		else if (e.getSource() == reservations)
 		{
+			AdminReservationGUI frame = new AdminReservationGUI();
+			frame.createAndShowGUI();
 		}
 	}
 }

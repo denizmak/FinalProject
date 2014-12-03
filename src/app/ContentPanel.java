@@ -69,6 +69,16 @@ public class ContentPanel extends JPanel implements ActionListener
 
 		exitButton.setFont (new Font ("Times New Roman", Font.BOLD, 15));
 
+		baseball.setToolTipText ("Click here in order to highlight baseball field location on the map");
+		softball.setToolTipText ("Click here in order to highlight softball field location on the map");
+		basketball.setToolTipText ("Click here in order to highlight basketball court location on the map");
+		soccer.setToolTipText ("Click here in order to highlight soccer field location on the map");
+		tennis.setToolTipText ("Click here in order to highlight tennis courts location on the map");
+		volleyball.setToolTipText ("Click here in order to highlight volleyball court location on the map");
+		trackField.setToolTipText ("Click here in order to highlight Track & Field field location on the map");
+		intramural.setToolTipText ("Click here in order to highlight intramural fields location on the map");
+		exitButton.setToolTipText ("Click here to exit the program");
+		
 		mapOption.add(baseball);
 		mapOption.add(softball);
 		mapOption.add(basketball);
