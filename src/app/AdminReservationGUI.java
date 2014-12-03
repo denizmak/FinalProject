@@ -61,9 +61,42 @@ public class AdminReservationGUI extends JFrame{
 		Reservation.setFont(new Font("Calibri", Font.BOLD, 16));
 		header.add(Reservation);
 		header.setBackground(Color.WHITE);
+		
+		
+		/**
+		 * Reading data from ReservationData.txt file 
+		 * @Sting line = line which stores the data from reading (go to new line when one line is ended)
+		 * @StringBuilder readText = the StringBuilder that combines all lines together
+		 */
+		String line = "";						 
+		StringBuilder readText = new StringBuilder();
+
+		try{
+			Scanner fileScanner = new Scanner (new File("data/ReservationData.txt"));
+
+			while (fileScanner.hasNextLine()){
+				line = fileScanner.nextLine();
+				readText.append(line+"\n");
+			}
+			fileScanner.close();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 
 		/**
-		 * Adds exit and Cancel buttons and align them in BoxLayout
+		 * Display the string built using JTextArea
+		 */
+
+		String stringToDisplay = readText.toString();
+		text = new JTextArea (stringToDisplay);
+		body.add(text);
+		body.setBackground(Color.WHITE);
+
+
+		/**
+		 * Adds approve, reject, and exit buttons and align them in BoxLayout
 		 */
 		approve.setAlignmentX(LEFT_ALIGNMENT);
 		reject.setAlignmentX(CENTER_ALIGNMENT);
@@ -74,6 +107,7 @@ public class AdminReservationGUI extends JFrame{
 		button.setBackground(Color.WHITE);
 		
 		pane.add(header, BorderLayout.NORTH);
+		pane.add(body, BorderLayout.CENTER);
 		pane.add(button, BorderLayout.SOUTH);
 		
 		/**
@@ -108,6 +142,5 @@ public class AdminReservationGUI extends JFrame{
 		//frame.pack();					
 		frame.setVisible(true);
 	}
-
 	
 }//end myReservationGUI
