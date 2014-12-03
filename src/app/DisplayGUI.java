@@ -182,7 +182,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 		 * files for all the sports. Method reads the text from the JTextField and writes the complete text 
 		 * over the text in the database document such that when the user reads the file again, the program
 		 * displays the updated file.
-		 * @param text
+		 * @param text - text from the JText field that will be written into the file
 		 */
 		public void writeToFile (String text)
 		{	

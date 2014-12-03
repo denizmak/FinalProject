@@ -66,9 +66,9 @@ public class DLList
 	 * addUser() method enables program to add the user in the list. The method takes separate user 
 	 * info as parameters and creates a user object and node in the method. Also, it updates the prev and 
 	 * next reference, as well head and tail references if needed.
-	 * @param username
-	 * @param password
-	 * @param userLevel
+	 * @param username - user username
+	 * @param password - user password
+	 * @param userLevel - log in level (regular user, student or admin)
 	 */
 	public void addUser(String username, String password, String userLevel)
 	{
@@ -104,7 +104,7 @@ public class DLList
 			//if the user with the same username already exist
 			else if (username.compareTo(((User) cur.o).getUsername()) == 0)
 			{
-				System.out.println("The o already exists in the list");
+				System.out.println("The user already exists in the list");
 				return;
 			}
 
@@ -162,7 +162,7 @@ public class DLList
 			//if the user with the same username already exists
 			else if (username.compareTo(((User) cur.o).getUsername()) == 0)
 			{
-				System.out.println("The o already exists in the list");
+				System.out.println("The user already exists in the list");
 				return;
 			}
 
@@ -203,7 +203,7 @@ public class DLList
 		}
 
 		//if the end is reached
-		if (cur == null)	System.out.println ("'" + s + "' o was not found in the list!");
+		if (cur == null)	System.out.println ("'" + s + "' user was not found in the list!");
 	}
 
 
@@ -212,7 +212,7 @@ public class DLList
 	 *  deleteNode() method is the "addition" to the deleteByUsername method. This method deletes 
 	 * the node which contains the user with the username specified in the deleteByUsername method, 
 	 * and updates the prev and next references.
-	 * @param cur
+	 * @param cur - reference to the DLLNode pointing to the current user
 	 */
 	private void deleteNode (DLLNode  cur)
 	{
@@ -253,7 +253,8 @@ public class DLList
 	/**
 	 * * getObject() method prints out the user info if the username equals to the one specified as a 
 	 *method parameter. The method is case-sensitive.
-	 * @param username
+	 * @param username - user username
+	 * @return return object of a type User
 	 */
 	public User getUser(String username)
 	{

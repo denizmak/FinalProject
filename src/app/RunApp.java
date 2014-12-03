@@ -12,7 +12,7 @@ public class RunApp
 {
 	/**Main method is used to run the application. It crates an instance of HomePage class and sets the 
 	 * main frame properties.
-	 * @param args
+	 * @param args - basic declaration of main method
 	 */
 	public static void main(String[] args) 
 	{

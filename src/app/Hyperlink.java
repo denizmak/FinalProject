@@ -26,8 +26,8 @@ public class Hyperlink extends JLabel
 	//private JLabel link;
 	/**
 	 * Default constructor with parameterized data
-	 * @param name attached to link
-	 * @param website that opens
+	 * @param name - name attached to link
+	 * @param url - web site that opens
 	 */
 	public Hyperlink(String name, final String url)
 	{

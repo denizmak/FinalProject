@@ -32,9 +32,9 @@ public class User
 	
 	/**
 	 * Default constructor with parameterized data
-	 * @param username
-	 * @param password
-	 * @param userLevel
+	 * @param username - user username
+	 * @param password - user password
+	 * @param userLevel - log in level (regular user, student or admin)
 	 */
 	public User (String username, String password, String userLevel)
 	{
@@ -45,7 +45,8 @@ public class User
 	
 	/**
 	 * Parses a comma delimited string of user data (username, password, userLevel).
-	 * @param iostring
+	 * @param iostring - string consisting all three user parameters
+	 * @throws InvalidUserException - simple Exception to handle invalid users
 	 */
 	public User (String iostring) throws InvalidUserException
 	{
@@ -60,7 +61,8 @@ public class User
 				userLevel = data[2].trim();
 			}
 			
-		} catch(Exception e) {
+		} catch(Exception e) 
+		{
 			throw new InvalidUserException();
 		}
 	}
@@ -74,7 +76,7 @@ public class User
 	}
 	
 	/**
-	 * 	@return username
+	 * 	@return user username
 	 */
 	public String getUsername()
 	{
@@ -90,7 +92,7 @@ public class User
 	}
 	
 	/**
-	 * @return userLevel
+	 * @return user log in level (regular user, student or admin)
 	 */
 	public String getUserLevel()
 	{
@@ -99,7 +101,7 @@ public class User
 
 
 	/**
-	 * @param userLevel
+	 * @param userLevel - user log in level (regular user, student or admin)
 	 */
 	public void setUserLevel (String userLevel) 
 	{
