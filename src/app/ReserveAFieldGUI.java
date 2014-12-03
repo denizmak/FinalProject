@@ -31,6 +31,7 @@ public class ReserveAFieldGUI extends JFrame{
 	int classification = 0;					//Temp. int. to determine between students and admin (student = 0, admin = 1)
 	static int number;
 	static int old_number = number;
+	private String status = "PENDING"; // added by Deni
 	
 	// Create RerserveAField constructor
 	public ReserveAFieldGUI(){
@@ -256,7 +257,7 @@ public class ReserveAFieldGUI extends JFrame{
 					}
 					number++;   					// add one so that the next number is in ascending order
 					String content =  number + "\t" + year +"\t" + month + "\t " + day + "\t" +
-					          hour + ":" + minute + "\t" + field + "\t\t" + type;
+					          hour + ":" + minute + "\t" + field + "\t\t" + type + "\t" + status; // status added by Deni
 					// For JUnit testing
 					if (content == null)
 						content = "";

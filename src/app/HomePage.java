@@ -33,7 +33,7 @@ import javax.swing.JTextField;
 public class HomePage extends JFrame implements ActionListener, KeyListener
 {
 	// data fields
-	private MenuPanel northPanel = new MenuPanel ("admin");
+	private MenuPanel northPanel = new MenuPanel ("user");
 	private JPanel centerPanel = new JPanel();
 	private TitleDesign titlePanel = new TitleDesign();
 	private JPanel content = new ContentPanel();

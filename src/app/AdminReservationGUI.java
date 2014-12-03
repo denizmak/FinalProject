@@ -1,7 +1,7 @@
 package app;
 
 /**
- * @author Kay
+ * @author Kay (Edited by Deni)
  * @version 1.0
  * @created 16-Oct-2014 6:31:26 PM
  * @last_edited 12-Nov-2014 10:38:34 AM
@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,17 +33,16 @@ import java.util.regex.Pattern;
  * created JPanels for each section and add them to BorderLayout
  */
 
-public class AdminReservationGUI extends JFrame{
+public class AdminReservationGUI extends JFrame implements ActionListener{
 
 	//Initialize the two buttons
 	JButton exit = new JButton("Exit");						
-	JButton approve = new JButton("Approve");
-	JButton reject = new JButton("Reject");
+	JButton submit = new JButton ("Submit Changes"); // added by Deni
 	JPanel header = new JPanel();
 	JPanel body = new JPanel();
 	JPanel button = new JPanel();
 	JTextArea text;
-	
+
 	//myReservationGUI constructor
 	public AdminReservationGUI(){
 		super();
@@ -55,14 +55,14 @@ public class AdminReservationGUI extends JFrame{
 	 */
 
 	public void addComponentsToPane(final Container pane){
-		
+
 		pane.setBackground(Color.WHITE);
 		JLabel Reservation = new JLabel("Incoming Reservation(s)");		//Title for myReservation file
 		Reservation.setFont(new Font("Calibri", Font.BOLD, 16));
 		header.add(Reservation);
 		header.setBackground(Color.WHITE);
-		
-		
+
+
 		/**
 		 * Reading data from ReservationData.txt file 
 		 * @Sting line = line which stores the data from reading (go to new line when one line is ended)
@@ -98,18 +98,18 @@ public class AdminReservationGUI extends JFrame{
 		/**
 		 * Adds approve, reject, and exit buttons and align them in BoxLayout
 		 */
-		approve.setAlignmentX(LEFT_ALIGNMENT);
-		reject.setAlignmentX(CENTER_ALIGNMENT);
+		submit.setAlignmentX(LEFT_ALIGNMENT);
 		exit.setAlignmentX(RIGHT_ALIGNMENT);
-		button.add(approve);
-		button.add(reject);
+		button.add(submit);
 		button.add(exit);
 		button.setBackground(Color.WHITE);
-		
+
 		pane.add(header, BorderLayout.NORTH);
 		pane.add(body, BorderLayout.CENTER);
 		pane.add(button, BorderLayout.SOUTH);
-		
+
+		submit.addActionListener(this); // add action listener for submit button (by Deni)
+
 		/**
 		 *  Add listener for exit button 
 		 *  Once clicked, the frame will be hidden, the program will still be running
@@ -122,6 +122,48 @@ public class AdminReservationGUI extends JFrame{
 		});	
 
 	}
+
+	// handle events by overriding actionPerformed method (added by Deni)
+	public void actionPerformed (ActionEvent e)
+	{
+		if (e.getSource() == submit)
+		{
+			writeToFile (text.getText());
+			JTextField message = new JTextField ("The changes have been updated"); //notify admin that the changes have been processed
+			message.setBackground(Color.YELLOW);
+			message.setForeground(Color.BLUE);
+			JOptionPane.showMessageDialog (null, message, "INFO!", JOptionPane.WARNING_MESSAGE); //create and display warning message
+		}
+	}
+
+
+	//---------------------------------------------------------------------------------------------------------------------
+	//added by Deni
+	/**writeToFile method allows to admin to save the edited changes in the roster and/or schedule 
+	 * files for all the sports. Method reads the text from the JTextField and writes the complete text 
+	 * over the text in the database document such that when the user reads the file again, the program
+	 * displays the updated file.
+	 * @param text
+	 */
+	public void writeToFile (String text)
+	{	
+		// write to a file
+		try 
+		{
+			Writer writer = new FileWriter ("data/ReservationData.txt", false);
+
+			writer.write (text);
+			writer.flush();
+			writer.close();
+		} 
+		catch (IOException e)
+		{
+			System.out.println ("Error! File does exist!");
+		}  
+	}
+	//-----------------------------------------------------------------------------------------------------------------
+
+
 	/**
 	 *  The function that calls the layout and add it to the frame.
 	 *  The Frame dimension is set by trial and error to be in the center of display.
@@ -142,5 +184,5 @@ public class AdminReservationGUI extends JFrame{
 		//frame.pack();					
 		frame.setVisible(true);
 	}
-	
+
 }//end myReservationGUI
