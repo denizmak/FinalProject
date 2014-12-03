@@ -39,7 +39,6 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 	private JPanel content = new ContentPanel();
 	private LogIn login;
 	private DLList list = new DLList();
-	private JButton close = new JButton ("Close");
 
 
 	/**
@@ -83,26 +82,17 @@ public class HomePage extends JFrame implements ActionListener, KeyListener
 		{
 			northPanel.logInButton.removeActionListener(this); //remove action listener once clicked
 			
-			close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
-			close.setToolTipText ("Click to close log in window and go back to main window");
-
-			//create panel that will contain close button and be placed on the bottom of the frame
-			JPanel closePanel = new JPanel();
-			closePanel.setBackground (Color.WHITE);
-			closePanel.add (close);
-			
 			login = new LogIn();
-			login.add (closePanel, BorderLayout.SOUTH);
 			login.setAlwaysOnTop(true);
 			login.setVisible (true);
 			login.login.addActionListener(this);
 			login.username.addKeyListener(this);
 			login.password.addKeyListener(this);
 			
-			close.addActionListener (this);
+			login.close.addActionListener (this);
 		}
 		
-		else if (e.getSource() == close)
+		else if (e.getSource() == login.close)
 		{
 			login.setVisible(false);
 			northPanel.logInButton.addActionListener(this); // register action listener if user closed login frame without logging in

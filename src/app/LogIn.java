@@ -33,10 +33,12 @@ public class LogIn extends JFrame
 	protected JPasswordField password= new JPasswordField ("Password");
 	protected EagleImage eagle = new EagleImage();
 	private Hyperlink link = new Hyperlink();
+	private JPanel closePanel = new JPanel();
+	protected JButton close = new JButton ("Close");
 
 
 	public LogIn()
-	{
+	{	
 		setLayout(new BorderLayout());
 
 		JPanel accessLogIn = new JPanel();
@@ -79,10 +81,16 @@ public class LogIn extends JFrame
 		password.setHorizontalAlignment (JPasswordField.CENTER);
 		password.setSelectedTextColor (Color.YELLOW);
 		password.setSelectionColor (Color.BLUE);
-
+		
+		close.setFont (new Font ("Times New Roman", Font.BOLD, 17));
+		close.setToolTipText ("Click to close log in window and go back to main window");
+		
+		closePanel.setBackground (Color.WHITE);
+		closePanel.add (close);
 
 		add (accessLogIn, BorderLayout.NORTH);
 		add (eagle, BorderLayout.CENTER);
+		add (closePanel, BorderLayout.SOUTH);
 
 		setDefaultCloseOperation (JFrame.DO_NOTHING_ON_CLOSE);
 		setSize (new Dimension (444, 303));

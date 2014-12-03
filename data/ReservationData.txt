@@ -5,6 +5,6 @@ Number	Year	Month	 Day	Time	Field		Field Type	Status
 1	2014	January	 01	08:00	Tennis Court		Full Field	APPROVED
 2	2014	January	 01	11:00	MultiPurpose		Full Field	APPROVED
 3	2014	January	 01	11:00	Softball Court		Full Field	APPROVED
-4	2014	January	 01	08:00	Softball Court		Full Field	NOT APPROVED
+4	2014	January	 01	08:00	Softball Court		Full Field	DECLINED
 5	2014	January	 01	08:00	Soccer Field		Full Field	PENDING
 6	2014	December	 01	08:00	Soccer Field		Full Field	PENDING
