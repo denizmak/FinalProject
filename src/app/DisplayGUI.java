@@ -41,7 +41,7 @@ public class DisplayGUI extends JFrame implements ActionListener
 	private JButton close = new JButton ("Close");
 	private JButton save = new JButton ("Save");
 	private JPanel buttons = new JPanel();
-	static JPanel bioPanel = new JPanel();
+	static JPanel bioPanel;
 	private JTextArea text;
 	private JScrollPane scroll;
 	String path = null;
@@ -66,14 +66,14 @@ public class DisplayGUI extends JFrame implements ActionListener
 		StringBuilder readText = new StringBuilder();
 		
 		//--------------------------------------------------------------------------------------------------------------
-		//updated by B.A.
-		bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.Y_AXIS));
-		
+		//updated by B.A.		
 		if (path.compareTo("bio") < 4 && MenuPanel.userLevel.compareTo("admin") != 0)	
 		{
 			try 
 			{
 				Scanner fileScanner = new Scanner (new File ("data/" + path +".txt"));		
+				bioPanel = new JPanel();
+				bioPanel.setLayout(new BoxLayout(bioPanel, BoxLayout.Y_AXIS));
 				
 				while(fileScanner.hasNextLine())
 				{
