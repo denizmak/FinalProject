@@ -139,11 +139,11 @@ public class AdminReservationGUI extends JFrame implements ActionListener{
 
 	//---------------------------------------------------------------------------------------------------------------------
 	//added by Deni
-	/**writeToFile method allows to admin to save the edited changes in the roster and/or schedule 
-	 * files for all the sports. Method reads the text from the JTextField and writes the complete text 
+	/**writeToFile method allows to admin to save the edited changes in the reservations file. 
+	 * Method reads the text from the JTextField and writes the complete text 
 	 * over the text in the database document such that when the user reads the file again, the program
-	 * displays the updated file.
-	 * @param text
+	 * displays the updated file with changed reservation status.
+	 * @param text - the complete edited text from the JText field that is displayed
 	 */
 	public void writeToFile (String text)
 	{	
